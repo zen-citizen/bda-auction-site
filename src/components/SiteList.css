@@ -1,0 +1,174 @@
+.site-list {
+  background: white;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: none;
+}
+
+.site-list-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+  background-color: #f8f9fa;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.site-list-header h3 {
+  margin: 0;
+  color: #4B2840;
+  font-size: 1.1rem;
+}
+
+.site-list-content {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0.5rem;
+}
+
+.no-sites {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.site-item {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+  position: relative;
+}
+
+.site-item:hover {
+  border-color: #4B2840;
+  box-shadow: 0 2px 4px rgba(75, 40, 64, 0.1);
+  transform: translateY(-1px);
+}
+
+.site-item.selected {
+  border-color: #4B2840;
+  background-color: #f9fafb;
+  box-shadow: 0 2px 6px rgba(75, 40, 64, 0.2);
+}
+
+.site-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.site-number {
+  font-weight: 600;
+  color: #4B2840;
+  font-size: 1rem;
+}
+
+.site-session {
+  font-size: 0.85rem;
+  color: #666;
+  background-color: #f0f0f0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.site-item-layout {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.site-item-details {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.site-item-warning {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #d32f2f;
+  font-style: italic;
+}
+
+.site-item-tooltip {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  width: 280px;
+  transform: translateY(-50%);
+  transition: opacity 0.15s ease-out;
+  opacity: 1;
+}
+
+.tooltip-content {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.tooltip-content strong {
+  display: block;
+  color: #4B2840;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.tooltip-content div {
+  margin: 0.25rem 0;
+  color: #333;
+}
+
+.tooltip-content .tooltip-hint {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+  font-size: 0.75rem;
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .site-list {
+    max-height: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .site-list-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .site-list-header h3 {
+    font-size: 0.95rem;
+  }
+  
+  .site-list-content {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    min-height: 0;
+  }
+  
+  .site-item {
+    padding: 0.75rem;
+  }
+  
+  .site-item-tooltip {
+    display: none;
+  }
+}
