@@ -183,7 +183,7 @@ function InfoPage() {
         <section id="what-is-being-eauctioned" className="info-section">
           <h2>What is being eAuctioned</h2>
           <p>
-            Residential and Commercial Corner / Intermediate Sites at multiple BDA layouts across Bengaluru.
+          Residential Sites at multiple BDA layouts across Bengaluru
           </p>
           <p>
             <strong>Note:</strong> eAuction on "AS IS WHERE IS" basis. Physical inspection of sites is strongly advised before bidding.
@@ -195,8 +195,8 @@ function InfoPage() {
           <ul>
             <li>Indian citizens (individuals)</li>
             <li>Registered partnership firms in India</li>
-            <li>Minors / persons without computer knowledge through guardians or representatives</li>
-            <li>Joint registration permitted only for blood relations (spouse, sons, unmarried daughters)</li>
+            <li>Minors or persons without computer knowledge through guardians or representatives</li>
+            <li>Joint registration permitted only for blood relations (spouse, sons, unmarried daughters) Proof of relationship required</li>
           </ul>
         </section>
 
@@ -322,7 +322,7 @@ function InfoPage() {
             <div className="financial-subsection">
               <h3>Bidding Requirements</h3>
               <ul>
-                <li>Bid must exceed base price by at least 10%. Exact base price is site-specific and mentioned in the tables.</li>
+                <li>Bid must exceed base price by at least 10%</li>
                 <li>Bid increment: Minimum Rs. 500 per sq.m</li>
               </ul>
             </div>
@@ -332,7 +332,7 @@ function InfoPage() {
             <div className="financial-subsection">
               <h3>Payment after Winning</h3>
               <ul>
-                <li>25% of total cost (after adjusting EMD) within stipulated time</li>
+                <li>25% of total cost (after adjusting EMD) within stipulated time of 3 days</li>
                 <li>Balance 75% within 45 days from allotment letter</li>
               </ul>
               <div style={{ marginTop: '1rem' }}>
@@ -340,8 +340,8 @@ function InfoPage() {
                   Payment Details
                 </h4>
                 <div className="payment-details-subsection">
+                <p><strong>Account Name:</strong> Bangalore Development Authority, Bengaluru</p>
                   <p><strong>Bank:</strong> Canara Bank, BDA Complex Branch, Kumara Krupa West, Bengaluru-560020</p>
-                  <p><strong>Account Name:</strong> Bangalore Development Authority, Bengaluru</p>
                   <p><strong>Account Number:</strong> 2828101053014</p>
                   <p><strong>IFSC Code:</strong> CNRB0002828</p>
                   <p><strong>Mode of Payment:</strong> RTGS / NEFT</p>
@@ -352,7 +352,7 @@ function InfoPage() {
                   <span style={{ color: '#4B2840', display: 'inline-flex', alignItems: 'flex-start', paddingTop: '0.2em', flexShrink: 0 }}>
                     <ImportantIcon size={18} />
                   </span>
-                  <span>Failure results in forfeiture of EMD</span>
+                  <span>Failure of making payment within stipulated time will result in forfeiture of EMD</span>
                 </span>
               </div>
             </div>
@@ -392,7 +392,7 @@ function InfoPage() {
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
               >
                 <ExternalLink size={14} />
-                T. Chowdaiah Road, Kumara Park West, Bengaluru – 560 020
+                T. Chowdaiah Road, Kumara Park West, Bengaluru 560020
               </a>
             </p>
             <p className="note-text">
@@ -447,6 +447,19 @@ function InfoPage() {
                     <a href="tel:+919240214000">09240214000</a> | <a href="tel:+919240214001">09240214001</a>
                   </span>
                 </span>
+              </p>
+              <p>
+                <strong>BDA on X (Twitter):</strong><br />
+                <a 
+                  href="https://x.com/BDAOfficialGok" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="link-external"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                >
+                  <ExternalLink size={14} />
+                  @BDAOfficialGok
+                </a>
               </p>
             </div>
             <div className="warning-text">
