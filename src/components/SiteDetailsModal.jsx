@@ -74,9 +74,20 @@ function SiteDetailsModal({ site, onClose }) {
             <div className="detail-row">
               <span className="detail-label">Rate Per Sq.M:</span>
               <span className="detail-value">
-                {site.ratePerSqMtr && site.ratePerSqMtr !== 'NA' && site.ratePerSqMtr.trim() !== '' 
-                  ? `₹${parseFloat(site.ratePerSqMtr).toLocaleString('en-IN')}`
-                  : 'N/A'}
+                {(() => {
+                  try {
+                    if (!site.ratePerSqMtr || site.ratePerSqMtr === 'NA' || site.ratePerSqMtr.trim() === '') {
+                      return 'N/A'
+                    }
+                    const rate = parseFloat(site.ratePerSqMtr)
+                    if (isNaN(rate)) {
+                      return 'N/A'
+                    }
+                    return `₹${rate.toLocaleString('en-IN')}`
+                  } catch {
+                    return 'N/A'
+                  }
+                })()}
               </span>
             </div>
           </div>

@@ -161,12 +161,20 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
       
       // Clean and process data
       // Handle duplicate Lat/Long columns - use first occurrence
-      const lat = site.Lat && site.Lat !== 'Not Found' && site.Lat.trim() !== '' 
-        ? parseFloat(site.Lat) 
+      const latValue = site.Lat && site.Lat !== 'Not Found' && site.Lat.trim() !== '' 
+        ? site.Lat.trim() 
         : null;
-      const lng = site.Long && site.Long !== 'Not Found' && site.Long.trim() !== '' 
-        ? parseFloat(site.Long) 
+      const lngValue = site.Long && site.Long !== 'Not Found' && site.Long.trim() !== '' 
+        ? site.Long.trim() 
         : null;
+      
+      const lat = latValue ? parseFloat(latValue) : null;
+      const lng = lngValue ? parseFloat(lngValue) : null;
+      
+      // Validate that parsed values are valid finite numbers
+      const hasValidCoordinates = lat != null && lng != null && 
+                                   !Number.isNaN(lat) && !Number.isNaN(lng) &&
+                                   Number.isFinite(lat) && Number.isFinite(lng);
       
       // Find Size column (could be "Size" or "Size " after trimming)
       const sizeClassificationValue = site['Size'] || site['Size '] || '';
@@ -182,9 +190,9 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         nToS: site['N to S'] || '',
         totalArea: site['Total_Area (in sq.m)'] || '',
         sizeClassification: sizeClassificationValue.trim(), // Size classification bucket for filtering
-        lat,
-        lng,
-        hasCoordinates: lat !== null && lng !== null,
+        lat: hasValidCoordinates ? lat : null,
+        lng: hasValidCoordinates ? lng : null,
+        hasCoordinates: hasValidCoordinates,
         biddingSession: parseInt(site.Sl_No) <= 42 ? 1 : 2,
         surveyNo: site['Survey.No.'] || '',
         contactNumber: site['Contact Number - Site Information Coordinator\n9am-5pm on working days'] || '',

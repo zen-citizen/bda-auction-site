@@ -15,45 +15,147 @@ L.Icon.Default.mergeOptions({
 })
 
 // Component to handle map control (zoom/pan when site is selected)
-function MapController({ selectedSite }) {
+function MapController({ selectedSite, isResizingRef }) {
   const map = useMap()
+
+  // Helper function to check if map container is visible and has valid dimensions
+  const isMapReadyForAnimation = () => {
+    try {
+      const container = map.getContainer()
+      if (!container) return false
+      
+      // Check if container is visible and has valid dimensions
+      // offsetWidth/offsetHeight are 0 when element is hidden (display: none) or has no size
+      const hasValidDimensions = container.offsetWidth > 0 && container.offsetHeight > 0
+      
+      // Also check computed style to ensure it's not hidden
+      const style = window.getComputedStyle(container)
+      const isVisible = style.display !== 'none' && style.visibility !== 'hidden'
+      
+      return hasValidDimensions && isVisible
+    } catch (error) {
+      // If we can't check, assume map is not ready
+      return false
+    }
+  }
 
   useEffect(() => {
     if (!selectedSite?.hasCoordinates) return
 
-    const currentZoom = map.getZoom()
-    const position = [selectedSite.lat, selectedSite.lng] // Leaflet uses [lat, lng]
-
-    // Only zoom if we're zoomed out, otherwise just pan smoothly
-    if (currentZoom < 13) {
-      map.flyTo(position, 14, {
-        duration: 1.5, // seconds
-        easeLinearity: 0.25
-      })
-    } else {
-      // Just pan if already zoomed in
-      map.flyTo(position, currentZoom, {
-        duration: 0.8,
-        easeLinearity: 0.25
-      })
+    const lat = selectedSite.lat
+    const lng = selectedSite.lng
+    
+    // Validate coordinates are valid finite numbers
+    if (lat == null || lng == null || 
+        Number.isNaN(lat) || Number.isNaN(lng) || 
+        !Number.isFinite(lat) || !Number.isFinite(lng) ||
+        typeof lat !== 'number' || typeof lng !== 'number') {
+      return
     }
-  }, [selectedSite, map])
+
+    // Validate coordinates are within valid ranges (latitude: -90 to 90, longitude: -180 to 180)
+    // For Bangalore region, we expect roughly lat: 12-13, lng: 77-78
+    if (lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+      return
+    }
+
+    // Don't animate if map is currently resizing
+    if (isResizingRef?.current) {
+      return
+    }
+
+    // Check if map container is visible and has valid dimensions before attempting animation
+    if (!isMapReadyForAnimation()) {
+      return
+    }
+
+    const currentZoom = map.getZoom()
+    const position = [lat, lng] // Leaflet uses [lat, lng]
+
+    // Add a small delay to ensure map is stable before animating
+    const timer = setTimeout(() => {
+      // Check again if resize started during delay
+      if (isResizingRef?.current) {
+        return
+      }
+
+      // Check again if map is still ready (dimensions might have changed)
+      if (!isMapReadyForAnimation()) {
+        return
+      }
+
+      try {
+        // Only zoom if we're zoomed out, otherwise just pan smoothly
+        if (currentZoom < 13) {
+          map.flyTo(position, 14, {
+            duration: 1.5, // seconds
+            easeLinearity: 0.25
+          })
+        } else {
+          // Just pan if already zoomed in
+          map.flyTo(position, currentZoom, {
+            duration: 0.8,
+            easeLinearity: 0.25
+          })
+        }
+      } catch (error) {
+        // Silently handle animation errors (e.g., if map is being destroyed)
+        console.warn('Map animation error:', error)
+      }
+    }, 100) // Small delay to avoid race conditions
+
+    return () => clearTimeout(timer)
+  }, [selectedSite, map, isResizingRef])
 
   return null
 }
 
 // Component to handle map resize when container size changes
-function MapResizeHandler({ mapExpanded }) {
+function MapResizeHandler({ mapExpanded, isResizingRef }) {
   const map = useMap()
+  const clearTimerRef = useRef(null)
 
   useEffect(() => {
+    // Set resize flag to prevent animations during resize
+    if (isResizingRef) {
+      isResizingRef.current = true
+    }
+
+    // Clear any existing clearTimer from previous effect run
+    if (clearTimerRef.current) {
+      clearTimeout(clearTimerRef.current)
+      clearTimerRef.current = null
+    }
+
     // Small delay to ensure CSS transition completes
     const timer = setTimeout(() => {
-      map.invalidateSize()
+      try {
+        map.invalidateSize()
+      } catch (error) {
+        console.warn('Map resize error:', error)
+      }
+      
+      // Clear resize flag after a short delay to allow map to stabilize
+      clearTimerRef.current = setTimeout(() => {
+        if (isResizingRef) {
+          isResizingRef.current = false
+        }
+        clearTimerRef.current = null
+      }, 100)
     }, 350) // Slightly longer than CSS transition (300ms)
 
-    return () => clearTimeout(timer)
-  }, [mapExpanded, map])
+    return () => {
+      clearTimeout(timer)
+      if (clearTimerRef.current) {
+        clearTimeout(clearTimerRef.current)
+        clearTimerRef.current = null
+      }
+      // Ensure flag is cleared on unmount
+      if (isResizingRef) {
+        isResizingRef.current = false
+      }
+    }
+  }, [mapExpanded, map, isResizingRef])
 
   return null
 }
@@ -90,7 +192,21 @@ function SiteMarker({ site, onSiteSelect, filters, selectedSite }) {
     return null
   }
 
-  const position = [site.lat, site.lng] // Leaflet uses [lat, lng]
+  // Validate coordinates before creating position array
+  const lat = site.lat
+  const lng = site.lng
+  
+  // Ensure coordinates are valid finite numbers within valid ranges
+  if (lat == null || lng == null || 
+      Number.isNaN(lat) || Number.isNaN(lng) || 
+      !Number.isFinite(lat) || !Number.isFinite(lng) ||
+      typeof lat !== 'number' || typeof lng !== 'number' ||
+      lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+    // Don't render marker if coordinates are invalid
+    return null
+  }
+
+  const position = [lat, lng] // Leaflet uses [lat, lng]
 
   // Create custom icon with smaller size and reduced shadow
   const customIcon = L.icon({
@@ -159,6 +275,9 @@ function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'st
     [12.5, 77.0],  // Southwest corner (south of Bangalore)
     [13.5, 78.0]   // Northeast corner (north of Bangalore)
   ]
+
+  // Ref to track if map is currently resizing (prevents race conditions with animations)
+  const isResizingRef = useRef(false)
 
   // State for KML boundaries (site boundaries)
   const [boundaries, setBoundaries] = useState(null)
@@ -264,8 +383,8 @@ function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'st
         />
       )}
       
-      <MapController selectedSite={selectedSite} />
-      <MapResizeHandler mapExpanded={mapExpanded} />
+      <MapController selectedSite={selectedSite} isResizingRef={isResizingRef} />
+      <MapResizeHandler mapExpanded={mapExpanded} isResizingRef={isResizingRef} />
       
       {sitesWithCoords.map(site => (
         <SiteMarker

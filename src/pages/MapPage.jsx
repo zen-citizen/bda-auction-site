@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { ChevronDown, ChevronUp, Info } from 'lucide-react'
 import MapView from '../components/MapView'
 import SiteFilters from '../components/SiteFilters'
@@ -353,11 +354,14 @@ function MapPage() {
         </div>
       </div>
 
-      {showModal && (
-        <SiteDetailsModal
-          site={selectedSite}
-          onClose={handleCloseModal}
-        />
+      {typeof document !== 'undefined' && document.body && createPortal(
+        showModal ? (
+          <SiteDetailsModal
+            site={selectedSite}
+            onClose={handleCloseModal}
+          />
+        ) : null,
+        document.body
       )}
     </div>
   )
