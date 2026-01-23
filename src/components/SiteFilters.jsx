@@ -92,10 +92,10 @@ function SiteFilters({ layouts, biddingSessions, filters, onFilterChange, onSear
               className="h-9 py-1.5"
             >
               <option value="">All Sizes</option>
-              <option value="0-600">0-600 sq.m</option>
-              <option value="600-1200">600-1200 sq.m</option>
-              <option value="1200-2400">1200-2400 sq.m</option>
-              <option value=">2400">&gt;2400 sq.m</option>
+              <option value="Upto 54 sq.m">Upto 54 sq.m</option>
+              <option value="54-108 sq.m">54-108 sq.m</option>
+              <option value="108-216 sq.m">108-216 sq.m</option>
+              <option value="> 216 sq.m">&gt; 216 sq.m</option>
             </Select>
           </div>
         </div>

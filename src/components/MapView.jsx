@@ -61,11 +61,7 @@ function SiteMarker({ site, onSiteSelect, filters, selectedSite }) {
       return false
     }
     if (filters?.siteSize) {
-      const area = parseFloat(site.totalArea) || 0
-      if (filters.siteSize === "0-600" && (area < 0 || area >= 600)) return false
-      if (filters.siteSize === "600-1200" && (area < 600 || area >= 1200)) return false
-      if (filters.siteSize === "1200-2400" && (area < 1200 || area >= 2400)) return false
-      if (filters.siteSize === ">2400" && area < 2400) return false
+      if (site.sizeClassification !== filters.siteSize) return false
     }
     if (filters?.biddingSession && site.biddingSession.toString() !== filters.biddingSession) {
       return false

@@ -58,15 +58,10 @@ function MapPage() {
       )
     }
 
-    // Apply site size filter (area ranges)
+    // Apply site size filter (using size classification from CSV)
     if (filters.siteSize) {
       filtered = filtered.filter(site => {
-        const area = parseFloat(site.totalArea) || 0
-        if (filters.siteSize === "0-600" && (area < 0 || area >= 600)) return false
-        if (filters.siteSize === "600-1200" && (area < 600 || area >= 1200)) return false
-        if (filters.siteSize === "1200-2400" && (area < 1200 || area >= 2400)) return false
-        if (filters.siteSize === ">2400" && area < 2400) return false
-        return true
+        return site.sizeClassification === filters.siteSize
       })
     }
 

@@ -43,7 +43,7 @@ function safeReadFile(filePath, encoding = 'utf-8', description = 'File') {
 }
 
 // Read CSV file
-const csvPath = path.join(__dirname, '../sites-new.csv');
+const csvPath = path.join(__dirname, '../sites.csv');
 const csvContent = safeReadFile(csvPath, 'utf-8', 'CSV file');
 
 // Validate CSV content
@@ -154,7 +154,6 @@ const BATCH_SIZE = 50;
 const dataRows = lines.slice(3); // Skip header lines (first 3)
 const totalRows = dataRows.length;
 
-console.log(`Processing ${totalRows} data rows in batches of ${BATCH_SIZE}...`);
 
 // Process rows in batches
 for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
@@ -187,6 +186,9 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         ? parseFloat(site.Long) 
         : null;
       
+      // Find Size column (could be "Size" or "Size " after trimming)
+      const sizeClassificationValue = site['Size'] || site['Size '] || '';
+      
       const processedSite = {
         slNo: parseInt(site.Sl_No) || i + 1,
         siteSize: site['Site Size'] || '',
@@ -197,6 +199,7 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         eToW: site['E to W'] || '',
         nToS: site['N to S'] || '',
         totalArea: site['Total_Area (in sq.m)'] || '',
+        sizeClassification: sizeClassificationValue.trim(), // Size classification bucket for filtering
         lat,
         lng,
         hasCoordinates: lat !== null && lng !== null,
@@ -225,9 +228,7 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
     }
   }
   
-  // Progress update
-  const progress = ((batchEnd / totalRows) * 100).toFixed(1);
-  console.log(`Progress: Batch ${batchNumber}/${totalBatches} completed (${batchEnd}/${totalRows} rows, ${progress}%)`);
+  // Progress update (removed console.log for production)
 }
 
 // Create output
@@ -263,9 +264,4 @@ try {
   process.exit(1);
 }
 
-// Final summary with improved messages
-console.log('\n=== Processing Complete ===');
-console.log(`Successfully processed ${sites.length} sites`);
-console.log(`Found ${output.layouts.length} unique layouts`);
-console.log(`Sites with coordinates: ${output.stats.withCoordinates}`);
-console.log(`Output written to: ${outputPath}`);
+// Final summary (removed console.log for production)
