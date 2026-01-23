@@ -1,7 +1,7 @@
 .map-page {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 64px);
+  height: calc(100dvh - 64px);
   padding: 0;
   position: relative;
   margin: 0;
@@ -217,7 +217,7 @@
 
 @media (max-width: 768px) {
   .map-page {
-    height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
   }
   
   .map-page-header {

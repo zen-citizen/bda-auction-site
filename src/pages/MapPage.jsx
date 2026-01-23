@@ -183,32 +183,32 @@ function MapPage() {
         const dragStartState = dragStartStateRef.current
 
         if (dragStartState === 'default') {
-          // From default: up = expanded, down = collapsed
-          if (dragDistance < 0) {
-            setMapState('expanded')  // Swiped up
+          // From default: down = expanded, up = collapsed
+          if (dragDistance > 0) {
+            setMapState('expanded')  // Dragged down → map expands
           } else {
-            setMapState('collapsed')  // Swiped down
+            setMapState('collapsed')  // Dragged up → map collapses
           }
         } else if (dragStartState === 'expanded') {
-          // From expanded: down a little = default, down more = collapsed
-          if (dragDistance > 0) {  // Swiped down
+          // From expanded: up a little = default, up more = collapsed
+          if (dragDistance < 0) {  // Dragged up
             if (absDistance < halfwayThreshold) {
               setMapState('default')
             } else {
               setMapState('collapsed')
             }
           }
-          // Swiping up from expanded does nothing (already at top)
+          // Dragging down from expanded does nothing (already at top)
         } else if (dragStartState === 'collapsed') {
-          // From collapsed: up a little = default, up more = expanded
-          if (dragDistance < 0) {  // Swiped up
+          // From collapsed: down a little = default, down more = expanded
+          if (dragDistance > 0) {  // Dragged down
             if (absDistance < halfwayThreshold) {
               setMapState('default')
             } else {
               setMapState('expanded')
             }
           }
-          // Swiping down from collapsed does nothing (already at bottom)
+          // Dragging up from collapsed does nothing (already at bottom)
         }
         
         setIsDragging(false)
