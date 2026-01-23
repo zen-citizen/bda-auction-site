@@ -440,7 +440,7 @@ function InfoPage() {
                 </span>
               </p>
               <p>
-                We've added two new eProcurement Helpdesk numbers for your convenience:<br />
+                We've added two new eProcurement helpdesk numbers for your convenience:<br />
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                   <PhoneIcon size={18} style={{ flexShrink: 0 }} />
                   <span>
