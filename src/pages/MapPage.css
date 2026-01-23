@@ -303,6 +303,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: minmax(300px, auto) 40px 1fr;
     transition: grid-template-rows 0.3s ease-in-out;
+    height: 100%;
   }
 
   .map-page-content.map-expanded {
@@ -366,11 +367,12 @@
     position: relative;
     overflow: visible;
     min-height: 300px;
-    transition: min-height 0.3s ease-in-out;
+    transition: min-height 0.3s ease-in-out, height 0.3s ease-in-out;
   }
 
   .map-page-map-mobile.expanded {
     min-height: 100%;
+    height: 100%;
   }
 
   .map-page-map-mobile.collapsed {

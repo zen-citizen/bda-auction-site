@@ -8,8 +8,6 @@ const __dirname = path.dirname(__filename);
 // Helper function to validate file exists
 function validateFileExists(filePath, description = 'File') {
   if (!fs.existsSync(filePath)) {
-    console.error(`Error: ${description} not found: ${filePath}`);
-    console.error(`Please ensure the file exists at the expected location.`);
     process.exit(1);
   }
   return true;
@@ -24,10 +22,9 @@ function safeReadFile(filePath, encoding = 'utf-8', description = 'File') {
     const stats = fs.statSync(filePath);
     const fileSizeMB = stats.size / (1024 * 1024);
     if (fileSizeMB > 10) {
-      console.warn(`Warning: ${description} is large (${fileSizeMB.toFixed(2)} MB). Processing may take longer.`);
+      // File is large, processing may take longer
     }
   } catch (error) {
-    console.error(`Error: Could not read file stats for ${filePath}:`, error.message);
     process.exit(1);
   }
   
@@ -35,9 +32,6 @@ function safeReadFile(filePath, encoding = 'utf-8', description = 'File') {
   try {
     return fs.readFileSync(filePath, encoding);
   } catch (error) {
-    console.error(`Error: Failed to read ${description.toLowerCase()}: ${filePath}`);
-    console.error(`Error details: ${error.message}`);
-    console.error(`Please check file permissions and ensure the file is accessible.`);
     process.exit(1);
   }
 }
@@ -48,8 +42,6 @@ const csvContent = safeReadFile(csvPath, 'utf-8', 'CSV file');
 
 // Validate CSV content
 if (!csvContent || csvContent.trim().length === 0) {
-  console.error(`Error: CSV file is empty: ${csvPath}`);
-  console.error(`Please ensure the file contains data.`);
   process.exit(1);
 }
 
@@ -58,10 +50,6 @@ const lines = csvContent.trim().split('\n');
 
 // Validate CSV has minimum required lines (header + at least one data row)
 if (lines.length < 3) {
-  console.error(`Error: CSV file appears to be incomplete.`);
-  console.error(`File: ${csvPath}`);
-  console.error(`Expected at least 3 lines (2 header lines + 1 data row), but found ${lines.length} lines.`);
-  console.error(`Please verify the CSV file format is correct.`);
   process.exit(1);
 }
 
@@ -78,15 +66,9 @@ try {
   allHeaders = parseCSVLine(combinedHeader);
   
   if (!allHeaders || allHeaders.length === 0) {
-    console.error(`Error: Failed to parse CSV header.`);
-    console.error(`File: ${csvPath}`);
-    console.error(`Please check that the CSV file has proper header formatting.`);
     process.exit(1);
   }
 } catch (error) {
-  console.error(`Error: Failed to parse CSV header from file: ${csvPath}`);
-  console.error(`Error details: ${error.message}`);
-  console.error(`Please verify the CSV header format is correct (expected 2 header lines).`);
   process.exit(1);
 }
 
@@ -222,13 +204,9 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
       
       sites.push(processedSite);
     } catch (error) {
-      console.warn(`Warning: Error processing row ${i + 3} (line ${i + 3}): ${error.message}`);
-      console.warn(`Row content: ${line.substring(0, 100)}...`);
       // Continue processing other rows
     }
   }
-  
-  // Progress update (removed console.log for production)
 }
 
 // Create output
@@ -250,18 +228,11 @@ const outputPath = path.join(__dirname, '../src/data/sites.json');
 try {
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 } catch (error) {
-  console.error(`Error: Failed to create directory: ${path.dirname(outputPath)}`);
-  console.error(`Error details: ${error.message}`);
   process.exit(1);
 }
 
 try {
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf-8');
 } catch (error) {
-  console.error(`Error: Failed to write output file: ${outputPath}`);
-  console.error(`Error details: ${error.message}`);
-  console.error(`Please check directory permissions and available disk space.`);
   process.exit(1);
 }
-
-// Final summary (removed console.log for production)

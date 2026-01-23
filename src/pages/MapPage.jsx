@@ -146,10 +146,6 @@ function MapPage() {
     // Note: preventDefault not needed here - CSS touch-action: none handles it
   }
 
-  const handleMinimizedBarTap = () => {
-    setMapState('default')
-  }
-
   // Prevent scrolling during drag and add global listeners
   useEffect(() => {
     if (isDragging) {
@@ -170,7 +166,7 @@ function MapPage() {
         const dragDistance = dragStartY - dragCurrentY
         const absDistance = Math.abs(dragDistance)
         const minDragDistance = 30 // Minimum to trigger any change
-        const halfwayThreshold = 100 // Distance that distinguishes "halfway" vs "full" drag
+        const halfwayThreshold = window.innerHeight * 0.5 // 50% of viewport height
         
         if (absDistance < minDragDistance) {
           // Not enough movement, stay in current state
@@ -324,19 +320,7 @@ function MapPage() {
 
         {/* Mobile-only: Site cards on top (row 1) */}
         <div className={`map-page-sidebar-mobile ${mapState === 'expanded' ? 'minimized' : ''} ${mapState === 'collapsed' ? 'collapsed' : ''}`}>
-          {mapState === 'expanded' ? (
-            <div 
-              className="map-sidebar-minimized-bar"
-              onClick={handleMinimizedBarTap}
-            >
-              <div className="minimized-bar-content">
-                <span className="minimized-bar-text">
-                  Tap to view {filteredAndSortedSites.length} site{filteredAndSortedSites.length !== 1 ? 's' : ''}
-                </span>
-                <ChevronDown size={18} />
-              </div>
-            </div>
-          ) : (
+          {mapState !== 'expanded' && (
             <SiteList
               sites={filteredAndSortedSites}
               selectedSite={selectedSite}
