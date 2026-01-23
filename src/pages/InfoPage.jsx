@@ -246,9 +246,9 @@ function InfoPage() {
           </h2>
           <div className="dates-timeline">
             <div className="timeline-item">
-              <div className="timeline-date">27 Feb 2026</div>
+              <div className="timeline-date">27 Jan 2026</div>
               <div className="timeline-content">
-                <h3>Commencement of e-Auction</h3>
+                <h3>Commencement of eAuction</h3>
               </div>
             </div>
             
@@ -435,7 +435,16 @@ function InfoPage() {
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                   <PhoneIcon size={18} style={{ flexShrink: 0 }} />
                   <span>
-                    <a href="tel:+918046010000">080-46010000</a> & <a href="tel:+918068948777">080-68948777</a>
+                    <a href="tel:+918046010000">080-46010000</a> | <a href="tel:+918068948777">080-68948777</a>
+                  </span>
+                </span>
+              </p>
+              <p>
+                We've added two new eProcurement Helpdesk numbers for your convenience:<br />
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                  <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                  <span>
+                    <a href="tel:+919240214000">09240214000</a> | <a href="tel:+919240214001">09240214001</a>
                   </span>
                 </span>
               </p>
