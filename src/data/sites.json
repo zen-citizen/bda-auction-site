@@ -1,6 +1,26 @@
 {
   "sites": [
     {
+      "slNo": 1,
+      "siteSize": "Odd",
+      "type": "Corner",
+      "layout": "RMV 2nd Stage",
+      "layoutDetails": "RMV 2nd Stage, Nagashettihalli",
+      "siteNo": "575",
+      "eToW": "15.24",
+      "nToS": "(22.60+18.60)/2",
+      "totalArea": "313.94",
+      "sizeClassification": "> 216 sq.m",
+      "lat": null,
+      "lng": null,
+      "hasCoordinates": false,
+      "biddingSession": 1,
+      "surveyNo": "",
+      "contactNumber": "8722433608",
+      "ratePerSqMtr": "166250",
+      "googleMapsLink": "NA"
+    },
+    {
       "slNo": 2,
       "siteSize": "Odd",
       "type": "Corner",
@@ -1666,9 +1686,9 @@
     "Intermediate"
   ],
   "stats": {
-    "total": 82,
+    "total": 83,
     "withCoordinates": 78,
-    "session1": 41,
+    "session1": 42,
     "session2": 41
   }
 }

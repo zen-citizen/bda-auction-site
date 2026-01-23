@@ -57,24 +57,24 @@ if (!csvContent || csvContent.trim().length === 0) {
 const lines = csvContent.trim().split('\n');
 
 // Validate CSV has minimum required lines (header + at least one data row)
-if (lines.length < 4) {
+if (lines.length < 3) {
   console.error(`Error: CSV file appears to be incomplete.`);
   console.error(`File: ${csvPath}`);
-  console.error(`Expected at least 4 lines (3 header lines + 1 data row), but found ${lines.length} lines.`);
+  console.error(`Expected at least 3 lines (2 header lines + 1 data row), but found ${lines.length} lines.`);
   console.error(`Please verify the CSV file format is correct.`);
   process.exit(1);
 }
 
-// Parse multi-line header (first 3 lines)
+// Parse multi-line header (first 2 lines)
 // Line 1: Most columns ending with "Contact Number - Site Information Coordinator"
-// Line 2: "9am-5pm on working days","Total Area
-// Line 3: (in Sqm)",Rate Per Sq.Mtr in Rs.,Rate per sq.ft in Rs.,Total Area (in sq ft),Total Minimum Bid Price
+// Line 2: "9am-5pm on working days","Total Area (in Sqm)",Rate Per Sq.Mtr in Rs.,Rate per sq.ft in Rs.,Total Area (in sq ft),Total Minimum Bid Price
+// Line 3: First data row (starts with Sl_No 1)
 
-// Combine all 3 header lines to handle quoted fields spanning multiple lines
+// Combine first 2 header lines to handle quoted fields spanning multiple lines
 let combinedHeader;
 let allHeaders;
 try {
-  combinedHeader = lines[0] + '\n' + lines[1] + '\n' + lines[2];
+  combinedHeader = lines[0] + '\n' + lines[1];
   allHeaders = parseCSVLine(combinedHeader);
   
   if (!allHeaders || allHeaders.length === 0) {
@@ -86,7 +86,7 @@ try {
 } catch (error) {
   console.error(`Error: Failed to parse CSV header from file: ${csvPath}`);
   console.error(`Error details: ${error.message}`);
-  console.error(`Please verify the CSV header format is correct (expected 3 header lines).`);
+  console.error(`Please verify the CSV header format is correct (expected 2 header lines).`);
   process.exit(1);
 }
 
@@ -151,7 +151,7 @@ const types = new Set();
 
 // Process data rows in batches for better performance and progress tracking
 const BATCH_SIZE = 50;
-const dataRows = lines.slice(3); // Skip header lines (first 3)
+const dataRows = lines.slice(2); // Skip header lines (first 2, line 3 onwards are data)
 const totalRows = dataRows.length;
 
 
@@ -222,7 +222,7 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
       
       sites.push(processedSite);
     } catch (error) {
-      console.warn(`Warning: Error processing row ${i + 4} (line ${i + 4}): ${error.message}`);
+      console.warn(`Warning: Error processing row ${i + 3} (line ${i + 3}): ${error.message}`);
       console.warn(`Row content: ${line.substring(0, 100)}...`);
       // Continue processing other rows
     }

@@ -50,7 +50,7 @@ function SiteFilters({ layouts, biddingSessions, filters, onFilterChange, onSear
           </div>
 
           <div className="flex-1 min-w-[200px] space-y-2">
-            <Label htmlFor="biddingSession">Filter by Bidding Dates</Label>
+            <Label htmlFor="biddingSession">Filter by Bidding Rounds</Label>
             <Select
               id="biddingSession"
               value={filters.biddingSession}
