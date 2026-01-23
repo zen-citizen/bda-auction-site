@@ -34,7 +34,7 @@ function Home() {
         <div className="dates-grid">
           <div className="date-item">
             <div className="date-label">Commencement of e-Auction</div>
-            <div className="date-value">27 February 2026</div>
+            <div className="date-value">27 January 2026</div>
           </div>
           <div className="date-divider"></div>
           <div className="date-item">
