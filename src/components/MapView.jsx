@@ -42,6 +42,22 @@ function MapController({ selectedSite }) {
   return null
 }
 
+// Component to handle map resize when container size changes
+function MapResizeHandler({ mapExpanded }) {
+  const map = useMap()
+
+  useEffect(() => {
+    // Small delay to ensure CSS transition completes
+    const timer = setTimeout(() => {
+      map.invalidateSize()
+    }, 350) // Slightly longer than CSS transition (300ms)
+
+    return () => clearTimeout(timer)
+  }, [mapExpanded, map])
+
+  return null
+}
+
 // Component for individual site marker
 function SiteMarker({ site, onSiteSelect, filters, selectedSite }) {
   const normalizedLayout = normalizeLayoutName(site.layout)
@@ -132,7 +148,7 @@ function SiteMarker({ site, onSiteSelect, filters, selectedSite }) {
   )
 }
 
-function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'street' }) {
+function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'street', mapExpanded = false }) {
   // Center on Bangalore - Leaflet uses [lat, lng]
   const defaultCenter = [12.9716, 77.5946]
   const defaultZoom = 12
@@ -249,6 +265,7 @@ function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'st
       )}
       
       <MapController selectedSite={selectedSite} />
+      <MapResizeHandler mapExpanded={mapExpanded} />
       
       {sitesWithCoords.map(site => (
         <SiteMarker

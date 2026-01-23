@@ -157,6 +157,18 @@
   gap: 0;
 }
 
+.map-drag-handle {
+  display: none;
+}
+
+.map-page-sidebar-mobile {
+  display: none;
+}
+
+.map-page-map-mobile {
+  display: none;
+}
+
 .map-page-sidebar {
   display: flex;
   flex-direction: column;
@@ -289,17 +301,112 @@
   
   .map-page-content {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: minmax(300px, auto) 40px 1fr;
+    transition: grid-template-rows 0.3s ease-in-out;
   }
-  
+
+  .map-page-content.map-expanded {
+    grid-template-rows: 0px 40px 1fr;
+  }
+
+  .map-page-content.map-collapsed {
+    grid-template-rows: 1fr 40px 0px;
+  }
+
+  /* Hide desktop sidebar and map on mobile */
   .map-page-sidebar {
-    border-right: none;
-    border-top: 1px solid #e0e0e0;
-    max-height: 50vh;
-    min-height: 220px;
-    overflow: hidden;
+    display: none;
+  }
+
+  .map-page-map {
+    display: none;
+  }
+
+  /* Show mobile map */
+  .map-page-map-mobile {
+    display: block;
+  }
+
+  /* Mobile sidebar - site cards on top (row 1) */
+  .map-page-sidebar-mobile {
     display: flex;
     flex-direction: column;
+    grid-row: 1;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    max-height: 50vh;
+    min-height: 300px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, min-height 0.3s ease-in-out;
+    background: #f8f9fa;
+  }
+
+  .map-page-sidebar-mobile.minimized {
+    max-height: 0;
+    min-height: 0;
+    border-bottom: none;
+  }
+
+  .map-page-sidebar-mobile.collapsed {
+    max-height: none;
+    min-height: 0;
+    height: 100%;
+  }
+
+  /* Drag handle in middle (row 2) */
+  .map-drag-handle {
+    grid-row: 2;
+  }
+
+  /* Mobile map at bottom (row 3) */
+  .map-page-map-mobile {
+    grid-row: 3;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+    min-height: 300px;
+    transition: min-height 0.3s ease-in-out;
+  }
+
+  .map-page-map-mobile.expanded {
+    min-height: 100%;
+  }
+
+  .map-page-map-mobile.collapsed {
+    min-height: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .map-sidebar-minimized-bar {
+    width: 100%;
+    height: 50px;
+    background: #4B2840;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 10;
+  }
+
+  .minimized-bar-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+  }
+
+  .minimized-bar-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .map-sidebar-minimized-bar:active {
+    background: #3a1f30;
   }
   
   .map-page-sidebar-list {
@@ -312,5 +419,72 @@
   
   .map-page-map {
     min-height: 300px;
+    transition: min-height 0.3s ease-in-out;
+  }
+
+  .map-page-map.expanded {
+    min-height: 100%;
+  }
+
+  /* Drag handle styles - mobile only */
+  .map-drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: grab;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+    position: relative;
+    z-index: 5;
+    grid-row: 2;
+  }
+
+  .map-drag-handle:active {
+    cursor: grabbing;
+    background: #e9ecef;
+  }
+
+  .map-drag-handle.dragging {
+    background: rgba(75, 40, 64, 0.1);
+  }
+
+  .drag-handle-indicator {
+    width: 40px;
+    height: 4px;
+    background: #b8a0b0;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .drag-handle-indicator::before,
+  .drag-handle-indicator::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    background: #b8a0b0;
+    border-radius: 2px;
+  }
+
+  .drag-handle-indicator::before {
+    top: -8px;
+  }
+
+  .drag-handle-indicator::after {
+    top: 8px;
+  }
+
+  .map-drag-handle.dragging .drag-handle-indicator {
+    background: #4B2840;
+  }
+
+  .map-drag-handle.dragging .drag-handle-indicator::before,
+  .map-drag-handle.dragging .drag-handle-indicator::after {
+    background: #4B2840;
   }
 }

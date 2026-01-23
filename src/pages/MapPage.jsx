@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { ChevronDown, ChevronUp, Info } from 'lucide-react'
 import MapView from '../components/MapView'
 import SiteFilters from '../components/SiteFilters'
@@ -20,6 +20,11 @@ function MapPage() {
   const [showModal, setShowModal] = useState(false)
   const [filtersExpanded, setFiltersExpanded] = useState(false)
   const [mapViewMode, setMapViewMode] = useState('satellite')
+  const [mapState, setMapState] = useState('default') // 'default' | 'expanded' | 'collapsed'
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragStartY, setDragStartY] = useState(0)
+  const [dragCurrentY, setDragCurrentY] = useState(0)
+  const dragStartStateRef = useRef('default') // Track state when drag begins
 
   const { sites } = sitesData
 
@@ -130,6 +135,104 @@ function MapPage() {
     setSelectedSite(null)
   }
 
+  // Drag handle handlers for mobile map expansion
+  const handleDragStart = (e) => {
+    if (window.innerWidth > 768) return // Only on mobile
+    const touch = e.touches ? e.touches[0] : e
+    dragStartStateRef.current = mapState // Capture current state when drag begins
+    setIsDragging(true)
+    setDragStartY(touch.clientY)
+    setDragCurrentY(touch.clientY)
+    // Note: preventDefault not needed here - CSS touch-action: none handles it
+  }
+
+  const handleMinimizedBarTap = () => {
+    setMapState('default')
+  }
+
+  // Prevent scrolling during drag and add global listeners
+  useEffect(() => {
+    if (isDragging) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.touchAction = 'none'
+      
+      const handleGlobalTouchMove = (e) => {
+        if (window.innerWidth > 768) return
+        const touch = e.touches ? e.touches[0] : e
+        setDragCurrentY(touch.clientY)
+        e.preventDefault()
+        e.stopPropagation()
+      }
+      
+      const handleGlobalTouchEnd = (e) => {
+        if (window.innerWidth > 768) return
+        
+        const dragDistance = dragStartY - dragCurrentY
+        const absDistance = Math.abs(dragDistance)
+        const minDragDistance = 30 // Minimum to trigger any change
+        const halfwayThreshold = 100 // Distance that distinguishes "halfway" vs "full" drag
+        
+        if (absDistance < minDragDistance) {
+          // Not enough movement, stay in current state
+          setIsDragging(false)
+          setDragStartY(0)
+          setDragCurrentY(0)
+          return
+        }
+
+        const dragStartState = dragStartStateRef.current
+
+        if (dragStartState === 'default') {
+          // From default: up = expanded, down = collapsed
+          if (dragDistance < 0) {
+            setMapState('expanded')  // Swiped up
+          } else {
+            setMapState('collapsed')  // Swiped down
+          }
+        } else if (dragStartState === 'expanded') {
+          // From expanded: down a little = default, down more = collapsed
+          if (dragDistance > 0) {  // Swiped down
+            if (absDistance < halfwayThreshold) {
+              setMapState('default')
+            } else {
+              setMapState('collapsed')
+            }
+          }
+          // Swiping up from expanded does nothing (already at top)
+        } else if (dragStartState === 'collapsed') {
+          // From collapsed: up a little = default, up more = expanded
+          if (dragDistance < 0) {  // Swiped up
+            if (absDistance < halfwayThreshold) {
+              setMapState('default')
+            } else {
+              setMapState('expanded')
+            }
+          }
+          // Swiping down from collapsed does nothing (already at bottom)
+        }
+        
+        setIsDragging(false)
+        setDragStartY(0)
+        setDragCurrentY(0)
+        
+        if (e) {
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      }
+      
+      document.addEventListener('touchmove', handleGlobalTouchMove, { passive: false })
+      document.addEventListener('touchend', handleGlobalTouchEnd, { passive: false })
+      
+      return () => {
+        document.body.style.overflow = ''
+        document.body.style.touchAction = ''
+        document.removeEventListener('touchmove', handleGlobalTouchMove)
+        document.removeEventListener('touchend', handleGlobalTouchEnd)
+      }
+    }
+  }, [isDragging, dragStartY, dragCurrentY])
+
   return (
     <div className="map-page">
       <div className="map-page-filters">
@@ -162,7 +265,8 @@ function MapPage() {
         </div>
       </div>
 
-      <div className="map-page-content">
+      <div className={`map-page-content ${mapState === 'expanded' ? 'map-expanded' : mapState === 'collapsed' ? 'map-collapsed' : ''}`}>
+        {/* Desktop sidebar - unchanged */}
         <div className="map-page-sidebar">
           <SiteList
             sites={filteredAndSortedSites}
@@ -173,7 +277,8 @@ function MapPage() {
           />
         </div>
 
-        <div className="map-page-map">
+        {/* Desktop map - unchanged */}
+        <div className={`map-page-map ${mapState === 'expanded' ? 'expanded' : ''}`}>
           <div className="map-page-header">
             <div className="map-view-toggle" role="group" aria-label="Map view mode">
               <button
@@ -213,6 +318,53 @@ function MapPage() {
             onSiteSelect={handleSiteSelect}
             filters={filters}
             mapViewMode={mapViewMode}
+            mapExpanded={window.innerWidth <= 768 ? mapState === 'expanded' : false}
+          />
+        </div>
+
+        {/* Mobile-only: Site cards on top (row 1) */}
+        <div className={`map-page-sidebar-mobile ${mapState === 'expanded' ? 'minimized' : ''} ${mapState === 'collapsed' ? 'collapsed' : ''}`}>
+          {mapState === 'expanded' ? (
+            <div 
+              className="map-sidebar-minimized-bar"
+              onClick={handleMinimizedBarTap}
+            >
+              <div className="minimized-bar-content">
+                <span className="minimized-bar-text">
+                  Tap to view {filteredAndSortedSites.length} site{filteredAndSortedSites.length !== 1 ? 's' : ''}
+                </span>
+                <ChevronDown size={18} />
+              </div>
+            </div>
+          ) : (
+            <SiteList
+              sites={filteredAndSortedSites}
+              selectedSite={selectedSite}
+              onSiteSelect={handleSiteSelect}
+              mapViewMode={mapViewMode}
+              setMapViewMode={setMapViewMode}
+            />
+          )}
+        </div>
+
+        {/* Mobile-only: Drag handle (row 2) */}
+        <div 
+          className={`map-drag-handle ${isDragging ? 'dragging' : ''}`}
+          onTouchStart={handleDragStart}
+          onMouseDown={handleDragStart}
+        >
+          <div className="drag-handle-indicator"></div>
+        </div>
+
+        {/* Mobile-only: Map at bottom (row 3) - duplicate for mobile layout */}
+        <div className={`map-page-map-mobile ${mapState === 'expanded' ? 'expanded' : mapState === 'collapsed' ? 'collapsed' : ''}`}>
+          <MapView
+            sites={filteredAndSortedSites}
+            selectedSite={selectedSite}
+            onSiteSelect={handleSiteSelect}
+            filters={filters}
+            mapViewMode={mapViewMode}
+            mapExpanded={mapState === 'expanded'}
           />
         </div>
       </div>
