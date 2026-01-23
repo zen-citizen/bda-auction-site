@@ -11,7 +11,7 @@ function Navigation() {
     <nav className="bg-primary text-primary-foreground shadow-md">
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex justify-between items-center">
         <Link to="/" className="text-lg sm:text-xl font-semibold hover:opacity-90 whitespace-nowrap">
-          BDA e-Auction
+          BDA eAuction
         </Link>
         <div className="flex gap-1.5 sm:gap-2">
           <Button
@@ -41,7 +41,7 @@ function Navigation() {
           >
             <Link to="/info">
               <span className="sm:hidden">Info</span>
-              <span className="hidden sm:inline">Auction Info</span>
+              <span className="hidden sm:inline">eAuction Info</span>
             </Link>
           </Button>
         </div>

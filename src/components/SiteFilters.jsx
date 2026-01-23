@@ -4,6 +4,27 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import SearchIcon from './icons/SearchIcon'
 
+function toTitleCase(str) {
+  if (!str) return ''
+  return str.replace(/\w[\w.]*/g, (txt) => {
+    // If it contains periods (like "F.E."), check if it's initials
+    if (txt.includes('.')) {
+      // Split by period and check each part
+      const parts = txt.split('.')
+      // If all parts are 1-2 chars and letters, it's likely initials
+      if (parts.every(part => part.length <= 2 && /^[A-Za-z]*$/.test(part))) {
+        return txt.toUpperCase()
+      }
+    }
+    // If it's a short word (1-3 chars) that looks like an initial, make it all caps
+    if (txt.length <= 3 && /^[A-Za-z]+$/.test(txt)) {
+      return txt.toUpperCase()
+    }
+    // Otherwise, standard title case
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  })
+}
+
 function SiteFilters({ layouts, biddingSessions, filters, onFilterChange, onSearchChange }) {
   return (
     <Card className="border-0 shadow-none rounded-none">
@@ -56,7 +77,7 @@ function SiteFilters({ layouts, biddingSessions, filters, onFilterChange, onSear
               <option value="">All Layouts</option>
               {layouts.map(layout => (
                 <option key={layout} value={layout}>
-                  {layout}
+                  {toTitleCase(layout)}
                 </option>
               ))}
             </Select>

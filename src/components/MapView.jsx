@@ -1,8 +1,9 @@
-import { useMemo, useEffect, useRef } from 'react'
-import { MapContainer, TileLayer, Marker, Tooltip, useMap, ZoomControl } from 'react-leaflet'
+import { useMemo, useEffect, useRef, useState } from 'react'
+import { MapContainer, TileLayer, Marker, Tooltip, useMap, ZoomControl, GeoJSON } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { normalizeLayoutName } from '../lib/utils'
+import { parseKMZ } from '../lib/kmlParser'
 import './MapView.css'
 
 // Fix for default marker icon in React-Leaflet
@@ -135,10 +136,10 @@ function SiteMarker({ site, onSiteSelect, filters, selectedSite }) {
   )
 }
 
-function MapView({ sites, selectedSite, onSiteSelect, filters }) {
+function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'street' }) {
   // Center on Bangalore - Leaflet uses [lat, lng]
   const defaultCenter = [12.9716, 77.5946]
-  const defaultZoom = 11
+  const defaultZoom = 12
   
   // Restrict map bounds to Bangalore region to prevent panning outside
   // Bounds: [southwest corner, northeast corner]
@@ -147,10 +148,70 @@ function MapView({ sites, selectedSite, onSiteSelect, filters }) {
     [13.5, 78.0]   // Northeast corner (north of Bangalore)
   ]
 
+  // State for KML boundaries (site boundaries)
+  const [boundaries, setBoundaries] = useState(null)
+  const [boundariesError, setBoundariesError] = useState(null)
+
+  // Load and parse KML boundaries on component mount
+  // Note: kml.kmz file should be placed in the public/ folder for Vite to serve it
+  useEffect(() => {
+    const loadBoundaries = async () => {
+      try {
+        const response = await fetch('/kml.kmz')
+        if (!response.ok) {
+          throw new Error(`Failed to fetch KML file: ${response.statusText}`)
+        }
+        const blob = await response.blob()
+        const geoJson = await parseKMZ(blob)
+        
+        if (geoJson && geoJson.features && geoJson.features.length > 0) {
+          setBoundaries(geoJson)
+        } else {
+          setBoundariesError('KML file contains no boundary features')
+        }
+      } catch (error) {
+        setBoundariesError(error.message)
+      }
+    }
+
+    loadBoundaries()
+  }, [])
+
   // Filter sites with coordinates
   const sitesWithCoords = useMemo(() => {
     return sites.filter(site => site.hasCoordinates)
   }, [sites])
+
+  const tileConfig = useMemo(() => {
+    if (mapViewMode === 'satellite') {
+      return {
+        url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community',
+        maxZoom: 19,
+        tileSize: 256,
+        zoomOffset: 0,
+      }
+    }
+    return {
+      url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+      tileSize: 256,
+      zoomOffset: 0,
+    }
+  }, [mapViewMode])
+
+  // Style function for site boundaries (from KML) - WHITE stroke
+  const siteBoundaryStyle = (feature) => {
+    return {
+      color: '#ffffff',
+      weight: 3,
+      opacity: 0.9,
+      fillColor: '#ffffff',
+      fillOpacity: 0.3,
+      dashArray: feature?.geometry?.type === 'LineString' ? '5, 5' : undefined,
+    }
+  }
 
   return (
     <MapContainer
@@ -159,7 +220,7 @@ function MapView({ sites, selectedSite, onSiteSelect, filters }) {
         maxBounds={maxBounds}
         maxBoundsViscosity={1.0}
         style={{ height: '100%', width: '100%' }}
-        className="map-container"
+        className={`map-container ${mapViewMode === 'satellite' ? 'satellite-view' : ''}`}
         scrollWheelZoom={true}
         zoomControl={false}
         whenReady={() => {
@@ -168,13 +229,28 @@ function MapView({ sites, selectedSite, onSiteSelect, filters }) {
       >
       <ZoomControl position="topright" />
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        maxZoom={19}
-        tileSize={256}
-        zoomOffset={0}
+        attribution={tileConfig.attribution}
+        url={tileConfig.url}
+        maxZoom={tileConfig.maxZoom}
+        tileSize={tileConfig.tileSize}
+        zoomOffset={tileConfig.zoomOffset}
         errorTileUrl="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
       />
+      
+      {/* Render KML boundaries (site boundaries) if loaded */}
+      {boundaries && boundaries.features && boundaries.features.length > 0 && (
+        <GeoJSON
+          key="kml-site-boundaries"
+          data={boundaries}
+          style={siteBoundaryStyle}
+          onEachFeature={(feature, layer) => {
+            // Optional: Add popup or interaction
+            if (feature.properties && feature.properties.name) {
+              layer.bindPopup(`Site Boundary: ${feature.properties.name}`)
+            }
+          }}
+        />
+      )}
       
       <MapController selectedSite={selectedSite} />
       

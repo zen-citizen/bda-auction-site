@@ -24,6 +24,11 @@
   filter: opacity(30%);
 }
 
+/* Dim satellite base map slightly */
+.map-container.satellite-view .leaflet-tile-container img {
+  filter: brightness(0.85) contrast(0.95);
+}
+
 /* Move zoom controls to top-right */
 .map-container .leaflet-control-zoom {
   position: absolute !important;

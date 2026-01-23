@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, Info } from 'lucide-react'
 import MapView from '../components/MapView'
 import SiteFilters from '../components/SiteFilters'
 import SiteList from '../components/SiteList'
@@ -19,6 +19,7 @@ function MapPage() {
   const [selectedSite, setSelectedSite] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [filtersExpanded, setFiltersExpanded] = useState(false)
+  const [mapViewMode, setMapViewMode] = useState('satellite')
 
   const { sites } = sitesData
 
@@ -172,19 +173,43 @@ function MapPage() {
             sites={filteredAndSortedSites}
             selectedSite={selectedSite}
             onSiteSelect={handleSiteSelect}
+            mapViewMode={mapViewMode}
+            setMapViewMode={setMapViewMode}
           />
         </div>
 
         <div className="map-page-map">
           <div className="map-page-header">
+            <div className="map-view-toggle" role="group" aria-label="Map view mode">
+              <button
+                type="button"
+                className={`map-view-toggle-button ${mapViewMode === 'street' ? 'active' : ''}`}
+                onClick={() => setMapViewMode('street')}
+                aria-pressed={mapViewMode === 'street'}
+              >
+                Map
+              </button>
+              <button
+                type="button"
+                className={`map-view-toggle-button ${mapViewMode === 'satellite' ? 'active' : ''}`}
+                onClick={() => setMapViewMode('satellite')}
+                aria-pressed={mapViewMode === 'satellite'}
+              >
+                Satellite
+              </button>
+            </div>
             <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
               <span style={{ color: '#4B2840', display: 'inline-flex', alignItems: 'center' }}>
                 <SelectMarkerIcon size={20} />
               </span>
-              Select a marker or card to view its details
+              Select a site card or map marker to view details.
             </p>
             <div className="map-page-header-count">
-              {visibleSitesCount}/{totalSites} sites visible
+              <span>Showing {visibleSitesCount} of {totalSites} sites</span>
+              <span className="info-tooltip-wrapper">
+                <Info size={14} className="info-icon" />
+                <span className="info-tooltip">Some sites aren't shown because location details aren't available.</span>
+              </span>
             </div>
           </div>
           <MapView
@@ -192,6 +217,7 @@ function MapPage() {
             selectedSite={selectedSite}
             onSiteSelect={handleSiteSelect}
             filters={filters}
+            mapViewMode={mapViewMode}
           />
         </div>
       </div>

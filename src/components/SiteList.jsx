@@ -3,7 +3,7 @@ import AreaIcon from './icons/AreaIcon'
 import SitesIcon from './icons/SitesIcon'
 import './SiteList.css'
 
-function SiteList({ sites, selectedSite, onSiteSelect }) {
+function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMode }) {
   return (
     <div className="site-list">
       <div className="site-list-header">
@@ -13,6 +13,26 @@ function SiteList({ sites, selectedSite, onSiteSelect }) {
           </span>
           Sites ({sites.length})
         </h3>
+        {mapViewMode !== undefined && setMapViewMode && (
+          <div className="map-view-toggle-mobile" role="group" aria-label="Map view mode">
+            <button
+              type="button"
+              className={`map-view-toggle-button ${mapViewMode === 'street' ? 'active' : ''}`}
+              onClick={() => setMapViewMode('street')}
+              aria-pressed={mapViewMode === 'street'}
+            >
+              Map
+            </button>
+            <button
+              type="button"
+              className={`map-view-toggle-button ${mapViewMode === 'satellite' ? 'active' : ''}`}
+              onClick={() => setMapViewMode('satellite')}
+              aria-pressed={mapViewMode === 'satellite'}
+            >
+              Satellite
+            </button>
+          </div>
+        )}
       </div>
       <div className="site-list-content">
         {sites.length === 0 ? (
