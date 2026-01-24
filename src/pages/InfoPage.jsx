@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ExternalLink, ChevronUp, ChevronDown } from 'lucide-react'
 import PhoneIcon from '../components/icons/PhoneIcon'
 import DocumentsIcon from '../components/icons/DocumentsIcon'
@@ -12,6 +12,9 @@ import './InfoPage.css'
 function InfoPage() {
   const [activeSection, setActiveSection] = useState('what-is-being-eauctioned')
   const [menuExpanded, setMenuExpanded] = useState(false)
+  const isScrollingProgrammatically = useRef(false)
+  const scrollTimeoutRef = useRef(null)
+  const footerRef = useRef(null)
 
   useEffect(() => {
     const sections = [
@@ -32,6 +35,10 @@ function InfoPage() {
     }
 
     const observerCallback = (entries) => {
+      // Skip updates during programmatic scrolling
+      if (isScrollingProgrammatically.current) {
+        return
+      }
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id)
@@ -58,6 +65,15 @@ function InfoPage() {
     }
   }, [])
 
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+    }
+  }, [])
+
   // Detect mobile screen size and set default collapsed state
   useEffect(() => {
     const checkMobile = () => {
@@ -81,6 +97,17 @@ function InfoPage() {
     e.preventDefault()
     const element = document.getElementById(sectionId)
     if (element) {
+      // Clear any existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+
+      // Immediately set the active section to the target (bypassing observer)
+      setActiveSection(sectionId)
+      
+      // Disable observer updates during programmatic scrolling
+      isScrollingProgrammatically.current = true
+
       const headerOffset = 160
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
@@ -90,12 +117,44 @@ function InfoPage() {
         behavior: 'smooth'
       })
 
+      // Re-enable observer after scroll completes
+      // Smooth scroll typically takes ~500-1000ms
+      scrollTimeoutRef.current = setTimeout(() => {
+        isScrollingProgrammatically.current = false
+        scrollTimeoutRef.current = null
+      }, 1000)
+
       // Close menu on mobile after clicking
       if (window.innerWidth <= 768) {
         setMenuExpanded(false)
       }
     }
   }
+
+  // Calculate and set footer height for padding
+  useEffect(() => {
+    const updateFooterHeight = () => {
+      if (footerRef.current) {
+        const height = footerRef.current.offsetHeight
+        // Set CSS custom property on root element
+        document.documentElement.style.setProperty('--footer-height', `${height}px`)
+      }
+    }
+    
+    // Initial calculation
+    updateFooterHeight()
+    
+    // Update on resize
+    window.addEventListener('resize', updateFooterHeight)
+    
+    // Also update after a short delay to ensure footer is fully rendered
+    const timeoutId = setTimeout(updateFooterHeight, 100)
+    
+    return () => {
+      window.removeEventListener('resize', updateFooterHeight)
+      clearTimeout(timeoutId)
+    }
+  }, [])
 
   return (
     <div className="info-page">
@@ -488,7 +547,7 @@ function InfoPage() {
         </div>
       </div>
       
-      <div className="home-footer">
+      <div ref={footerRef} className="home-footer">
         <p className="footer-disclaimer">Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.</p>
         <div className="built-by">
           <span>Built by <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
