@@ -322,7 +322,7 @@ function InfoPage() {
             <div className="timeline-item">
               <div className="timeline-date">16 - 17 February 2026</div>
               <div className="timeline-content">
-                <h3>Live bidding - Round 1 (Sites 1 - 42)</h3>
+                <h3>Live bidding — Round 1 (Sites 1 - 42)</h3>
                 <p>
                   <strong>Starts:</strong> 16 Feb 2026 at 11:00&nbsp;AM&nbsp;IST<br />
                   <strong>Closes:</strong> 17 Feb 2026 at 17:00&nbsp;PM&nbsp;IST<br />
@@ -334,7 +334,7 @@ function InfoPage() {
             <div className="timeline-item">
               <div className="timeline-date">17 - 18 February 2026</div>
               <div className="timeline-content">
-                <h3>Live bidding - Round 2 (Sites 43 - 83)</h3>
+                <h3>Live bidding — Round 2 (Sites 43 - 83)</h3>
                 <p>
                   <strong>Starts:</strong> 17 Feb 2026 at 11:00&nbsp;AM&nbsp;IST<br />
                   <strong>Closes:</strong> 18 Feb 2026 at 17:00&nbsp;PM&nbsp;IST<br />
