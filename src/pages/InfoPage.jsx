@@ -246,14 +246,14 @@ function InfoPage() {
           </h2>
           <div className="dates-timeline">
             <div className="timeline-item">
-              <div className="timeline-date">27 Jan 2026</div>
+              <div className="timeline-date">27 January 2026</div>
               <div className="timeline-content">
                 <h3>Commencement of eAuction</h3>
               </div>
             </div>
             
             <div className="timeline-item">
-              <div className="timeline-date">13 Feb 2026</div>
+              <div className="timeline-date">13 February 2026</div>
               <div className="timeline-content">
                 <h3>Last date to express interest</h3>
                 <p>Up to 5:00&nbsp;PM&nbsp;IST</p>
@@ -261,24 +261,24 @@ function InfoPage() {
             </div>
             
             <div className="timeline-item">
-              <div className="timeline-date">16 - 17 Feb 2026</div>
+              <div className="timeline-date">16 - 17 February 2026</div>
               <div className="timeline-content">
                 <h3>Live bidding - Round 1 (Sites 1 - 42)</h3>
                 <p>
-                  <strong>Starts:</strong> 16.02.2026 at 11:00&nbsp;AM&nbsp;IST<br />
-                  <strong>Closes:</strong> 17.02.2026 at 5:00&nbsp;PM&nbsp;IST<br />
+                  <strong>Starts:</strong> 16 Feb 2026 at 11:00&nbsp;AM&nbsp;IST<br />
+                  <strong>Closes:</strong> 17 Feb 2026 at 17:00&nbsp;PM&nbsp;IST<br />
                   <strong>Delta time:</strong> 5 minutes
                 </p>
               </div>
             </div>
             
             <div className="timeline-item">
-              <div className="timeline-date">17 - 18 Feb 2026</div>
+              <div className="timeline-date">17 - 18 February 2026</div>
               <div className="timeline-content">
                 <h3>Live bidding - Round 2 (Sites 43 - 83)</h3>
                 <p>
-                  <strong>Starts:</strong> 17.02.2026 at 11:00&nbsp;AM&nbsp;IST<br />
-                  <strong>Closes:</strong> 18.02.2026 at 5:00&nbsp;PM&nbsp;IST<br />
+                  <strong>Starts:</strong> 17 Feb 2026 at 11:00&nbsp;AM&nbsp;IST<br />
+                  <strong>Closes:</strong> 18 Feb 2026 at 17:00&nbsp;PM&nbsp;IST<br />
                   <strong>Delta time:</strong> 5 minutes
                 </p>
               </div>
@@ -391,7 +391,9 @@ function InfoPage() {
                 className="link-external"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
               >
-                <ExternalLink size={14} />
+                <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                  <ExternalLink size={14} />
+                </span>
                 T. Chowdaiah Road, Kumara Park West, Bengaluru 560020
               </a>
             </p>
@@ -422,29 +424,44 @@ function InfoPage() {
             <div className="contact-details">
               <p>
                 <strong>BDA Site-related queries:</strong><br />
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                  <PhoneIcon size={18} style={{ flexShrink: 0 }} />
-                  <span>
-                    <a href="tel:+918023368435">080-23368435</a> / <a href="tel:+9123368036">23368036</a>
+                <span className="contact-phone-numbers">
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                    <a href="tel:+918023368435">080-23368435</a>
+                  </span>
+                  <span className="contact-phone-separator"> | </span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                    <a href="tel:+918023368036">080-23368036</a>
                   </span>
                 </span>
               </p>
               <p>
                 <strong>For information on the eAuction process:</strong><br />
                 Karnataka Public Procurement Portal:{' '}
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                  <PhoneIcon size={18} style={{ flexShrink: 0 }} />
-                  <span>
-                    <a href="tel:+918046010000">080-46010000</a> | <a href="tel:+918068948777">080-68948777</a>
+                <span className="contact-phone-numbers">
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                    <a href="tel:+918046010000">080-46010000</a>
+                  </span>
+                  <span className="contact-phone-separator"> | </span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                    <a href="tel:+918068948777">080-68948777</a>
                   </span>
                 </span>
               </p>
               <p>
-                We've added two new eProcurement helpdesk numbers for your convenience:<br />
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                  <PhoneIcon size={18} style={{ flexShrink: 0 }} />
-                  <span>
-                    <a href="tel:+919240214000">09240214000</a> | <a href="tel:+919240214001">09240214001</a>
+                eProcurement Helpdesk:<br />
+                <span className="contact-phone-numbers">
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                    <a href="tel:+919240214000">+91 9240214000</a>
+                  </span>
+                  <span className="contact-phone-separator"> | </span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                    <a href="tel:+919240214001">+91 9240214001</a>
                   </span>
                 </span>
               </p>
@@ -472,7 +489,7 @@ function InfoPage() {
       </div>
       
       <div className="home-footer">
-        <p className="footer-disclaimer">Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, these sources can sometimes be incomplete, outdated or not accurate.</p>
+        <p className="footer-disclaimer">Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.</p>
         <div className="built-by">
           <span>Built by <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
           <span className="footer-separator">|</span>

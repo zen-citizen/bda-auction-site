@@ -514,9 +514,7 @@
   }
   
   .info-sidebar {
-    position: static;
-    width: 100%;
-    margin-bottom: 1rem;
+    display: none;
   }
 
   .info-menu-toggle-mobile {
@@ -597,7 +595,39 @@
   }
   
   .info-section p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+  }
+  
+  #where-to-bid .link-external {
+    margin-left: 0 !important;
+  }
+  
+  #help-support .help-item .link-external {
+    align-items: flex-start !important;
+  }
+  
+  #help-support .help-item .link-external svg {
+    margin-top: 0.25em;
+    flex-shrink: 0;
+  }
+  
+  #help-support .help-item .contact-details .link-external {
+    align-items: center !important;
+  }
+  
+  #help-support .help-item .contact-details .link-external svg {
+    margin-top: 0;
+    flex-shrink: 0;
+  }
+  
+  .contact-details .contact-phone-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .contact-details .contact-phone-separator {
+    display: none;
   }
   
   .info-section li {
@@ -615,11 +645,14 @@
   .timeline-item {
     flex-direction: column;
     gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
   }
   
   .timeline-date {
     min-width: auto;
     font-size: 0.95rem;
+    white-space: nowrap;
   }
   
   .timeline-content h3 {
@@ -627,7 +660,7 @@
   }
   
   .timeline-content p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   
   .cta-footer {

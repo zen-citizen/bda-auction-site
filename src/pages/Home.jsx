@@ -40,19 +40,19 @@ function Home() {
           <div className="date-item">
             <div className="date-label">Last Date to Express Interest</div>
             <div className="date-value">13 February 2026</div>
-            <div className="date-time">Up to 5:00&nbsp;PM&nbsp;IST</div>
+            <div className="date-time">Up to 17:00&nbsp;PM&nbsp;IST</div>
           </div>
           <div className="date-divider"></div>
           <div className="date-item">
             <div className="date-label">Round 1 (Sites 1 - 42)</div>
             <div className="date-value">16 - 17 Feb 2026</div>
-            <div className="date-time">Starts: 16 Feb 2026 at 11:00&nbsp;AM<br />Closes: 17 Feb 2026 at 5:00&nbsp;PM</div>
+            <div className="date-time">Starts: 16 Feb 2026 at 11:00&nbsp;AM<br />Closes: 17 Feb 2026 at 17:00&nbsp;PM</div>
           </div>
           <div className="date-divider"></div>
           <div className="date-item">
             <div className="date-label">Round 2 (Sites 43 - 83)</div>
             <div className="date-value">17 - 18 Feb 2026</div>
-            <div className="date-time">Starts: 17 Feb 2026 at 11:00&nbsp;AM<br />Closes: 18 Feb 2026 at 5:00&nbsp;PM</div>
+            <div className="date-time">Starts: 17 Feb 2026 at 11:00&nbsp;AM<br />Closes: 18 Feb 2026 at 17:00&nbsp;PM</div>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@ function Home() {
       </div>
 
       <div className="home-footer">
-        <p className="footer-disclaimer">Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, these sources can sometimes be incomplete, outdated or not accurate.</p>
+        <p className="footer-disclaimer">Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.</p>
         <div className="built-by">
           <span>Built by <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
           <span className="footer-separator">|</span>
