@@ -1,9 +1,12 @@
+import { useTranslation } from 'react-i18next'
 import { getSessionDate } from '../lib/utils'
 import AreaIcon from './icons/AreaIcon'
 import SitesIcon from './icons/SitesIcon'
 import './SiteList.css'
 
 function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMode }) {
+  const { t } = useTranslation()
+  
   return (
     <div className="site-list">
       <div className="site-list-header">
@@ -11,7 +14,7 @@ function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMo
           <span style={{ color: '#4B2840', display: 'inline-flex', alignItems: 'center' }}>
             <SitesIcon size={32} />
           </span>
-          Sites ({sites.length})
+          {t('siteList.title')} ({sites.length})
         </h3>
         {mapViewMode !== undefined && setMapViewMode && (
           <div className="map-view-toggle-mobile" role="group" aria-label="Map view mode">
@@ -21,7 +24,7 @@ function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMo
               onClick={() => setMapViewMode('street')}
               aria-pressed={mapViewMode === 'street'}
             >
-              Map
+              {t('mapPage.mapView.map')}
             </button>
             <button
               type="button"
@@ -29,14 +32,14 @@ function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMo
               onClick={() => setMapViewMode('satellite')}
               aria-pressed={mapViewMode === 'satellite'}
             >
-              Satellite
+              {t('mapPage.mapView.satellite')}
             </button>
           </div>
         )}
       </div>
       <div className="site-list-content">
         {sites.length === 0 ? (
-          <div className="no-sites">No sites found matching your filters.</div>
+          <div className="no-sites">{t('siteList.noSites')}</div>
         ) : (
           sites.map(site => (
             <div
@@ -46,21 +49,21 @@ function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMo
               data-site-id={site.slNo}
             >
               <div className="site-item-header">
-                <span className="site-number">Sl.No #{site.slNo}</span>
+                <span className="site-number">{t('siteList.siteNumber')}{site.slNo}</span>
                 <span className="site-session">{getSessionDate(site.biddingSession)}</span>
               </div>
               <div className="site-item-layout">{site.layout}</div>
               <div className="site-item-details">
-                <span>Site No: {site.siteNo}</span>
+                <span>{t('siteDetails.basicInfo.siteNo')} {site.siteNo}</span>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                   <span style={{ color: '#4B2840' }}>
                     <AreaIcon size={20} />
                   </span>
-                  Total Area: {site.totalArea} sq.m
+                  {t('siteList.totalArea')} {site.totalArea} sq.m
                 </span>
               </div>
               {!site.hasCoordinates && (
-                <div className="site-item-warning">No coordinates available</div>
+                <div className="site-item-warning">{t('siteList.noCoordinates')}</div>
               )}
             </div>
           ))

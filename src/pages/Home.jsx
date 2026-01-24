@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import AuctionInfoIcon from '../components/icons/AuctionInfoIcon'
 import MapIcon from '../components/icons/MapIcon'
@@ -7,6 +8,7 @@ import SitesIcon from '../components/icons/SitesIcon'
 import './Home.css'
 
 function Home() {
+  const { t } = useTranslation()
   const [timelineProgress, setTimelineProgress] = useState(0)
   const [eventStates, setEventStates] = useState(['future', 'future', 'future', 'future'])
   const footerRef = useRef(null)
@@ -227,19 +229,19 @@ function Home() {
         <div className="hero-icon">
           <SitesIcon size={70} />
         </div>
-        <h1>BDA eAuction of Residential Sites</h1>
-        <p className="hero-publication">Publication Number: T-16/2025-26</p>
+        <h1>{t('home.title')}</h1>
+        <p className="hero-publication">{t('home.publicationNumber')}</p>
         <p className="hero-subtitle">
-          Conducted under BDA Disposal of Corner, Intermediate & Other eAuctionable{' '}
+          {t('home.subtitle')}{' '}
           <a 
             href="https://www.bdakarnataka.in/api/media/about-us/pdf_press_release/Conducted_under_BDA_Disposal_of_Corner__Intermediate___Other_Auctionable_Sites_Rules__1984_1769170438464_fbcab00b.pdf"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: '#1A73E8', textDecoration: 'underline', textUnderlineOffset: '0.25em' }}
           >
-            Sites Rules
+            {t('home.sitesRules')}
           </a>
-          , 1984
+          {t('home.subtitleYear')}
         </p>
       </div>
 
@@ -257,7 +259,7 @@ function Home() {
             <div className="timeline-event">
               <div className={getMarkerClass(eventStates[0])}></div>
               <div className="timeline-card">
-                <h3 className="timeline-title">Commencement of e-Auction</h3>
+                <h3 className="timeline-title">{t('home.timeline.commencement')}</h3>
                 <div className="timeline-date">27 January 2026</div>
               </div>
             </div>
@@ -265,7 +267,7 @@ function Home() {
             <div className="timeline-event">
               <div className={getMarkerClass(eventStates[1])}></div>
               <div className="timeline-card">
-                <h3 className="timeline-title">Last Day to Express Interest</h3>
+                <h3 className="timeline-title">{t('home.timeline.lastDayInterest')}</h3>
                 <div className="timeline-date">13 Feb 2026, 17:00 PM</div>
               </div>
             </div>
@@ -273,7 +275,7 @@ function Home() {
             <div className="timeline-event">
               <div className={getMarkerClass(eventStates[2])}></div>
               <div className="timeline-card">
-                <h3 className="timeline-title">Round 1 (Sites 1 - 42)</h3>
+                <h3 className="timeline-title">{t('home.timeline.round1')}</h3>
                 <div className="timeline-date-multi">
                   <div className="timeline-date-start">16 Feb 2026, 11:00 AM</div>
                   <div className="timeline-date-separator">to</div>
@@ -285,7 +287,7 @@ function Home() {
             <div className="timeline-event">
               <div className={getMarkerClass(eventStates[3])}></div>
               <div className="timeline-card">
-                <h3 className="timeline-title">Round 2 (Sites 43 - 83)</h3>
+                <h3 className="timeline-title">{t('home.timeline.round2')}</h3>
                 <div className="timeline-date-multi">
                   <div className="timeline-date-start">17 Feb 2026, 11:00 AM</div>
                   <div className="timeline-date-separator">to</div>
@@ -302,15 +304,15 @@ function Home() {
           <div className="action-icon">
             <MapIcon size={32} />
           </div>
-          <h3>View Sites on Map</h3>
-          <p>Explore all eAuction sites with interactive map, filters, and detailed information</p>
+          <h3>{t('home.actionCards.viewSites.title')}</h3>
+          <p>{t('home.actionCards.viewSites.description')}</p>
         </Link>
         <Link to="/info" className="action-card">
           <div className="action-icon">
             <AuctionInfoIcon size={32} />
           </div>
-          <h3>eAuction Information</h3>
-          <p>Learn about eligibility, documents required, financials, and Terms & Conditions</p>
+          <h3>{t('home.actionCards.eAuctionInfo.title')}</h3>
+          <p>{t('home.actionCards.eAuctionInfo.description')}</p>
         </Link>
         <a 
           href="https://kppp.karnataka.gov.in/" 
@@ -321,17 +323,17 @@ function Home() {
           <div className="action-icon">
             <ExternalLinkIcon size={32} />
           </div>
-          <h3>Go to eAuction Portal</h3>
-          <p>Access the official eAuction portal to register and place bids</p>
+          <h3>{t('home.actionCards.goToPortal.title')}</h3>
+          <p>{t('home.actionCards.goToPortal.description')}</p>
         </a>
       </div>
 
       <div ref={footerRef} className="home-footer">
-        <p className="footer-disclaimer">Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.</p>
+        <p className="footer-disclaimer">{t('home.footer.disclaimer')}</p>
         <div className="built-by">
-          <span>Built by <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
+          <span>{t('home.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
           <span className="footer-separator">|</span>
-          <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">Share feedback</a>
+          <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('home.footer.shareFeedback')}</a>
         </div>
       </div>
     </div>

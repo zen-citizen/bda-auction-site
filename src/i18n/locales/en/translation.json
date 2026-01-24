@@ -1,0 +1,265 @@
+{
+  "common": {
+    "nav": {
+      "brand": "BDA eAuction",
+      "home": "Home",
+      "mapView": "Map View",
+      "mapViewShort": "View",
+      "eAuctionInfo": "eAuction Info",
+      "eAuctionInfoShort": "Info"
+    },
+    "buttons": {
+      "toggleContents": "Toggle contents menu",
+      "close": "Close",
+      "goToPortal": "Go to eAuction Portal"
+    },
+    "labels": {
+      "contents": "Contents",
+      "nA": "N/A"
+    }
+  },
+  "home": {
+    "title": "BDA eAuction of Residential Sites",
+    "publicationNumber": "Publication Number: T-16/2025-26",
+    "subtitle": "Conducted under BDA Disposal of Corner, Intermediate & Other eAuctionable",
+    "sitesRules": "Sites Rules",
+    "subtitleYear": ", 1984",
+    "importantDates": "Important Dates",
+    "timeline": {
+      "commencement": "Commencement of e-Auction",
+      "lastDayInterest": "Last Day to Express Interest",
+      "round1": "Round 1 (Sites 1 - 42)",
+      "round2": "Round 2 (Sites 43 - 83)"
+    },
+    "actionCards": {
+      "viewSites": {
+        "title": "View Sites on Map",
+        "description": "Explore all eAuction sites with interactive map, filters, and detailed information"
+      },
+      "eAuctionInfo": {
+        "title": "eAuction Information",
+        "description": "Learn about eligibility, documents required, financials, and Terms & Conditions"
+      },
+      "goToPortal": {
+        "title": "Go to eAuction Portal",
+        "description": "Access the official eAuction portal to register and place bids"
+      }
+    },
+    "footer": {
+      "disclaimer": "Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.",
+      "builtBy": "Built by",
+      "shareFeedback": "Share feedback"
+    }
+  },
+  "infoPage": {
+    "title": "eAuction Information & Guidelines",
+    "menu": {
+      "contents": "Contents",
+      "whatIsBeingAuctioned": "What is being eAuctioned",
+      "whoCanParticipate": "Who can participate?",
+      "documentsRequired": "Documents Required",
+      "whereToBid": "Where to Bid",
+      "importantDates": "Important Dates",
+      "financials": "Financials",
+      "importantCautions": "Important Cautions",
+      "helpSupport": "Help & Support"
+    },
+    "sections": {
+      "whatIsBeingAuctioned": {
+        "title": "What is being eAuctioned",
+        "description": "Residential Sites at multiple BDA layouts across Bengaluru",
+        "note": "Note:",
+        "noteText": "eAuction on \"AS IS WHERE IS\" basis. Physical inspection of sites is strongly advised before bidding."
+      },
+      "whoCanParticipate": {
+        "title": "Who can participate?",
+        "items": [
+          "Indian citizens (individuals)",
+          "Registered partnership firms in India",
+          "Minors or persons without computer knowledge through guardians or representatives",
+          "Joint registration permitted only for blood relations (spouse, sons, unmarried daughters) Proof of relationship required"
+        ]
+      },
+      "documentsRequired": {
+        "title": "Documents Required",
+        "items": [
+          "PAN Card (attested)",
+          "Photo & Signature (prescribed format in Appendix)",
+          "Any one address proof (attested):"
+        ],
+        "addressProof": {
+          "aadhaar": "Aadhaar",
+          "voterId": "Voter ID",
+          "passport": "Passport",
+          "drivingLicence": "Driving Licence"
+        }
+      },
+      "whereToBid": {
+        "title": "Where to Bid",
+        "portalLabel": "eAuction Portal:"
+      },
+      "importantDates": {
+        "title": "Important Dates",
+        "commencement": "Commencement of eAuction",
+        "lastDateInterest": "Last date to express interest",
+        "lastDateTime": "Up to 5:00 PM IST",
+        "round1": "Live bidding — Round 1 (Sites 1 - 42)",
+        "round2": "Live bidding — Round 2 (Sites 43 - 83)",
+        "starts": "Starts:",
+        "closes": "Closes:",
+        "deltaTime": "Delta time:",
+        "minutes": "5 minutes"
+      },
+      "financials": {
+        "title": "Financials",
+        "emd": {
+          "title": "Earnest Money Deposit (EMD)",
+          "amount": "Amount:",
+          "amountValue": "Rs. 4 Lakhs per site",
+          "warning": "EMD payment must be made ONLY on the eAuction website:",
+          "warning2": "If EMD payment is remitted to BDA's account instead of eAuction Portal, a 5% Service charge on EMD will be deducted during refund."
+        },
+        "biddingRequirements": {
+          "title": "Bidding Requirements",
+          "items": [
+            "Bid must exceed base price by at least 10%",
+            "Bid increment: Minimum Rs. 500 per sq.m"
+          ]
+        },
+        "paymentAfterWinning": {
+          "title": "Payment after Winning",
+          "items": [
+            "25% of total cost (after adjusting EMD) within stipulated time of 3 days",
+            "Balance 75% within 45 days from allotment letter"
+          ],
+          "paymentDetails": {
+            "title": "Payment Details",
+            "accountName": "Account Name:",
+            "accountNameValue": "Bangalore Development Authority, Bengaluru",
+            "bank": "Bank:",
+            "bankValue": "Canara Bank, BDA Complex Branch, Kumara Krupa West, Bengaluru-560020",
+            "accountNumber": "Account Number:",
+            "accountNumberValue": "2828101053014",
+            "ifscCode": "IFSC Code:",
+            "ifscCodeValue": "CNRB0002828",
+            "modeOfPayment": "Mode of Payment:",
+            "modeOfPaymentValue": "RTGS / NEFT"
+          },
+          "warning": "Failure of making payment within stipulated time will result in forfeiture of EMD"
+        }
+      },
+      "importantCautions": {
+        "title": "Important Cautions",
+        "items": [
+          "Minimum two bidders required per site",
+          "BDA reserves right to accept or reject any bid",
+          "Sites once allotted will not be cancelled or substituted",
+          "All disputes subject to Bengaluru jurisdiction only"
+        ]
+      },
+      "helpSupport": {
+        "title": "Help & Support",
+        "demo": {
+          "title": "Demo",
+          "description": "For demonstration of live bidding & learning the process of bidding, you can visit BDA Head Office during office hours.",
+          "address": "Address:",
+          "note": "Note:",
+          "noteText": "Bidding by BDA on behalf of a bidder shall not be undertaken during the demonstration."
+        },
+        "videoTutorials": {
+          "title": "Video Tutorials",
+          "downloadLink": "Download User Manuals & Videos",
+          "referTo": "Refer to:",
+          "items": [
+            "'Direct Supplier registration (Direction eAuction)' in the section 'New Registration user manuals'",
+            "'Pre-Qualified eAuction Bid Submission & Live Bidding' in the section 'Bid submission user manuals'"
+          ]
+        },
+        "contactInfo": {
+          "title": "Contact Information",
+          "bdaQueries": "BDA Site-related queries:",
+          "eAuctionProcess": "For information on the eAuction process:",
+          "kppp": "Karnataka Public Procurement Portal:",
+          "newHelpdesk": "We've added two new eProcurement helpdesk numbers for your convenience:",
+          "bdaTwitter": "BDA on X (Twitter):",
+          "important": "Important:",
+          "importantText": "Bidders are requested to contact BDA directly for any questions and avoid middlemen."
+        }
+      }
+    },
+    "footer": {
+      "disclaimer": "Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.",
+      "builtBy": "Built by",
+      "shareFeedback": "Share feedback"
+    }
+  },
+  "mapPage": {
+    "filters": {
+      "toggle": "Toggle filters",
+      "label": "Filters"
+    },
+    "mapView": {
+      "map": "Map",
+      "satellite": "Satellite",
+      "sitesCount": "sites visible",
+      "selectSite": "Select a site card or map marker to view details.",
+      "showingSites": "Showing",
+      "ofSites": "of",
+      "sites": "sites",
+      "tooltip": "Some sites aren't shown because location details aren't available."
+    }
+  },
+  "siteFilters": {
+    "search": {
+      "label": "Search",
+      "placeholder": "Search by site number or layout"
+    },
+    "biddingRounds": {
+      "label": "Filter by Bidding Rounds",
+      "allRounds": "All Rounds"
+    },
+    "layout": {
+      "label": "Filter by Layout",
+      "allLayouts": "All Layouts"
+    },
+    "siteSize": {
+      "label": "Filter by Site Size",
+      "allSizes": "All Sizes",
+      "upto54": "Upto 54 sq.m",
+      "54to108": "54-108 sq.m",
+      "108to216": "108-216 sq.m",
+      "above216": "> 216 sq.m"
+    }
+  },
+  "siteList": {
+    "title": "Sites",
+    "noSites": "No sites found matching your filters.",
+    "siteNumber": "Sl.No #",
+    "totalArea": "Total Area:",
+    "noCoordinates": "No coordinates available"
+  },
+  "siteDetails": {
+    "title": "Site Details",
+    "basicInfo": {
+      "title": "Basic Information",
+      "viewOnGoogleMaps": "View on Google Maps",
+      "googleMapsUnavailable": "Google Maps link unavailable",
+      "biddingRound": "Bidding Round:",
+      "siteNo": "Site No:",
+      "layoutDetails": "Layout Details:",
+      "surveyNo": "Survey No:",
+      "ratePerSqM": "Rate Per Sq.M:"
+    },
+    "dimensions": {
+      "title": "Dimensions",
+      "totalArea": "Total Area:",
+      "siteShape": "Site Shape:",
+      "type": "Type:",
+      "eToW": "E to W:",
+      "nToS": "N to S:"
+    },
+    "coordinator": {
+      "title": "Site Information Coordinator"
+    }
+  }
+}

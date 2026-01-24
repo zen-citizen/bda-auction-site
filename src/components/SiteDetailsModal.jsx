@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { getSessionDate } from '../lib/utils'
 import { ExternalLink } from 'lucide-react'
 import AreaIcon from './icons/AreaIcon'
@@ -15,6 +16,8 @@ function formatPhoneNumber(value) {
 
 // Version: 2025-01-27 - All CSV fields always visible
 function SiteDetailsModal({ site, onClose }) {
+  const { t } = useTranslation()
+  
   if (!site) return null
 
   const contactNumber = formatPhoneNumber(site.contactNumber)
@@ -28,14 +31,14 @@ function SiteDetailsModal({ site, onClose }) {
         <button className="modal-close" onClick={onClose}>×</button>
         
         <div className="modal-header-sticky">
-          <h2>Site Details</h2>
-          <div className="modal-site-number">Sl.No #{site.slNo}</div>
+          <h2>{t('siteDetails.title')}</h2>
+          <div className="modal-site-number">{t('siteList.siteNumber')}{site.slNo}</div>
         </div>
         
         <div className="site-details">
           {/* Basic Information Section */}
           <div className="detail-section">
-            <h3 className="section-title">Basic Information</h3>
+            <h3 className="section-title">{t('siteDetails.basicInfo.title')}</h3>
             <div className="detail-row">
               <span className="detail-label">
                 {googleMapsLink ? (
@@ -47,45 +50,45 @@ function SiteDetailsModal({ site, onClose }) {
                     style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
                   >
                     <ExternalLink size={16} />
-                    View on Google Maps
+                    {t('siteDetails.basicInfo.viewOnGoogleMaps')}
                   </a>
                 ) : (
-                  <span style={{ color: '#666', fontStyle: 'italic' }}>Google Maps link unavailable</span>
+                  <span style={{ color: '#666', fontStyle: 'italic' }}>{t('siteDetails.basicInfo.googleMapsUnavailable')}</span>
                 )}
               </span>
               <span className="detail-value"></span>
             </div>
             <div className="detail-row">
-              <span className="detail-label">Bidding Round:</span>
+              <span className="detail-label">{t('siteDetails.basicInfo.biddingRound')}</span>
               <span className="detail-value">{getSessionDate(site.biddingSession)}</span>
             </div>
             <div className="detail-row">
-              <span className="detail-label">Site No:</span>
-              <span className="detail-value">{site.siteNo || 'N/A'}</span>
+              <span className="detail-label">{t('siteDetails.basicInfo.siteNo')}</span>
+              <span className="detail-value">{site.siteNo || t('common.labels.nA')}</span>
             </div>
             <div className="detail-row">
-              <span className="detail-label">Layout Details:</span>
-              <span className="detail-value">{site.layoutDetails || site.layout || 'N/A'}</span>
+              <span className="detail-label">{t('siteDetails.basicInfo.layoutDetails')}</span>
+              <span className="detail-value">{site.layoutDetails || site.layout || t('common.labels.nA')}</span>
             </div>
             <div className="detail-row">
-              <span className="detail-label">Survey No:</span>
-              <span className="detail-value">{site.surveyNo || 'N/A'}</span>
+              <span className="detail-label">{t('siteDetails.basicInfo.surveyNo')}</span>
+              <span className="detail-value">{site.surveyNo || t('common.labels.nA')}</span>
             </div>
             <div className="detail-row">
-              <span className="detail-label">Rate Per Sq.M:</span>
+              <span className="detail-label">{t('siteDetails.basicInfo.ratePerSqM')}</span>
               <span className="detail-value">
                 {(() => {
                   try {
                     if (!site.ratePerSqMtr || site.ratePerSqMtr === 'NA' || site.ratePerSqMtr.trim() === '') {
-                      return 'N/A'
+                      return t('common.labels.nA')
                     }
                     const rate = parseFloat(site.ratePerSqMtr)
                     if (isNaN(rate)) {
-                      return 'N/A'
+                      return t('common.labels.nA')
                     }
                     return `₹${rate.toLocaleString('en-IN')}`
                   } catch {
-                    return 'N/A'
+                    return t('common.labels.nA')
                   }
                 })()}
               </span>
@@ -94,41 +97,41 @@ function SiteDetailsModal({ site, onClose }) {
 
           {/* Dimensions Section */}
           <div className="detail-section">
-            <h3 className="section-title">Dimensions</h3>
+            <h3 className="section-title">{t('siteDetails.dimensions.title')}</h3>
             <div className="detail-row">
               <span className="detail-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                 <span style={{ color: '#4B2840' }}>
                   <AreaIcon size={22} />
                 </span>
-                Total Area:
+                {t('siteDetails.dimensions.totalArea')}
               </span>
-              <span className="detail-value">{site.totalArea ? `${site.totalArea} sq.m` : 'N/A'}</span>
+              <span className="detail-value">{site.totalArea ? `${site.totalArea} sq.m` : t('common.labels.nA')}</span>
             </div>
             <div className="detail-row">
-              <span className="detail-label">Site Shape:</span>
-              <span className="detail-value">{site.siteSize || 'N/A'}</span>
+              <span className="detail-label">{t('siteDetails.dimensions.siteShape')}</span>
+              <span className="detail-value">{site.siteSize || t('common.labels.nA')}</span>
             </div>
             <div className="detail-row">
-              <span className="detail-label">Type:</span>
-              <span className="detail-value">{site.type || 'N/A'}</span>
+              <span className="detail-label">{t('siteDetails.dimensions.type')}</span>
+              <span className="detail-value">{site.type || t('common.labels.nA')}</span>
             </div>
             <div className="detail-row">
               <span className="detail-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                 <span style={{ color: '#4B2840' }}>
                   <EWIcon size={22} />
                 </span>
-                E to W:
+                {t('siteDetails.dimensions.eToW')}
               </span>
-              <span className="detail-value">{site.eToW ? `${site.eToW} m` : 'N/A'}</span>
+              <span className="detail-value">{site.eToW ? `${site.eToW} m` : t('common.labels.nA')}</span>
             </div>
             <div className="detail-row">
               <span className="detail-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                 <span style={{ color: '#4B2840' }}>
                   <NSIcon size={22} />
                 </span>
-                N to S:
+                {t('siteDetails.dimensions.nToS')}
               </span>
-              <span className="detail-value">{site.nToS ? `${site.nToS} m` : 'N/A'}</span>
+              <span className="detail-value">{site.nToS ? `${site.nToS} m` : t('common.labels.nA')}</span>
             </div>
           </div>
 
@@ -137,7 +140,7 @@ function SiteDetailsModal({ site, onClose }) {
             <div className="detail-row">
               <span className="detail-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                 {contactNumber && <PhoneIcon size={20} />}
-                Site Information Coordinator
+                {t('siteDetails.coordinator.title')}
               </span>
               <span className="detail-value">
                 {contactNumber ? (
@@ -145,7 +148,7 @@ function SiteDetailsModal({ site, onClose }) {
                     +91 {contactNumber}
                   </a>
                 ) : (
-                  'N/A'
+                  t('common.labels.nA')
                 )}
               </span>
             </div>
@@ -160,7 +163,7 @@ function SiteDetailsModal({ site, onClose }) {
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            Go to eAuction Portal
+            {t('common.buttons.goToPortal')}
           </a>
         </div>
       </div>

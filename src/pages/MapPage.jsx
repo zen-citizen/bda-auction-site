@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import { createPortal } from 'react-dom'
 import { ChevronDown, ChevronUp, Info } from 'lucide-react'
 import MapView from '../components/MapView'
@@ -11,6 +12,7 @@ import { normalizeLayoutName } from '../lib/utils'
 import './MapPage.css'
 
 function MapPage() {
+  const { t } = useTranslation()
   const [filters, setFilters] = useState({
     search: '',
     layout: '',
@@ -237,10 +239,10 @@ function MapPage() {
           className="filters-toggle-mobile"
           onClick={toggleFilters}
           aria-expanded={filtersExpanded}
-          aria-label="Toggle filters"
+          aria-label={t('mapPage.filters.toggle')}
         >
           <span className="filters-toggle-label">
-            Filters
+            {t('mapPage.filters.label')}
             {activeFiltersCount > 0 && (
               <span className="filters-count-badge">{activeFiltersCount}</span>
             )}
@@ -284,7 +286,7 @@ function MapPage() {
                 onClick={() => setMapViewMode('street')}
                 aria-pressed={mapViewMode === 'street'}
               >
-                Map
+                {t('mapPage.mapView.map')}
               </button>
               <button
                 type="button"
@@ -292,20 +294,20 @@ function MapPage() {
                 onClick={() => setMapViewMode('satellite')}
                 aria-pressed={mapViewMode === 'satellite'}
               >
-                Satellite
+                {t('mapPage.mapView.satellite')}
               </button>
             </div>
             <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
               <span style={{ color: '#4B2840', display: 'inline-flex', alignItems: 'center' }}>
                 <SelectMarkerIcon size={20} />
               </span>
-              Select a site card or map marker to view details.
+              {t('mapPage.mapView.selectSite')}
             </p>
             <div className="map-page-header-count">
-              <span>Showing {visibleSitesCount} of {totalSites} sites</span>
+              <span>{t('mapPage.mapView.showingSites')} {visibleSitesCount} {t('mapPage.mapView.ofSites')} {totalSites} {t('mapPage.mapView.sites')}</span>
               <span className="info-tooltip-wrapper">
                 <Info size={14} className="info-icon" />
-                <span className="info-tooltip">Some sites aren't shown because location details aren't available.</span>
+                <span className="info-tooltip">{t('mapPage.mapView.tooltip')}</span>
               </span>
             </div>
           </div>
