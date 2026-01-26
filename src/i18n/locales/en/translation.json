@@ -46,7 +46,8 @@
       }
     },
     "footer": {
-      "disclaimer": "Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.",
+      "disclaimer": "This page is an independent, citizen-led volunteer effort by Zen Citizen, created in collaboration with <1>BDA</1>. It does not replace official BDA notifications. Zen Citizen makes no representation or warranty regarding the accuracy or completeness of the information presented.",
+      "disclaimerLabel": "Disclaimer",
       "builtBy": "Built by",
       "shareFeedback": "Share feedback"
     }
@@ -161,7 +162,7 @@
         "title": "Help & Support",
         "demo": {
           "title": "Demo",
-          "description": "For demonstration of live bidding & learning the process of bidding, you can visit BDA Head Office during office hours.",
+          "description": "For a demonstration of the bidding process of bidding, you can visit BDA Head Office during office hours.",
           "address": "Address:",
           "note": "Note:",
           "noteText": "Bidding by BDA on behalf of a bidder shall not be undertaken during the demonstration."
@@ -177,18 +178,29 @@
         },
         "contactInfo": {
           "title": "Contact Information",
-          "bdaQueries": "BDA Site-related queries:",
-          "eAuctionProcess": "For information on the eAuction process:",
+          "bdaWebsite": "BDA website:",
+          "bdaQueries": "For BDA Site-related queries, contact the helpline",
+          "or": "or",
+          "eAuctionProcess": "For information on the eAuction process, contact the Karnataka Public Procurement Portal",
           "kppp": "Karnataka Public Procurement Portal:",
           "newHelpdesk": "We've added two new eProcurement helpdesk numbers for your convenience:",
           "bdaTwitter": "BDA on X (Twitter):",
+          "timings": "Timings:",
+          "timingsValue": "10:00 AM to 17:30 PM",
+          "holidays": "Holidays:",
+          "holidaysText": "2nd and 4th Saturday are holidays.",
+          "holidaysLink": "Karnataka Government Holidays List 2026",
+          "cac": "Citizen Assistance Cell (CAC)",
+          "cacDescription": "Runs 24/7 365 days.",
+          "cacPhoneWa": "Phone & WhatsApp | Available 24/7, 365 days a year",
           "important": "Important:",
           "importantText": "Bidders are requested to contact BDA directly for any questions and avoid middlemen."
         }
       }
     },
     "footer": {
-      "disclaimer": "Information is sourced from BDA and reviewed with due diligence. While we strive for accuracy, this data can sometimes be incomplete, outdated or not accurate.",
+      "disclaimer": "This page is an independent, citizen-led volunteer effort by Zen Citizen, created in collaboration with <1>BDA</1>. It does not replace official BDA notifications. Zen Citizen makes no representation or warranty regarding the accuracy or completeness of the information presented.",
+      "disclaimerLabel": "Disclaimer",
       "builtBy": "Built by",
       "shareFeedback": "Share feedback"
     }
@@ -202,7 +214,8 @@
       "map": "Map",
       "satellite": "Satellite",
       "sitesCount": "sites visible",
-      "selectSite": "Select a site card or map marker to view details.",
+      "selectSite": "Select a site from the list or map to view details.",
+      "zoomForBoundaries": "Zoom in to see the site boundaries.",
       "showingSites": "Showing",
       "ofSites": "of",
       "sites": "sites",

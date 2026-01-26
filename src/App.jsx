@@ -71,7 +71,7 @@ function App() {
       <div className="min-h-screen flex flex-col">
         <Navigation />
         {/* Language toggle - mobile only, below nav bar */}
-        <div className="sm:hidden container mx-auto px-3 sm:px-4 pt-2 pb-0.5 flex justify-end items-center">
+        <div className="sm:hidden container mx-auto px-3 sm:px-4 pt-2 pb-5 flex justify-end items-center">
           <LanguageToggle />
         </div>
         <main className="flex-1">

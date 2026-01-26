@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { getSessionDate, toTitleCase } from '../lib/utils'
+import { getSessionDate, toTitleCase, normalizeLayoutName } from '../lib/utils'
 import AreaIcon from './icons/AreaIcon'
 import SitesIcon from './icons/SitesIcon'
 import './SiteList.css'
@@ -52,7 +52,11 @@ function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMo
                 <span className="site-number">{t('siteList.siteNumber')}{site.slNo}</span>
                 <span className="site-session">{getSessionDate(site.biddingSession)}</span>
               </div>
-              <div className="site-item-layout">{toTitleCase(site.layout)}</div>
+              <div className="site-item-layout">
+                {site.layoutDetails 
+                  ? toTitleCase(normalizeLayoutName(site.layoutDetails.split(',')[0].trim()))
+                  : toTitleCase(site.layout)}
+              </div>
               <div className="site-item-details">
                 <span>{t('siteDetails.basicInfo.siteNo')} {site.siteNo}</span>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>

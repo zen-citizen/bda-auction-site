@@ -31,11 +31,13 @@ function MapPage() {
 
   const { sites } = sitesData
 
-  // Extract unique normalized layout names
+  // Extract unique normalized layout names from Layout Details (first part before comma)
   const normalizedLayouts = useMemo(() => {
     const normalized = new Set()
     sites.forEach(site => {
-      const base = normalizeLayoutName(site.layout)
+      // Extract first part of layoutDetails before comma
+      const firstPart = site.layoutDetails?.split(',')[0].trim() || ''
+      const base = normalizeLayoutName(firstPart)
       if (base) normalized.add(base)
     })
     return Array.from(normalized).sort()
@@ -55,15 +57,17 @@ function MapPage() {
       const searchLower = filters.search.toLowerCase()
       filtered = filtered.filter(site =>
         site.siteNo.toLowerCase().includes(searchLower) ||
-        site.layout.toLowerCase().includes(searchLower)
+        site.layout.toLowerCase().includes(searchLower) ||
+        (site.layoutDetails && site.layoutDetails.toLowerCase().includes(searchLower))
       )
     }
 
-    // Apply layout filter using normalized names
+    // Apply layout filter using normalized names from Layout Details (first part)
     if (filters.layout) {
-      filtered = filtered.filter(site => 
-        normalizeLayoutName(site.layout) === filters.layout
-      )
+      filtered = filtered.filter(site => {
+        const firstPart = site.layoutDetails?.split(',')[0].trim() || ''
+        return normalizeLayoutName(firstPart) === filters.layout
+      })
     }
 
     // Apply site size filter (using size classification from CSV)
@@ -297,12 +301,17 @@ function MapPage() {
                 {t('mapPage.mapView.satellite')}
               </button>
             </div>
-            <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
-              <span style={{ color: '#4B2840', display: 'inline-flex', alignItems: 'center' }}>
-                <SelectMarkerIcon size={20} />
-              </span>
-              {t('mapPage.mapView.selectSite')}
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem', margin: 0 }}>
+              <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: 0 }}>
+                <span style={{ color: '#4B2840', display: 'inline-flex', alignItems: 'center', flexShrink: 0 }}>
+                  <SelectMarkerIcon size={20} />
+                </span>
+                <span>{t('mapPage.mapView.selectSite')}</span>
+              </p>
+              <p style={{ margin: 0, fontSize: '0.875rem', color: '#666', paddingLeft: 'calc(20px + 0.5rem)' }}>
+                {t('mapPage.mapView.zoomForBoundaries')}
+              </p>
+            </div>
             <div className="map-page-header-count">
               <span>{t('mapPage.mapView.showingSites')} {visibleSitesCount} {t('mapPage.mapView.ofSites')} {totalSites} {t('mapPage.mapView.sites')}</span>
               <span className="info-tooltip-wrapper">

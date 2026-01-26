@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import AuctionInfoIcon from '../components/icons/AuctionInfoIcon'
 import MapIcon from '../components/icons/MapIcon'
 import ExternalLinkIcon from '../components/icons/ExternalLinkIcon'
@@ -11,15 +12,103 @@ function Home() {
   const { t } = useTranslation()
   const [timelineProgress, setTimelineProgress] = useState(0)
   const [eventStates, setEventStates] = useState(['future', 'future', 'future', 'future'])
+  const [showDisclaimerModal, setShowDisclaimerModal] = useState(false)
   const footerRef = useRef(null)
   const timelineContainerRef = useRef(null)
   const timelineLineRef = useRef(null)
 
-  // Parse date string to Date object
+  // Get current date/time in IST (Indian Standard Time, UTC+5:30)
+  const getISTDate = () => {
+    const now = new Date()
+    // Get IST time components
+    const istString = now.toLocaleString("en-US", { 
+      timeZone: "Asia/Kolkata",
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    })
+    
+    // Parse format: "MM/DD/YYYY, HH:MM:SS"
+    const parts = istString.match(/(\d+)\/(\d+)\/(\d+),?\s+(\d+):(\d+):(\d+)/)
+    if (parts) {
+      const month = parseInt(parts[1]) - 1 // JavaScript months are 0-indexed
+      const day = parseInt(parts[2])
+      const year = parseInt(parts[3])
+      const hours = parseInt(parts[4])
+      const minutes = parseInt(parts[5])
+      const seconds = parseInt(parts[6] || 0)
+      
+      // Create date in local timezone that represents the IST time
+      // This allows proper comparison with parsed IST dates
+      return new Date(year, month, day, hours, minutes, seconds)
+    }
+    
+    // Fallback: use Intl.DateTimeFormat for more reliable parsing
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Kolkata",
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    })
+    
+    const parts2 = formatter.formatToParts(now)
+    const dateParts = {}
+    parts2.forEach(part => {
+      dateParts[part.type] = part.value
+    })
+    
+    return new Date(
+      parseInt(dateParts.year),
+      parseInt(dateParts.month) - 1,
+      parseInt(dateParts.day),
+      parseInt(dateParts.hour),
+      parseInt(dateParts.minute),
+      parseInt(dateParts.second || 0)
+    )
+  }
+
+  // Parse date string to Date object in IST
+  // Creates a Date object in local timezone representing the given date/time in IST
+  // This matches the format used by getISTDate() for consistent comparison
   const parseDate = (dateString) => {
     // Handle "27 January 2026" format (full month name)
     if (dateString.match(/^\d{1,2}\s+\w+\s+\d{4}$/)) {
-      return new Date(dateString)
+      const parts = dateString.split(/\s+/)
+      const day = parseInt(parts[0])
+      const monthName = parts[1]
+      const year = parseInt(parts[2])
+      
+      const monthMap = {
+        'Jan': 0, 'January': 0,
+        'Feb': 1, 'February': 1,
+        'Mar': 2, 'March': 2,
+        'Apr': 3, 'April': 3,
+        'May': 4,
+        'Jun': 5, 'June': 5,
+        'Jul': 6, 'July': 6,
+        'Aug': 7, 'August': 7,
+        'Sep': 8, 'September': 8,
+        'Oct': 9, 'October': 9,
+        'Nov': 10, 'November': 10,
+        'Dec': 11, 'December': 11
+      }
+      
+      const month = monthMap[monthName]
+      if (month === undefined) {
+        return new Date(dateString)
+      }
+      
+      // Create date in local timezone (same format as getISTDate())
+      // This represents IST time in local timezone for consistent comparison
+      return new Date(year, month, day, 0, 0, 0)
     }
     
     // Handle "13 Feb 2026, 17:00 PM" or "16 Feb 2026, 11:00 AM" format
@@ -54,12 +143,14 @@ function Home() {
       }
       
       // Parse time if present
+      let hours = 0
+      let minutes = 0
       if (parts.length >= 5) {
         const timeStr = parts[3]
         const ampm = parts[4] ? parts[4].toUpperCase() : null
         const timeParts = timeStr.split(':')
-        let hours = parseInt(timeParts[0])
-        const minutes = timeParts[1] ? parseInt(timeParts[1]) : 0
+        hours = parseInt(timeParts[0])
+        minutes = timeParts[1] ? parseInt(timeParts[1]) : 0
         
         // Handle AM/PM
         if (ampm === 'PM' && hours !== 12) {
@@ -67,12 +158,11 @@ function Home() {
         } else if (ampm === 'AM' && hours === 12) {
           hours = 0
         }
-        
-        return new Date(year, month, day, hours, minutes)
-      } else {
-        // No time, use start of day
-        return new Date(year, month, day, 0, 0)
       }
+      
+      // Create date in local timezone (same format as getISTDate())
+      // This represents IST time in local timezone for consistent comparison
+      return new Date(year, month, day, hours, minutes, 0)
     }
     
     // Fallback to default Date parsing
@@ -81,82 +171,108 @@ function Home() {
 
   // Calculate timeline progress and event states
   useEffect(() => {
-    const now = new Date()
-    
-    // Define timeline events with their dates
-    const event1Start = parseDate('27 January 2026')
-    const event1End = new Date(event1Start)
-    event1End.setHours(23, 59, 59, 999) // End of day for single-day event
-    
-    const event2Start = parseDate('13 Feb 2026, 17:00 PM')
-    const event2End = event2Start // Single point in time
-    
-    const events = [
-      {
-        start: event1Start,
-        end: event1End,
-        isRange: false
-      },
-      {
-        start: event2Start,
-        end: event2End,
-        isRange: false
-      },
-      {
-        start: parseDate('16 Feb 2026, 11:00 AM'),
-        end: parseDate('17 Feb 2026, 17:00 PM'),
-        isRange: true
-      },
-      {
-        start: parseDate('17 Feb 2026, 11:00 AM'),
-        end: parseDate('18 Feb 2026, 17:00 PM'),
-        isRange: true
-      }
-    ]
+    const calculateProgress = () => {
+      const now = getISTDate()
+      
+      // Define timeline events with their dates (all in IST)
+      const event1Start = parseDate('27 January 2026')
+      // End of day in IST (23:59:59 IST on 27 January 2026)
+      // Create as 28 Jan 00:00:00 IST and subtract 1ms
+      const event1End = parseDate('28 January 2026')
+      event1End.setTime(event1End.getTime() - 1) // 1ms before midnight = 23:59:59.999
+      
+      const event2Start = parseDate('13 Feb 2026, 17:00 PM')
+      const event2End = event2Start // Single point in time
+      
+      const events = [
+        {
+          start: event1Start,
+          end: event1End,
+          isRange: false
+        },
+        {
+          start: event2Start,
+          end: event2End,
+          isRange: false
+        },
+        {
+          start: parseDate('16 Feb 2026, 11:00 AM'),
+          end: parseDate('17 Feb 2026, 17:00 PM'),
+          isRange: true
+        },
+        {
+          start: parseDate('17 Feb 2026, 11:00 AM'),
+          end: parseDate('18 Feb 2026, 17:00 PM'),
+          isRange: true
+        }
+      ]
 
-    // Calculate event states
-    const states = events.map(event => {
-      if (now < event.start) {
-        return 'future'
-      } else if (now >= event.start && now <= event.end) {
-        return 'active'
+      // Calculate event states
+      const states = events.map(event => {
+        if (now < event.start) {
+          return 'future'
+        } else if (now >= event.start && now <= event.end) {
+          return 'active'
+        } else {
+          return 'completed'
+        }
+      })
+      
+      setEventStates(states)
+
+      // Calculate progress percentage
+      // Progress is based on position along the timeline from first event start to last event end
+      const timelineStart = events[0].start.getTime()
+      const timelineEnd = events[events.length - 1].end.getTime()
+      const timelineSpan = timelineEnd - timelineStart
+      const nowTime = now.getTime()
+
+      // Detect if we're on desktop (width > 768px) - checked at calculation time
+      const isDesktop = typeof window !== 'undefined' && window.innerWidth > 768
+
+      let progress = 0
+      
+      if (nowTime < timelineStart) {
+        // Before timeline starts - show minimal progress when very close
+        const daysUntilStart = (timelineStart - nowTime) / (1000 * 60 * 60 * 24)
+        if (daysUntilStart <= 1) {
+          // Less than 1 day away - show small progress that approaches first marker
+          const progressRatio = 1 - daysUntilStart // 0 at 1 day, 1 at 0 days
+          
+          // DESKTOP: Horizontal timeline, progress uses width
+          // First marker is centered in first event container (~12.5% of timeline width)
+          // Progress should approach but not exceed this position
+          if (isDesktop) {
+            progress = 8 + (progressRatio * 4.5) // 8% at 1 day, 12.5% at 0 days
+          } 
+          // MOBILE: Vertical timeline, progress uses height  
+          // First marker is at top (0% of timeline height)
+          // Progress fills from top, should be minimal to not cross marker
+          else {
+            progress = 1 + (progressRatio * 2) // 1% at 1 day, 3% at 0 days
+          }
+        } else {
+          progress = 0
+        }
+      } else if (nowTime >= timelineEnd) {
+        // After timeline ends - progress is 100%
+        progress = 100
       } else {
-        return 'completed'
+        // Within timeline - calculate percentage based on position
+        // Same calculation for both desktop and mobile (time-based percentage)
+        progress = ((nowTime - timelineStart) / timelineSpan) * 100
       }
-    })
-    
-    setEventStates(states)
 
-    // Calculate progress percentage
-    // Progress is based on position along the timeline from first event start to last event end
-    const timelineStart = events[0].start.getTime()
-    const timelineEnd = events[events.length - 1].end.getTime()
-    const timelineSpan = timelineEnd - timelineStart
-    const nowTime = now.getTime()
-
-    let progress = 0
-    
-    if (nowTime < timelineStart) {
-      // Before timeline starts - show partial progress if within 3 days of commencement
-      const daysUntilStart = (timelineStart - nowTime) / (1000 * 60 * 60 * 24) // Convert to days
-      if (daysUntilStart <= 3) {
-        // Show minimal progress proportional to how close we are
-        // At 3 days: ~2%, at 0 days: ~5% (small visual indicator that doesn't cross first event)
-        // The first event marker is at 0% of timeline, so we keep this very small
-        const progressRatio = 1 - (daysUntilStart / 3) // 0 at 3 days, 1 at 0 days
-        progress = 2 + (progressRatio * 3) // 2% at 3 days, 5% at 0 days
-      } else {
-        progress = 0
-      }
-    } else if (nowTime >= timelineEnd) {
-      // After timeline ends
-      progress = 100
-    } else {
-      // Within timeline - calculate percentage
-      progress = ((nowTime - timelineStart) / timelineSpan) * 100
+      setTimelineProgress(Math.max(0, Math.min(100, progress)))
     }
-
-    setTimelineProgress(Math.max(0, Math.min(100, progress)))
+    
+    // Calculate immediately
+    calculateProgress()
+    
+    // Update every minute
+    const interval = setInterval(calculateProgress, 60000)
+    
+    return () => clearInterval(interval)
   }, [])
 
   // Calculate and set footer height for padding
@@ -329,13 +445,35 @@ function Home() {
       </div>
 
       <div ref={footerRef} className="home-footer">
-        <p className="footer-disclaimer">{t('home.footer.disclaimer')}</p>
         <div className="built-by">
+          <button 
+            onClick={() => setShowDisclaimerModal(true)}
+            className="footer-disclaimer-link"
+          >
+            {t('home.footer.disclaimerLabel')}
+          </button>
+          <span className="footer-separator">|</span>
           <span>{t('home.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
           <span className="footer-separator">|</span>
           <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('home.footer.shareFeedback')}</a>
         </div>
       </div>
+
+      <Dialog open={showDisclaimerModal} onOpenChange={setShowDisclaimerModal}>
+        <DialogContent onClose={() => setShowDisclaimerModal(false)}>
+          <DialogHeader>
+            <DialogTitle>{t('home.footer.disclaimerLabel')}</DialogTitle>
+          </DialogHeader>
+          <p style={{ marginTop: '1rem', lineHeight: '1.6' }}>
+            <Trans
+              i18nKey="home.footer.disclaimer"
+              components={{
+                1: <a href="http://bdakarnataka.gov.in" target="_blank" rel="noopener noreferrer" style={{ color: '#1A73E8', textDecoration: 'underline', textUnderlineOffset: '0.25em' }} />
+              }}
+            />
+          </p>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

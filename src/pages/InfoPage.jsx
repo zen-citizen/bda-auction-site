@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import { useTranslation } from 'react-i18next'
+import { useTranslation, Trans } from 'react-i18next'
 import { ExternalLink, ChevronUp, ChevronDown } from 'lucide-react'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import PhoneIcon from '../components/icons/PhoneIcon'
 import DocumentsIcon from '../components/icons/DocumentsIcon'
 import WhereToBidIcon from '../components/icons/WhereToBidIcon'
@@ -14,6 +15,7 @@ function InfoPage() {
   const { t } = useTranslation()
   const [activeSection, setActiveSection] = useState('what-is-being-eauctioned')
   const [menuExpanded, setMenuExpanded] = useState(false)
+  const [showDisclaimerModal, setShowDisclaimerModal] = useState(false)
   const isScrollingProgrammatically = useRef(false)
   const scrollTimeoutRef = useRef(null)
   const footerRef = useRef(null)
@@ -488,23 +490,41 @@ function InfoPage() {
             <h3>{t('infoPage.sections.helpSupport.contactInfo.title')}</h3>
             <div className="contact-details">
               <p>
+                <strong>{t('infoPage.sections.helpSupport.contactInfo.bdaWebsite')}</strong>{' '}
+                <a 
+                  href="https://www.bdakarnataka.gov.in/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="link-external"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                >
+                  <ExternalLink size={14} />
+                  https://www.bdakarnataka.gov.in/
+                </a>
+              </p>
+              <p>
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.bdaQueries')}</strong><br />
                 <span className="contact-phone-numbers">
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                     <PhoneIcon size={18} style={{ flexShrink: 0 }} />
-                    <a href="tel:+918023368435">080-23368435</a>
-                  </span>
-                  <span className="contact-phone-separator"> | </span>
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
-                    <a href="tel:+918023368036">080-23368036</a>
+                    <a href="tel:+919843166622">98431 66622</a>
                   </span>
                 </span>
+                {' '}{t('infoPage.sections.helpSupport.contactInfo.or')}{' '}
+                <a 
+                  href="https://x.com/BDAOfficialGok" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="link-external"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                >
+                  <ExternalLink size={14} />
+                  @BDAOfficialGok
+                </a>
               </p>
-              <p>
-                <strong>{t('infoPage.sections.helpSupport.contactInfo.eAuctionProcess')}</strong><br />
-                {t('infoPage.sections.helpSupport.contactInfo.kppp')}{' '}
-                <span className="contact-phone-numbers">
+              <p style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.25rem' }}>
+                <strong style={{ whiteSpace: 'nowrap' }}>{t('infoPage.sections.helpSupport.contactInfo.eAuctionProcess')}</strong>
+                <span className="contact-phone-numbers" style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0.25rem', alignItems: 'center' }}>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                     <PhoneIcon size={18} style={{ flexShrink: 0 }} />
                     <a href="tel:+918046010000">080-46010000</a>
@@ -514,11 +534,7 @@ function InfoPage() {
                     <PhoneIcon size={18} style={{ flexShrink: 0 }} />
                     <a href="tel:+918068948777">080-68948777</a>
                   </span>
-                </span>
-              </p>
-              <p>
-                {t('infoPage.sections.helpSupport.contactInfo.newHelpdesk')}<br />
-                <span className="contact-phone-numbers">
+                  <span className="contact-phone-separator"> | </span>
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                     <PhoneIcon size={18} style={{ flexShrink: 0 }} />
                     <a href="tel:+919240214000">+91 9240214000</a>
@@ -531,17 +547,32 @@ function InfoPage() {
                 </span>
               </p>
               <p>
-                <strong>{t('infoPage.sections.helpSupport.contactInfo.bdaTwitter')}</strong><br />
+                <strong>{t('infoPage.sections.helpSupport.contactInfo.timings')}</strong>{' '}{t('infoPage.sections.helpSupport.contactInfo.timingsValue')}
+              </p>
+              <p>
+                <strong>{t('infoPage.sections.helpSupport.contactInfo.holidays')}</strong><br />
+                {t('infoPage.sections.helpSupport.contactInfo.holidaysText')}{' '}
                 <a 
-                  href="https://x.com/BDAOfficialGok" 
+                  href="https://cleartax.in/s/karnataka-governmnet-holidays-list-2026" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="link-external"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
                 >
                   <ExternalLink size={14} />
-                  @BDAOfficialGok
+                  {t('infoPage.sections.helpSupport.contactInfo.holidaysLink')}
                 </a>
+              </p>
+              <p>
+                <strong>{t('infoPage.sections.helpSupport.contactInfo.cac')}</strong><br />
+                <span className="contact-phone-numbers">
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                    <a href="tel:+919483166622">+91 94831 66622</a>
+                  </span>
+                </span>
+                <br />
+                {t('infoPage.sections.helpSupport.contactInfo.cacPhoneWa')}
               </p>
             </div>
             <div className="warning-text">
@@ -554,13 +585,35 @@ function InfoPage() {
       </div>
       
       <div ref={footerRef} className="home-footer">
-        <p className="footer-disclaimer">{t('infoPage.footer.disclaimer')}</p>
         <div className="built-by">
+          <button 
+            onClick={() => setShowDisclaimerModal(true)}
+            className="footer-disclaimer-link"
+          >
+            {t('infoPage.footer.disclaimerLabel')}
+          </button>
+          <span className="footer-separator">|</span>
           <span>{t('infoPage.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
           <span className="footer-separator">|</span>
           <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('infoPage.footer.shareFeedback')}</a>
         </div>
       </div>
+
+      <Dialog open={showDisclaimerModal} onOpenChange={setShowDisclaimerModal}>
+        <DialogContent onClose={() => setShowDisclaimerModal(false)}>
+          <DialogHeader>
+            <DialogTitle>{t('infoPage.footer.disclaimerLabel')}</DialogTitle>
+          </DialogHeader>
+          <p style={{ marginTop: '1rem', lineHeight: '1.6' }}>
+            <Trans
+              i18nKey="infoPage.footer.disclaimer"
+              components={{
+                1: <a href="http://bdakarnataka.gov.in" target="_blank" rel="noopener noreferrer" style={{ color: '#1A73E8', textDecoration: 'underline', textUnderlineOffset: '0.25em' }} />
+              }}
+            />
+          </p>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

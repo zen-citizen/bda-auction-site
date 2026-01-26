@@ -162,7 +162,9 @@ function MapResizeHandler({ mapExpanded, isResizingRef }) {
 
 // Component for individual site marker
 function SiteMarker({ site, onSiteSelect, filters, selectedSite }) {
-  const normalizedLayout = normalizeLayoutName(site.layout)
+  // Extract first part of layoutDetails before comma and normalize
+  const firstPart = site.layoutDetails?.split(',')[0].trim() || ''
+  const normalizedLayout = normalizeLayoutName(firstPart)
   const markerRef = useRef(null)
   const tooltipRef = useRef(null)
   
@@ -171,7 +173,8 @@ function SiteMarker({ site, onSiteSelect, filters, selectedSite }) {
     if (filters?.search) {
       const searchLower = filters.search.toLowerCase()
       if (!site.siteNo.toLowerCase().includes(searchLower) && 
-          !site.layout.toLowerCase().includes(searchLower)) {
+          !site.layout.toLowerCase().includes(searchLower) &&
+          !(site.layoutDetails && site.layoutDetails.toLowerCase().includes(searchLower))) {
         return false
       }
     }
