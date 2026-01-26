@@ -505,22 +505,26 @@ function InfoPage() {
               <p className="contact-group-bda-queries">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.bdaQueries')}</strong><br />
                 <span className="contact-phone-numbers">
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
-                    <a href="tel:+919843166622">98431 66622</a>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.25rem' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+                      <PhoneIcon size={18} style={{ flexShrink: 0 }} />
+                      <a href="tel:+919843166622">98431 66622</a>
+                    </span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                      {' '}{t('infoPage.sections.helpSupport.contactInfo.or')}{' '}
+                    </span>
+                    <a 
+                      href="https://x.com/BDAOfficialGok" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="link-external"
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+                    >
+                      <ExternalLink size={14} />
+                      @BDAOfficialGok
+                    </a>
                   </span>
                 </span>
-                {' '}{t('infoPage.sections.helpSupport.contactInfo.or')}{' '}
-                <a 
-                  href="https://x.com/BDAOfficialGok" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="link-external"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
-                >
-                  <ExternalLink size={14} />
-                  @BDAOfficialGok
-                </a>
               </p>
               <p className="contact-eauction-process contact-group-eauction">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.eAuctionProcess')}</strong>

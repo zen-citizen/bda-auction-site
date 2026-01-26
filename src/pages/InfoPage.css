@@ -208,7 +208,7 @@
 .timeline-item {
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 2.5rem;
   margin-bottom: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid #eee;
@@ -221,11 +221,12 @@
 }
 
 .timeline-date {
-  width: 140px;
+  width: 180px;
   font-weight: 700;
   color: #4B2840;
   font-size: 1.1rem;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .timeline-content {
@@ -725,6 +726,11 @@
     width: 100%;
   }
   
+  .contact-group-bda-queries .contact-phone-numbers {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
   .contact-details .contact-phone-separator {
     display: none;
   }
@@ -780,6 +786,7 @@
     display: inline-block;
     vertical-align: middle;
     flex-shrink: 0;
+    margin-right: 0.25rem;
   }
   
   .contact-details strong {
