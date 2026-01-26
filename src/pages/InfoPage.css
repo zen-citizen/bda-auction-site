@@ -542,10 +542,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   color: #666;
   font-size: 0.85rem;
   margin: 0;
+}
+
+.footer-line-1,
+.footer-line-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .footer-separator {
@@ -904,5 +913,27 @@
   
   .built-by {
     font-size: 0.8rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .footer-line-1,
+  .footer-line-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+  
+  /* Hide separator between lines on mobile */
+  .footer-line-separator {
+    display: none;
+  }
+  
+  /* Prevent text wrapping within footer links and items */
+  .footer-line-2 > a,
+  .footer-line-2 > span {
+    white-space: nowrap;
   }
 }

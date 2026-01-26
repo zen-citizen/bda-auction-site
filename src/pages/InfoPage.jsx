@@ -590,16 +590,28 @@ function InfoPage() {
       
       <div ref={footerRef} className="home-footer">
         <div className="built-by">
-          <button 
-            onClick={() => setShowDisclaimerModal(true)}
-            className="footer-disclaimer-link"
-          >
-            {t('infoPage.footer.disclaimerLabel')}
-          </button>
-          <span className="footer-separator">|</span>
-          <span>{t('infoPage.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
-          <span className="footer-separator">|</span>
-          <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('infoPage.footer.shareFeedback')}</a>
+          <div className="footer-line-1">
+            <button 
+              onClick={() => setShowDisclaimerModal(true)}
+              className="footer-disclaimer-link"
+            >
+              {t('infoPage.footer.disclaimerLabel')}
+            </button>
+            <span className="footer-separator">|</span>
+            <span>{t('infoPage.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
+            <span className="footer-separator">|</span>
+            <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('infoPage.footer.shareFeedback')}</a>
+          </div>
+          <span className="footer-separator footer-line-separator">|</span>
+          <div className="footer-line-2">
+            <a href="https://www.bdakarnataka.gov.in/" target="_blank" rel="noopener noreferrer">{t('infoPage.footer.bdaWebsite')}</a>
+            <span className="footer-separator">|</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+              <PhoneIcon size={14} style={{ flexShrink: 0 }} />
+              <span>{t('infoPage.footer.cac')}: </span>
+              <a href="tel:+919483166622">+91 94831 66622</a>
+            </span>
+          </div>
         </div>
       </div>
 

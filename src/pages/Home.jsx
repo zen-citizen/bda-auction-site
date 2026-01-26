@@ -6,12 +6,14 @@ import AuctionInfoIcon from '../components/icons/AuctionInfoIcon'
 import MapIcon from '../components/icons/MapIcon'
 import ExternalLinkIcon from '../components/icons/ExternalLinkIcon'
 import SitesIcon from '../components/icons/SitesIcon'
+import PhoneIcon from '../components/icons/PhoneIcon'
 import './Home.css'
 
 function Home() {
   const { t } = useTranslation()
   const [timelineProgress, setTimelineProgress] = useState(0)
   const [eventStates, setEventStates] = useState(['future', 'future', 'future', 'future'])
+  const [firstMarkerOffsetMobile, setFirstMarkerOffsetMobile] = useState(2.5) // Default fallback value
   const [showDisclaimerModal, setShowDisclaimerModal] = useState(false)
   const footerRef = useRef(null)
   const timelineContainerRef = useRef(null)
@@ -261,6 +263,21 @@ function Home() {
         // Within timeline - calculate percentage based on position
         // Same calculation for both desktop and mobile (time-based percentage)
         progress = ((nowTime - timelineStart) / timelineSpan) * 100
+        
+        // When first event is active, ensure progress starts from first marker position
+        // This prevents a highlighted segment from appearing before the first marker
+        if (states[0] === 'active') {
+          // First marker position offsets:
+          // Desktop: ~12.5% (first marker centered in first event container, which is 1/4 of timeline width)
+          // Mobile: dynamically calculated based on actual marker position relative to timeline height
+          const firstMarkerOffset = isDesktop ? 12.5 : firstMarkerOffsetMobile
+          
+          // If calculated progress is less than marker position, set it to marker position
+          // Otherwise, keep the calculated progress
+          if (progress < firstMarkerOffset) {
+            progress = firstMarkerOffset
+          }
+        }
       }
 
       setTimelineProgress(Math.max(0, Math.min(100, progress)))
@@ -273,7 +290,7 @@ function Home() {
     const interval = setInterval(calculateProgress, 60000)
     
     return () => clearInterval(interval)
-  }, [])
+  }, [firstMarkerOffsetMobile])
 
   // Calculate and set footer height for padding
   useEffect(() => {
@@ -328,6 +345,43 @@ function Home() {
     
     return () => {
       window.removeEventListener('resize', updateTimelineLineHeight)
+      clearTimeout(timeoutId)
+    }
+  }, [])
+
+  // Calculate first marker position on mobile as percentage of timeline height
+  useEffect(() => {
+    const calculateFirstMarkerOffset = () => {
+      if (window.innerWidth <= 768 && timelineContainerRef.current && timelineLineRef.current) {
+        const firstEvent = timelineContainerRef.current.querySelector('.timeline-event:first-child')
+        if (firstEvent) {
+          const marker = firstEvent.querySelector('.timeline-marker')
+          if (marker && timelineLineRef.current) {
+            const containerTop = timelineContainerRef.current.getBoundingClientRect().top
+            const markerRect = marker.getBoundingClientRect()
+            const markerCenter = markerRect.top + markerRect.height / 2 - containerTop
+            
+            // Get the timeline line height (either from style or calculated height)
+            const lineHeight = timelineLineRef.current.offsetHeight || 
+                              timelineLineRef.current.getBoundingClientRect().height
+            
+            if (lineHeight > 0) {
+              const offsetPercentage = (markerCenter / lineHeight) * 100
+              setFirstMarkerOffsetMobile(offsetPercentage)
+            }
+          }
+        }
+      }
+    }
+    
+    calculateFirstMarkerOffset()
+    window.addEventListener('resize', calculateFirstMarkerOffset)
+    
+    // Also update after a delay to ensure content is rendered
+    const timeoutId = setTimeout(calculateFirstMarkerOffset, 150)
+    
+    return () => {
+      window.removeEventListener('resize', calculateFirstMarkerOffset)
       clearTimeout(timeoutId)
     }
   }, [])
@@ -446,16 +500,28 @@ function Home() {
 
       <div ref={footerRef} className="home-footer">
         <div className="built-by">
-          <button 
-            onClick={() => setShowDisclaimerModal(true)}
-            className="footer-disclaimer-link"
-          >
-            {t('home.footer.disclaimerLabel')}
-          </button>
-          <span className="footer-separator">|</span>
-          <span>{t('home.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
-          <span className="footer-separator">|</span>
-          <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('home.footer.shareFeedback')}</a>
+          <div className="footer-line-1">
+            <button 
+              onClick={() => setShowDisclaimerModal(true)}
+              className="footer-disclaimer-link"
+            >
+              {t('home.footer.disclaimerLabel')}
+            </button>
+            <span className="footer-separator">|</span>
+            <span>{t('home.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
+            <span className="footer-separator">|</span>
+            <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('home.footer.shareFeedback')}</a>
+          </div>
+          <span className="footer-separator footer-line-separator">|</span>
+          <div className="footer-line-2">
+            <a href="https://www.bdakarnataka.gov.in/" target="_blank" rel="noopener noreferrer">{t('home.footer.bdaWebsite')}</a>
+            <span className="footer-separator">|</span>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+              <PhoneIcon size={14} style={{ flexShrink: 0 }} />
+              <span>{t('home.footer.cac')}: </span>
+              <a href="tel:+919483166622">+91 94831 66622</a>
+            </span>
+          </div>
         </div>
       </div>
 

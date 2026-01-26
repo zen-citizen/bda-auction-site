@@ -49,7 +49,9 @@
       "disclaimer": "This page is an independent, citizen-led volunteer effort by Zen Citizen, created in collaboration with <1>BDA</1>. It does not replace official BDA notifications. Zen Citizen makes no representation or warranty regarding the accuracy or completeness of the information presented.",
       "disclaimerLabel": "Disclaimer",
       "builtBy": "Built by",
-      "shareFeedback": "Share feedback"
+      "shareFeedback": "Share feedback",
+      "bdaWebsite": "BDA Website",
+      "cac": "Citizen Assistance"
     }
   },
   "infoPage": {
@@ -202,7 +204,9 @@
       "disclaimer": "This page is an independent, citizen-led volunteer effort by Zen Citizen, created in collaboration with <1>BDA</1>. It does not replace official BDA notifications. Zen Citizen makes no representation or warranty regarding the accuracy or completeness of the information presented.",
       "disclaimerLabel": "Disclaimer",
       "builtBy": "Built by",
-      "shareFeedback": "Share feedback"
+      "shareFeedback": "Share feedback",
+      "bdaWebsite": "BDA Website",
+      "cac": "Citizen Assistance"
     }
   },
   "mapPage": {

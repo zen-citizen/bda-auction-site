@@ -67,13 +67,13 @@ function LanguageToggle() {
         <button
           onClick={() => changeLanguage(currentLanguage === 'en' ? 'kn' : 'en')}
           style={{
-            padding: currentLanguage === 'en' ? '0.25rem 0.5rem' : '0.25rem 0.625rem',
+            padding: '0.375rem 0.75rem',
             border: '1px solid rgba(75, 40, 64, 0.2)',
             borderRadius: '6px',
             color: '#4B2840',
             backgroundColor: 'white',
             cursor: 'pointer',
-            fontFamily: 'inherit',
+            fontFamily: currentLanguage === 'en' ? "'Public Sans', sans-serif" : "'Public Sans', 'Baloo Tamma 2', sans-serif",
             fontWeight: '600',
             transition: 'all 0.2s',
             whiteSpace: 'nowrap',
@@ -82,14 +82,10 @@ function LanguageToggle() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            minWidth: '44px'
+            fontSize: '0.875rem'
           }}
         >
-          {currentLanguage === 'en' ? (
-            <span style={{ fontSize: '0.75rem', display: 'inline-block' }}>EN</span>
-          ) : (
-            <span style={{ fontSize: '1rem', display: 'inline-block', marginTop: '2px' }}>ಕ</span>
-          )}
+          {currentLanguage === 'en' ? 'English' : 'ಕನ್ನಡ'}
         </button>
       </div>
     </div>
