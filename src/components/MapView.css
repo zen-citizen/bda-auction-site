@@ -151,7 +151,6 @@ body:has(.modal-overlay) .leaflet-tooltip {
   }
   
   .map-container .leaflet-control-attribution {
-    left: 0 !important;
     margin-left: 12px !important;
     padding: 2px 6px 2px 10px !important;
     max-width: calc(100% - 24px) !important;
@@ -163,8 +162,6 @@ body:has(.modal-overlay) .leaflet-tooltip {
     opacity: 1 !important;
     z-index: 10000 !important; /* Very high z-index to ensure it's on top */
     pointer-events: auto !important;
-    position: absolute !important;
-    bottom: 8px !important; /* Position at bottom with small margin for visibility */
     transform: none !important;
     background: rgba(255, 255, 255, 0.95) !important; /* Slightly more opaque for better visibility */
     border-radius: 4px !important;
