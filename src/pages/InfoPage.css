@@ -415,8 +415,8 @@
   margin-bottom: 1.75rem;
 }
 
-.contact-group-timings {
-  margin-bottom: 1rem;
+.contact-details p.contact-group-timings {
+  margin-bottom: 0.1rem !important;
 }
 
 .contact-group-holidays {
@@ -757,8 +757,8 @@
     margin-bottom: 1.25rem !important;
   }
   
-  .contact-group-timings {
-    margin-bottom: 0.75rem;
+  .contact-details p.contact-group-timings {
+    margin-bottom: 0.15rem !important;
   }
   
   .contact-group-holidays {
