@@ -387,15 +387,62 @@
   padding: 1rem;
   border-radius: 4px;
   margin-top: 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .contact-details p {
   max-width: 70ch;
   margin-bottom: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .contact-details p:last-child {
   margin-bottom: 0;
+}
+
+/* Contact group spacing - distinct groups get more space */
+.contact-group-bda-website {
+  margin-bottom: 1.75rem;
+}
+
+.contact-group-bda-queries {
+  margin-bottom: 1.75rem;
+}
+
+.contact-group-eauction {
+  margin-bottom: 1.75rem;
+}
+
+.contact-group-timings {
+  margin-bottom: 1rem;
+}
+
+.contact-group-holidays {
+  margin-bottom: 1.75rem;
+}
+
+.contact-group-cac {
+  margin-bottom: 1.75rem;
+}
+
+.contact-eauction-process {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.contact-eauction-process strong {
+  white-space: nowrap;
+}
+
+.contact-phone-numbers {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
 }
 
 .cta-footer {
@@ -597,6 +644,11 @@
   
   .info-section {
     padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
   
   .info-section h2 {
@@ -624,23 +676,123 @@
     flex-shrink: 0;
   }
   
+  .help-item {
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    padding: 1rem;
+  }
+  
+  .help-item p,
+  .help-item ul {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
   #help-support .help-item .contact-details .link-external {
-    align-items: center !important;
+    display: inline !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+    white-space: normal !important;
   }
   
   #help-support .help-item .contact-details .link-external svg {
-    margin-top: 0;
+    display: inline-block !important;
+    vertical-align: middle;
     flex-shrink: 0;
+    margin-top: 0;
+  }
+  
+  .contact-eauction-process {
+    display: block;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .contact-eauction-process strong {
+    white-space: normal;
+    display: block;
+    margin-bottom: 0.5rem;
   }
   
   .contact-details .contact-phone-numbers {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    align-items: flex-start;
+    width: 100%;
   }
   
   .contact-details .contact-phone-separator {
     display: none;
+  }
+  
+  .contact-details {
+    padding: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+  
+  .contact-details p {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Contact group spacing on mobile - slightly less than desktop */
+  .contact-group-bda-website {
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .contact-group-bda-queries {
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .contact-group-eauction {
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .contact-group-timings {
+    margin-bottom: 0.75rem;
+  }
+  
+  .contact-group-holidays {
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .contact-group-cac {
+    margin-bottom: 0 !important;
+  }
+  
+  .contact-details .link-external {
+    display: inline;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+  
+  .contact-details .link-external svg {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  
+  .contact-details strong {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .contact-cac .contact-phone-numbers + br {
+    display: none;
+  }
+  
+  .contact-cac .contact-phone-numbers {
+    margin-bottom: 0.25rem;
   }
   
   .info-section li {
@@ -708,6 +860,16 @@
   
   .info-container {
     padding: 0 1rem var(--footer-height, 160px) 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+  
+  .info-content {
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
   }
   
   .home-footer {

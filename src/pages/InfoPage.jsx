@@ -489,7 +489,7 @@ function InfoPage() {
           <div className="help-item">
             <h3>{t('infoPage.sections.helpSupport.contactInfo.title')}</h3>
             <div className="contact-details">
-              <p>
+              <p className="contact-group-bda-website">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.bdaWebsite')}</strong>{' '}
                 <a 
                   href="https://www.bdakarnataka.gov.in/" 
@@ -502,7 +502,7 @@ function InfoPage() {
                   https://www.bdakarnataka.gov.in/
                 </a>
               </p>
-              <p>
+              <p className="contact-group-bda-queries">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.bdaQueries')}</strong><br />
                 <span className="contact-phone-numbers">
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
@@ -522,9 +522,9 @@ function InfoPage() {
                   @BDAOfficialGok
                 </a>
               </p>
-              <p style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '0.25rem' }}>
-                <strong style={{ whiteSpace: 'nowrap' }}>{t('infoPage.sections.helpSupport.contactInfo.eAuctionProcess')}</strong>
-                <span className="contact-phone-numbers" style={{ display: 'inline-flex', flexWrap: 'wrap', gap: '0.25rem', alignItems: 'center' }}>
+              <p className="contact-eauction-process contact-group-eauction">
+                <strong>{t('infoPage.sections.helpSupport.contactInfo.eAuctionProcess')}</strong>
+                <span className="contact-phone-numbers">
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                     <PhoneIcon size={18} style={{ flexShrink: 0 }} />
                     <a href="tel:+918046010000">080-46010000</a>
@@ -546,10 +546,10 @@ function InfoPage() {
                   </span>
                 </span>
               </p>
-              <p>
+              <p className="contact-group-timings">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.timings')}</strong>{' '}{t('infoPage.sections.helpSupport.contactInfo.timingsValue')}
               </p>
-              <p>
+              <p className="contact-group-holidays">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.holidays')}</strong><br />
                 {t('infoPage.sections.helpSupport.contactInfo.holidaysText')}{' '}
                 <a 
@@ -563,7 +563,7 @@ function InfoPage() {
                   {t('infoPage.sections.helpSupport.contactInfo.holidaysLink')}
                 </a>
               </p>
-              <p>
+              <p className="contact-cac contact-group-cac">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.cac')}</strong><br />
                 <span className="contact-phone-numbers">
                   <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
