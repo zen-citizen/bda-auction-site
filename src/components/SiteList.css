@@ -6,6 +6,7 @@
   flex-direction: column;
   height: 100%;
   max-height: none;
+  min-height: 0;
 }
 
 .site-list-header {
@@ -34,7 +35,8 @@
 .site-list-content {
   overflow-y: auto;
   flex: 1;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.75rem 0.5rem;
+  min-height: 0;
 }
 
 .no-sites {
@@ -52,6 +54,10 @@
   transition: all 0.2s;
   background: white;
   position: relative;
+}
+
+.site-list-content > .site-item:last-child {
+  margin-bottom: 0;
 }
 
 .site-item:hover {
@@ -204,6 +210,13 @@
     -webkit-overflow-scrolling: touch;
     flex: 1;
     min-height: 0;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
+  
+  /* Remove all bottom spacing when in collapsed mobile state */
+  .map-page-content.map-collapsed .map-page-sidebar-mobile.collapsed .site-list-content {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
   }
   
   .site-item {

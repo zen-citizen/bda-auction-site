@@ -183,7 +183,7 @@ function Home() {
       const event1End = parseDate('28 January 2026')
       event1End.setTime(event1End.getTime() - 1) // 1ms before midnight = 23:59:59.999
       
-      const event2Start = parseDate('13 Feb 2026, 17:00 PM')
+      const event2Start = parseDate('13 February 2026, 17:00 PM')
       const event2End = event2Start // Single point in time
       
       const events = [
@@ -198,13 +198,13 @@ function Home() {
           isRange: false
         },
         {
-          start: parseDate('16 Feb 2026, 11:00 AM'),
-          end: parseDate('17 Feb 2026, 17:00 PM'),
+          start: parseDate('16 February 2026, 11:00 AM'),
+          end: parseDate('17 February 2026, 17:00 PM'),
           isRange: true
         },
         {
-          start: parseDate('17 Feb 2026, 11:00 AM'),
-          end: parseDate('18 Feb 2026, 17:00 PM'),
+          start: parseDate('17 February 2026, 11:00 AM'),
+          end: parseDate('18 February 2026, 17:00 PM'),
           isRange: true
         }
       ]
@@ -438,7 +438,7 @@ function Home() {
               <div className={getMarkerClass(eventStates[1])}></div>
               <div className="timeline-card">
                 <h3 className="timeline-title">{t('home.timeline.lastDayInterest')}</h3>
-                <div className="timeline-date">13 Feb 2026, 17:00 PM</div>
+                <div className="timeline-date">13 February 2026, 17:00 PM</div>
               </div>
             </div>
             
@@ -447,9 +447,9 @@ function Home() {
               <div className="timeline-card">
                 <h3 className="timeline-title">{t('home.timeline.round1')}</h3>
                 <div className="timeline-date-multi">
-                  <div className="timeline-date-start">16 Feb 2026, 11:00 AM</div>
+                  <div className="timeline-date-start">16 February 2026, 11:00 AM</div>
                   <div className="timeline-date-separator">to</div>
-                  <div className="timeline-date-end">17 Feb 2026, 17:00 PM</div>
+                  <div className="timeline-date-end">17 February 2026, 17:00 PM</div>
                 </div>
               </div>
             </div>
@@ -459,9 +459,9 @@ function Home() {
               <div className="timeline-card">
                 <h3 className="timeline-title">{t('home.timeline.round2')}</h3>
                 <div className="timeline-date-multi">
-                  <div className="timeline-date-start">17 Feb 2026, 11:00 AM</div>
+                  <div className="timeline-date-start">17 February 2026, 11:00 AM</div>
                   <div className="timeline-date-separator">to</div>
-                  <div className="timeline-date-end">18 Feb 2026, 17:00 PM</div>
+                  <div className="timeline-date-end">18 February 2026, 17:00 PM</div>
                 </div>
               </div>
             </div>
