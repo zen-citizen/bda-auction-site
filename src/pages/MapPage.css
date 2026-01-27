@@ -308,7 +308,7 @@
   
   .map-page-content {
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(300px, auto) 40px 1fr;
+    grid-template-rows: minmax(200px, auto) 40px 1fr;
     transition: grid-template-rows 0.3s ease-in-out;
     min-height: 0;
     overflow: hidden;
@@ -377,8 +377,8 @@
     flex-direction: column;
     grid-row: 1;
     border-right: none;
-    max-height: 50vh;
-    min-height: 300px;
+    max-height: 40vh;
+    min-height: 200px;
     overflow: hidden;
     transition: max-height 0.3s ease-in-out, min-height 0.3s ease-in-out;
     background: #f8f9fa;
