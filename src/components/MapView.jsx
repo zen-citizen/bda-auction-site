@@ -285,6 +285,20 @@ function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'st
   // State for KML boundaries (site boundaries)
   const [boundaries, setBoundaries] = useState(null)
   const [boundariesError, setBoundariesError] = useState(null)
+  
+  // State to track if we're on mobile
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile screen size for responsive attribution
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Load and parse KML boundaries on component mount
   // Note: kml.kmz file should be placed in the public/ folder for Vite to serve it
@@ -318,9 +332,14 @@ function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'st
 
   const tileConfig = useMemo(() => {
     if (mapViewMode === 'satellite') {
+      // Use shorter attribution text on mobile
+      const attribution = isMobile 
+        ? 'Tiles &copy; Esri'
+        : 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+      
       return {
         url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community',
+        attribution,
         maxZoom: 19,
         tileSize: 256,
         zoomOffset: 0,
@@ -333,7 +352,7 @@ function MapView({ sites, selectedSite, onSiteSelect, filters, mapViewMode = 'st
       tileSize: 256,
       zoomOffset: 0,
     }
-  }, [mapViewMode])
+  }, [mapViewMode, isMobile])
 
   // Style function for site boundaries (from KML) - WHITE stroke
   const siteBoundaryStyle = (feature) => {
