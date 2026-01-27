@@ -1,6 +1,6 @@
 # BDA e-Auction Site Interface
 
-A simple, clean web interface for citizens to view and explore BDA (Bangalore Development Authority) auction sites for residential and commercial properties.
+A simple, clean web interface for citizens to view and explore BDA [https://www.bdakarnataka.gov.in/] (Bangalore Development Authority) auction sites for residential properties.
 
 ## Features
 
