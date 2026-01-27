@@ -1,11 +1,12 @@
-function PhoneIcon({ size = 16, style = {} }) {
+function PhoneIcon({ size = 16, style = {}, className = '' }) {
   return (
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
       width={size} 
       height={size} 
       viewBox="0 0 24 24"
-      style={{ display: 'inline-block', verticalAlign: 'middle', lineHeight: 1, ...style }}
+      className={className}
+      style={{ display: 'inline-block', verticalAlign: 'middle', lineHeight: 1, color: '#4B2840', ...style }}
     >
       <path 
         fill="currentColor" 
