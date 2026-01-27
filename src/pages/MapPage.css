@@ -377,7 +377,6 @@
     flex-direction: column;
     grid-row: 1;
     border-right: none;
-    border-bottom: 1px solid #e0e0e0;
     max-height: 50vh;
     min-height: 300px;
     overflow: hidden;
