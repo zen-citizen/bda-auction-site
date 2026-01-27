@@ -5,10 +5,9 @@ A simple, clean web interface for citizens to view and explore [BDA](https://www
 ## Features
 
 - **Interactive Map View**: Explore all 83 auction sites on an interactive map powered by OpenStreetMap
-- **Site Filtering & Search**: Filter sites by layout, bidding session, or search by site number/location
-- **Detailed Site Information**: View comprehensive details for each site including dimensions, area, and coordinates
+- **Site Filtering & Search**: Filter sites by layout, bidding round and size or search by site number/layout
+- **Detailed Site Information**: View comprehensive details for each site including dimensions, area, coordinates and site boundaries
 - **Auction Information**: Complete information about eligibility, documents required, financials, and terms & conditions
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 
 ## Project Structure
 
@@ -62,7 +61,7 @@ A simple, clean web interface for citizens to view and explore [BDA](https://www
 
 ### Development
 - Run `npm run dev` to start the Vite development server
-- The app will be available at `http://localhost:5173` (or the port shown in terminal)
+- The app will be available at `http://localhost:5500` (or the port shown in terminal)
 
 ### Production
 - Run `npm run build` to create an optimized production build
