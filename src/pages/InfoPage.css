@@ -738,6 +738,7 @@
   .contact-group-bda-queries .contact-phone-numbers {
     flex-direction: row;
     flex-wrap: wrap;
+    margin-top: 0.5rem;
   }
   
   .contact-details .contact-phone-separator {
@@ -757,6 +758,7 @@
     overflow-wrap: break-word;
     word-break: break-word;
     margin-bottom: 0.5rem;
+    line-height: 1.5;
   }
   
   /* Contact group spacing on mobile - slightly less than desktop */
@@ -809,6 +811,7 @@
   
   .contact-cac .contact-phone-numbers {
     margin-bottom: 0.25rem;
+    margin-top: 0.5rem;
   }
   
   .info-section li {
