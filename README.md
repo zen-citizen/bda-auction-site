@@ -11,26 +11,87 @@ A simple, clean web interface for citizens to view and explore [BDA](https://www
 
 ## Project Structure
 
+
 ```
 /
 ├── src/
 │   ├── components/          # Reusable React components
+│   │   ├── icons/           # Icon components
+│   │   │   ├── AreaIcon.jsx
+│   │   │   ├── AuctionInfoIcon.jsx
+│   │   │   ├── CalendarIcon.jsx
+│   │   │   ├── DocumentsIcon.jsx
+│   │   │   ├── EWIcon.jsx
+│   │   │   ├── ExternalLinkIcon.jsx
+│   │   │   ├── HelpSupportIcon.jsx
+│   │   │   ├── ImportantIcon.jsx
+│   │   │   ├── MapIcon.jsx
+│   │   │   ├── MoneyIcon.jsx
+│   │   │   ├── NSIcon.jsx
+│   │   │   ├── PaymentDetailsIcon.jsx
+│   │   │   ├── PhoneIcon.jsx
+│   │   │   ├── SearchIcon.jsx
+│   │   │   ├── SelectMarkerIcon.jsx
+│   │   │   ├── SitesIcon.jsx
+│   │   │   └── WhereToBidIcon.jsx
+│   │   ├── ui/              # UI component library
+│   │   │   ├── alert.jsx
+│   │   │   ├── button.jsx
+│   │   │   ├── card.jsx
+│   │   │   ├── dialog.jsx
+│   │   │   ├── input.jsx
+│   │   │   ├── label.jsx
+│   │   │   └── select.jsx
 │   │   ├── MapView.jsx      # Interactive map component
+│   │   ├── MapView.css
 │   │   ├── SiteFilters.jsx  # Filter and search controls
+│   │   ├── SiteFilters.css
 │   │   ├── SiteList.jsx     # List of sites sidebar
-│   │   └── SiteDetailsModal.jsx  # Site details popup
+│   │   ├── SiteList.css
+│   │   ├── SiteDetailsModal.jsx  # Site details popup
+│   │   ├── SiteDetailsModal.css
+│   │   ├── SiteItemTooltip.jsx    # Site tooltip component
+│   │   ├── LanguageToggle.jsx     # Language switcher
+│   │   └── zc-logo.svg      # Logo asset
 │   ├── pages/               # Page components
 │   │   ├── Home.jsx         # Landing page
+│   │   ├── Home.css
 │   │   ├── MapPage.jsx      # Map view page
-│   │   └── InfoPage.jsx     # Auction information page
+│   │   ├── MapPage.css
+│   │   ├── InfoPage.jsx     # Auction information page
+│   │   └── InfoPage.css
 │   ├── data/
 │   │   └── sites.json       # Processed site data (generated)
-│   └── App.jsx              # Main app component with routing
+│   ├── i18n/                # Internationalization
+│   │   ├── config.js        # i18n configuration
+│   │   └── locales/         # Translation files
+│   │       ├── en/
+│   │       │   └── translation.json
+│   │       └── kn/
+│   │           └── translation.json
+│   ├── lib/                 # Utility libraries
+│   │   ├── kmlParser.js     # KML file parser
+│   │   ├── shapefileParser.js  # Shapefile parser
+│   │   └── utils.js         # General utilities
+│   ├── App.jsx              # Main app component with routing
+│   ├── App.css
+│   ├── main.jsx             # Application entry point
+│   └── index.css            # Global styles
+├── public/                  # Static assets
+│   ├── favicon.svg
+│   └── kml.kmz              # KML map data
 ├── scripts/
 │   └── processData.js       # CSV to JSON converter
 ├── sites.csv                # Source site data
-├── reference.txt            # Auction information source
-└── PLAN.md                  # Implementation plan
+├── index.html               # HTML entry point
+├── package.json             # Dependencies and scripts
+├── vite.config.js           # Vite configuration
+├── tailwind.config.js       # Tailwind CSS configuration
+├── postcss.config.cjs       # PostCSS configuration
+├── components.json          # shadcn/ui components config
+├── .eslintrc.cjs            # ESLint configuration
+├── TRANSLATION_WORKFLOW.md  # Translation workflow documentation
+└── README.md                # This file
 
 ```
 
