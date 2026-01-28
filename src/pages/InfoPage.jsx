@@ -467,6 +467,8 @@ function InfoPage() {
                     </a>
                   </span>
                 </span>
+                <br />
+                {t('infoPage.sections.helpSupport.contactInfo.bdaQueriesPhoneWa')}
               </p>
               <p className="contact-eauction-process contact-group-eauction">
                 <strong>{t('infoPage.sections.helpSupport.contactInfo.eAuctionProcess')}</strong>
@@ -508,17 +510,6 @@ function InfoPage() {
                   <ExternalLink size={14} />
                   {t('infoPage.sections.helpSupport.contactInfo.holidaysLink')}
                 </a>
-              </p>
-              <p className="contact-cac contact-group-cac">
-                <strong>{t('infoPage.sections.helpSupport.contactInfo.cac')}</strong><br />
-                <span className="contact-phone-numbers">
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
-                    <PhoneIcon size={18} style={{ flexShrink: 0 }} />
-                    <a href="tel:+919483166622">+91 94831 66622</a>
-                  </span>
-                </span>
-                <br />
-                {t('infoPage.sections.helpSupport.contactInfo.cacPhoneWa')}
               </p>
             </div>
             <div className="warning-text">

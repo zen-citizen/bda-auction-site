@@ -12,7 +12,7 @@ function Navigation() {
   const { t } = useTranslation()
   
   return (
-    <nav className="border-b border-[#4B2840]" style={{ background: 'linear-gradient(to bottom, #ffffff 0%, rgba(75, 40, 64, 0.05) 100%)' }}>
+    <nav className="border-b border-[#4B2840]">
       <div className="container mx-auto px-3 sm:px-4 py-2.5 sm:py-4 nav-container">
         {/* Brand */}
         <Link to="/" className="nav-brand text-base sm:text-xl font-semibold text-[#333] hover:opacity-90 whitespace-nowrap flex-shrink-0">

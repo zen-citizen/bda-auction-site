@@ -86,6 +86,15 @@
     position: relative;
   }
   
+  /* Navigation - sticky on all pages */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
   /* Navigation container - flex on desktop, grid on mobile */
   .nav-container {
     display: flex;
@@ -133,7 +142,8 @@
     
     nav {
       overflow-x: hidden;
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 1000;
       border-bottom: 1px solid #4B2840 !important;
     }

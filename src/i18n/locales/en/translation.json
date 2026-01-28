@@ -51,7 +51,7 @@
       "builtBy": "Built by",
       "shareFeedback": "Share Feedback",
       "bdaWebsite": "BDA Website",
-      "cac": "Citizen Assistance"
+      "cac": "BDA Helpline"
     }
   },
   "infoPage": {
@@ -72,14 +72,13 @@
         "title": "What is being eAuctioned",
         "description": "Residential Sites at multiple BDA layouts across Bengaluru",
         "note": "Note:",
-        "noteText": "eAuction on \"AS IS WHERE IS\" basis. Physical inspection of sites is strongly advised before bidding."
+        "noteText": "eAuction on \"AS IS WHERE IS\" basis. Bidders must physically visit the spot before bidding."
       },
       "whoCanParticipate": {
         "title": "Who can participate?",
         "items": [
-          "Indian citizens (individuals)",
+          "Indian citizens above 18 years of age",
           "Registered partnership firms in India",
-          "Minors or persons without computer knowledge through guardians or representatives",
           "Joint registration permitted only for blood relations (spouse, sons, unmarried daughters) Proof of relationship required"
         ]
       },
@@ -132,8 +131,8 @@
         "paymentAfterWinning": {
           "title": "Payment after Winning",
           "items": [
-            "25% of total cost (after adjusting EMD) within stipulated time of 3 days",
-            "Balance 75% within 45 days from allotment letter"
+            "25% of total cost (after adjusting EMD) within stipulated time of 72 hours of BDA sending advice letter — Failure will result in forfeiture of EMD",
+            "Balance 75% within 45 days from allotment letter - Failure will result in forfeiture of 25% paid"
           ],
           "paymentDetails": {
             "title": "Payment Details",
@@ -157,7 +156,8 @@
           "Minimum two bidders required per site",
           "BDA reserves right to accept or reject any bid",
           "Sites once allotted will not be cancelled or substituted",
-          "All disputes subject to Bengaluru jurisdiction only"
+          "All disputes subject to Bengaluru jurisdiction only",
+          "Bidders must physically visit the spot before bidding."
         ]
       },
       "helpSupport": {
@@ -182,6 +182,7 @@
           "title": "Contact Information",
           "bdaWebsite": "BDA website:",
           "bdaQueries": "For BDA Site-related queries, contact the helpline",
+          "bdaQueriesPhoneWa": "Phone & WhatsApp | Available 24/7, 365 days a year",
           "or": "or",
           "eAuctionProcess": "For information on the eAuction process, contact Karnataka Public Procurement Portal",
           "kppp": "Karnataka Public Procurement Portal:",
@@ -206,7 +207,7 @@
       "builtBy": "Built by",
       "shareFeedback": "Share Feedback",
       "bdaWebsite": "BDA Website",
-      "cac": "Citizen Assistance"
+      "cac": "BDA Helpline"
     }
   },
   "mapPage": {
