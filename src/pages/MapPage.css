@@ -219,12 +219,20 @@
   .map-page {
     /* Position absolutely to extend from header to bottom of viewport */
     position: absolute;
-    top: 116px; /* Start after header: navigation + language toggle container */
+    top: 53px; /* Nav height: py-2.5 (10px) + content (~32px) + py-2.5 (10px) + border (1px) = ~53px */
     left: 0;
     right: 0;
-    bottom: 0; /* Extend to bottom of viewport */
-    height: auto; /* Let top and bottom determine height */
+    bottom: 0;
+    height: auto;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  
+  .map-page-filters {
+    margin-top: 0;
+    padding-top: 0;
   }
   
   .map-page-header {

@@ -86,19 +86,60 @@
     position: relative;
   }
   
-  /* Prevent nav bar overflow on mobile */
+  /* Navigation container - flex on desktop, grid on mobile */
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2;
+    overflow-x: hidden;
+  }
+  
+  .nav-brand {
+    flex-shrink: 0;
+  }
+  
+  .nav-items {
+    flex: 1;
+    justify-content: flex-end;
+  }
+  
+  .nav-language {
+    flex-shrink: 0;
+  }
+  
+  /* Mobile navigation layout */
   @media (max-width: 640px) {
+    .nav-container {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      column-gap: 1.5rem;
+    }
+    
+    .nav-brand {
+      justify-self: start;
+    }
+    
+    .nav-items {
+      justify-self: end;
+      flex: none;
+      margin-right: -1rem;
+    }
+    
+    .nav-language {
+      justify-self: end;
+    }
+    
     nav {
       overflow-x: hidden;
+      position: relative;
+      z-index: 1000;
+      border-bottom: 1px solid #4B2840 !important;
     }
     
     nav .container {
       overflow-x: hidden;
-    }
-    
-    nav .container > div:last-child {
-      overflow-x: hidden;
-      max-width: 100%;
     }
     
     /* Ensure nav items don't overflow */

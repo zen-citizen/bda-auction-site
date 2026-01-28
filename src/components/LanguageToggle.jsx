@@ -62,7 +62,7 @@ function LanguageToggle() {
         </button>
       </div>
       
-      {/* Mobile: Single toggle button */}
+      {/* Mobile: Single toggle button with shortened labels */}
       <div className="sm:hidden">
         <button
           onClick={() => changeLanguage(currentLanguage === 'en' ? 'kn' : 'en')}
@@ -82,10 +82,11 @@ function LanguageToggle() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '0.875rem'
+            fontSize: '0.875rem',
+            minWidth: '40px'
           }}
         >
-          {currentLanguage === 'en' ? 'English' : 'ಕನ್ನಡ'}
+          {currentLanguage === 'en' ? 'En' : 'ಕ'}
         </button>
       </div>
     </div>
