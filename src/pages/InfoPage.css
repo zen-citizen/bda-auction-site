@@ -820,6 +820,14 @@
     font-size: 0.9rem;
   }
   
+  #appendix > div:last-child {
+    height: 500px !important;
+  }
+  
+  #appendix iframe {
+    min-height: 500px;
+  }
+  
   .warning-text {
     font-size: 0.9rem;
   }

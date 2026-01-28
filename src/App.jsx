@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import Home from './pages/Home'
 import MapPage from './pages/MapPage'
 import InfoPage from './pages/InfoPage'
+import TermsAndConditionsPage from './pages/TermsAndConditionsPage'
 import LanguageToggle from './components/LanguageToggle'
 import { Button } from "@/components/ui/button"
 
@@ -69,6 +70,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/map" element={<MapPage />} />
           <Route path="/info" element={<InfoPage />} />
+          <Route path="/t&c" element={<TermsAndConditionsPage />} />
         </Routes>
       </main>
     </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation, Trans } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { ExternalLink, ChevronUp, ChevronDown } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import PhoneIcon from '../components/icons/PhoneIcon'
@@ -27,7 +28,9 @@ function InfoPage() {
       'where-to-bid',
       'financials',
       'important-cautions',
-      'help-support'
+      'help-support',
+      'terms-and-conditions',
+      'appendix'
     ]
 
     const observerOptions = {
@@ -229,6 +232,20 @@ function InfoPage() {
                 className={activeSection === 'help-support' ? 'active' : ''}
               >
                 {t('infoPage.menu.helpSupport')}
+              </a>
+              <a 
+                href="#terms-and-conditions"
+                onClick={(e) => handleMenuClick(e, 'terms-and-conditions')}
+                className={activeSection === 'terms-and-conditions' ? 'active' : ''}
+              >
+                {t('infoPage.menu.termsAndConditions')}
+              </a>
+              <a 
+                href="#appendix"
+                onClick={(e) => handleMenuClick(e, 'appendix')}
+                className={activeSection === 'appendix' ? 'active' : ''}
+              >
+                {t('infoPage.menu.appendix')}
               </a>
             </nav>
           </aside>
@@ -515,6 +532,37 @@ function InfoPage() {
             <div className="warning-text">
               <strong>{t('infoPage.sections.helpSupport.contactInfo.important')}</strong> {t('infoPage.sections.helpSupport.contactInfo.importantText')}
             </div>
+          </div>
+        </section>
+
+        <section id="terms-and-conditions" className="info-section">
+          <h2>{t('infoPage.sections.termsAndConditions.title')}</h2>
+          <p>
+            {t('infoPage.sections.termsAndConditions.description')}{' '}
+            <Link to="/t&c" className="link-external" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontWeight: '600' }}>
+              {t('infoPage.sections.termsAndConditions.linkText')}
+            </Link>
+          </p>
+        </section>
+
+        <section id="appendix" className="info-section">
+          <h2>{t('infoPage.sections.appendix.title')}</h2>
+          <p>{t('infoPage.sections.appendix.description')}</p>
+          <div style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
+            <a 
+              href="/specimen.pdf" 
+              download 
+              style={{ color: '#1A73E8', textDecoration: 'underline', textUnderlineOffset: '0.25em', fontWeight: '600' }}
+            >
+              {t('infoPage.sections.appendix.downloadText')}
+            </a>
+          </div>
+          <div style={{ marginTop: '1rem', width: '100%', height: '600px', border: '1px solid #e0e0e0', borderRadius: '4px', overflow: 'hidden' }}>
+            <iframe 
+              src="/specimen.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              title={t('infoPage.sections.appendix.title')}
+            />
           </div>
         </section>
           </div>

@@ -65,7 +65,9 @@
       "importantDates": "Important Dates",
       "financials": "Financials",
       "importantCautions": "Important Cautions",
-      "helpSupport": "Help & Support"
+      "helpSupport": "Help & Support",
+      "termsAndConditions": "Terms & Conditions",
+      "appendix": "Appendix"
     },
     "sections": {
       "whatIsBeingAuctioned": {
@@ -79,7 +81,8 @@
         "items": [
           "Indian citizens above 18 years of age",
           "Registered partnership firms in India",
-          "Joint registration permitted only for blood relations (spouse, sons, unmarried daughters) Proof of relationship required"
+          "Joint registration permitted only for blood relations (spouse, sons, unmarried daughters) Proof of relationship required",
+          "Individuals without computer knowledge may have a guardian or representative participate on their behalf"
         ]
       },
       "documentsRequired": {
@@ -199,6 +202,16 @@
           "important": "Important:",
           "importantText": "Bidders are requested to contact BDA directly for any questions and avoid middlemen."
         }
+      },
+      "termsAndConditions": {
+        "title": "Terms & Conditions",
+        "description": "Please refer to the detailed Terms & Conditions governing the eAuction process.",
+        "linkText": "View Full Terms & Conditions"
+      },
+      "appendix": {
+        "title": "Appendix",
+        "description": "Photo & Signature Identification Form for Auction Purchaser",
+        "downloadText": "Download Specimen"
       }
     },
     "footer": {
@@ -278,6 +291,115 @@
     },
     "coordinator": {
       "title": "Site Information Coordinator"
+    }
+  },
+  "termsAndConditionsPage": {
+    "title": "Terms & Conditions",
+    "menu": {
+      "contents": "Contents",
+      "termsAndConditions": "Terms & Conditions",
+      "eligibility": "Eligibility",
+      "bidderIdentityOwnership": "Bidder Identity & Ownership",
+      "riskAcceptance": "Risk acceptance at bidding",
+      "bidValidity": "Bid Validity",
+      "bdaDiscretion": "BDA discretion",
+      "emdHandling": "EMD handling",
+      "paymentObligations": "Payment obligations & Forfeiture",
+      "dimensionDifferences": "Handling of dimension differences",
+      "statutoryDisclosures": "Statutory Disclosures"
+    },
+    "sections": {
+      "termsAndConditions": {
+        "title": "Terms & Conditions",
+        "description": "Bidders participating in E-Auction are deemed to have accepted all the terms and conditions specified in The Bangalore Development Authority (Disposal of Corner Sites and Commercial Sites) Rules, 1984"
+      },
+      "biddingStage": {
+        "title": "Bidding Stage",
+        "eligibility": {
+          "title": "Eligibility",
+          "items": [
+            "The auction bidder should be a citizen of India and above 18 years of age.",
+            "Persons without computer knowledge are eligible to participate in the auction through their guardians or friends. While doing so, the name and related documents of only the person purchasing the property must be submitted and uploaded on the e-Auction portal.",
+            "Partnership firms may participate in the auction. However, the partnership firm should have been registered in India before participating in the auction."
+          ]
+        },
+        "bidderIdentityOwnership": {
+          "title": "Bidder Identity & Ownership",
+          "items": [
+            "The auction purchaser shall mention the correct e-Mail address, mobile number and landline number while participating in the e-Auction.",
+            "The bidder whose name is registered in the e-procurement is final and the site will not be transferred to any other name.",
+            "The auction purchasers who desire to have the sites jointly registered should upload the details of the persons concerned on the e-Portal. Only blood relations, viz., spouse, sons or unmarried daughters are eligible for joint registration along with the auction purchaser. The relationship of such a person should be clearly mentioned and any Government ID proof must be attached along with the application. Later such requests shall be rejected."
+          ]
+        },
+        "riskAcceptance": {
+          "title": "Risk acceptance at bidding",
+          "items": [
+            "The auctioned Sites will be allotted to the successful bidders in the same condition as they are.",
+            "Bidders participating in the e-auction must physically check the location of the site, road width etc., before bidding.",
+            "Sites allotted in the e-auction will not be cancelled/substituted.",
+            "Geo tags of the sites are for reference only. No Claim is entertained if there are any discrepancies in it."
+          ]
+        },
+        "bidValidity": {
+          "title": "Bid Validity",
+          "items": [
+            "Bid must exceed base price by at least 10%.",
+            "Bid increment: Minimum Rs. 500 per sq. mtr.",
+            "Five minutes of delta time shall be extended to the last moment bids in the e-Auction.",
+            "During bidding, if there are any duplications of nick names for the same site, such bid will be rejected without assigning any reasons.",
+            "There should be a minimum of 2 bidders for each site. Single bidder will be rejected."
+          ]
+        },
+        "bdaDiscretion": {
+          "title": "BDA discretion",
+          "items": [
+            "BDA reserves the right to withdraw the sites notified for auction at any time during the auction period without assigning any reasons.",
+            "BDA reserves the right to accept or reject the bid made by the successful bidder without assigning any reasons."
+          ]
+        }
+      },
+      "allotmentPayment": {
+        "title": "Allotment and Payment (Post-Auction)",
+        "emdHandling": {
+          "title": "EMD handling",
+          "items": [
+            "EMD amount is fixed at Rs.4 lakhs (Rupees Four Lakhs only) per site and this amount along with the e-Auction fee should be remitted as mentioned on the e-Procurement portal.",
+            "5% Service charge on EMD shall be deducted during refund if remitted to BDA's account instead of e-Auction Portal.",
+            "EMD amount of Rs. 4 Lakhs of unsuccessful bidders will be credited to their Account within 30 working days."
+          ]
+        },
+        "paymentObligations": {
+          "title": "Payment obligations & Forfeiture",
+          "description": "Advice letters will be sent by e-Mail to successful bidders (highest bidders) to remit 25% of the total cost after deducting EMD amount of Rs. 4 lakhs to BDA's bank account:",
+          "accountName": "Account Name:",
+          "accountNameValue": "Bangalore Development Authority, Bengaluru",
+          "bank": "Bank:",
+          "bankValue": "Canara Bank, BDA Complex Branch, Kumara Krupa West, Bengaluru-560020",
+          "accountNumber": "Account Number:",
+          "accountNumberValue": "2828101053014",
+          "ifscCode": "IFSC Code:",
+          "ifscCodeValue": "CNRB0002828",
+          "modeOfPayment": "Mode of Payment:",
+          "modeOfPaymentValue": "RTGS / NEFT",
+          "challan": "The challan for remittance should be submitted to the Accounts Officer, Finance Department ('D' Block, 2nd Floor, Room No.308).",
+          "forfeiture": "If the successful bidder fails to remit 25% of the bid amount within 72 hours of issuance of the advice letter, the EMD shall be forfeited. After paying the initial 25%, the bidder must pay the remaining 75% within 45 days of receiving the confirmation letter from BDA. If payment is delayed beyond this period, interest will be charged at 18% per annum for the next 90 days, and at 21% per annum for a further 120 days. If the full site value is not paid within an overall period of 255 days, the 25% already paid shall be forfeited and BDA may resell the site. In the event of such resale, the defaulting bidder shall be liable to make good any loss suffered by BDA."
+        },
+        "dimensionDifferences": {
+          "title": "Handling of dimension differences",
+          "items": [
+            "In case there is a difference in the dimension of the site (more), the full amount (less TDS) as per the dimensions in the e-Auction notification / letter of confirmation of the auction site has to be remitted within the prescribed time. If the remittance is not made within the prescribed time, action will be taken as per The Bangalore Development Authority (Disposal of Corner Sites and Commercial Sites) Rules, 1984.",
+            "In case there is a difference in actual dimensions of the site (less), the excess amount, if any, remitted by the auction purchaser due to lower dimensions shall be refunded by BDA without interest. The auction purchase may also decide not to retain the site. The bidder should pay the full amount and then go for correction in dimensions, if any."
+          ]
+        }
+      },
+      "statutoryDisclosures": {
+        "title": "Statutory Disclosures",
+        "items": [
+          "All legal proceedings in respect of the auction sites are subject to the jurisdiction of Courts in Bengaluru only.",
+          "As per IT Act, 1961 Sec.194 IA, where the sale consideration exceeds Rs.50 lakhs, the auction purchaser should deduct 1% of the total amount payable and remit the same to the IT Department.",
+          "Bidder / auction purchaser shall abide by The Bangalore Development Authority (Disposal of Corner Sites and Commercial Sites) Rules, 1984"
+        ]
+      }
     }
   }
 }
