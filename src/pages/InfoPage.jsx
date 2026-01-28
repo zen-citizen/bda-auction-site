@@ -373,14 +373,6 @@ function InfoPage() {
                   <p><strong>{t('infoPage.sections.financials.paymentAfterWinning.paymentDetails.modeOfPayment')}</strong> {t('infoPage.sections.financials.paymentAfterWinning.paymentDetails.modeOfPaymentValue')}</p>
                 </div>
               </div>
-              <div className="warning-text" style={{ marginTop: '1rem' }}>
-                <span style={{ display: 'inline-flex', alignItems: 'flex-start', gap: '0.5rem' }}>
-                  <span style={{ color: '#4B2840', display: 'inline-flex', alignItems: 'flex-start', paddingTop: '0.2em', flexShrink: 0 }}>
-                    <ImportantIcon size={18} />
-                  </span>
-                  <span>{t('infoPage.sections.financials.paymentAfterWinning.warning')}</span>
-                </span>
-              </div>
             </div>
           </div>
         </section>

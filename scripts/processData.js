@@ -185,6 +185,29 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         googleMapsLink = `https://www.google.com/maps?q=${lat},${lng}`;
       }
       
+      // Extract contact number - handle both possible header formats (with newline or combined)
+      let contactNumber = '';
+      const contactHeaderKeys = [
+        'Contact Number - Site Information Coordinator\n9am-5pm on working days',
+        'Contact Number - Site Information Coordinator\r\n9am-5pm on working days',
+        'Contact Number - Site Information Coordinator'
+      ];
+      for (const key of contactHeaderKeys) {
+        if (site[key] && site[key].trim() !== '') {
+          contactNumber = site[key].trim();
+          break;
+        }
+      }
+      // Also try finding by checking all keys that include "Contact Number"
+      if (!contactNumber) {
+        for (const key in site) {
+          if (key.includes('Contact Number') && site[key] && site[key].trim() !== '') {
+            contactNumber = site[key].trim();
+            break;
+          }
+        }
+      }
+      
       const processedSite = {
         slNo: parseInt(site.Sl_No) || i + 1,
         siteSize: site['Site Size'] || '',
@@ -201,7 +224,7 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         hasCoordinates: hasValidCoordinates,
         biddingSession: parseInt(site.Sl_No) <= 42 ? 1 : 2,
         surveyNo: site['Survey.No.'] || '',
-        contactNumber: site['Contact Number - Site Information Coordinator\n9am-5pm on working days'] || '',
+        contactNumber: contactNumber,
         ratePerSqMtr: site['Rate Per Sq.Mtr in Rs.'] || '',
         googleMapsLink: googleMapsLink
       };
