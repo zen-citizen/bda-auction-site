@@ -11,14 +11,14 @@
       "nToS": "(22.60+18.60)/2",
       "totalArea": "313.94",
       "sizeClassification": "> 216 sq.m",
-      "lat": null,
-      "lng": null,
-      "hasCoordinates": false,
+      "lat": 12.888027,
+      "lng": 77.490028,
+      "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8722433608",
+      "contactNumber": "",
       "ratePerSqMtr": "166250",
-      "googleMapsLink": "NA"
+      "googleMapsLink": "https://www.google.com/maps?q=12.888027,77.490028"
     },
     {
       "slNo": 2,
@@ -31,14 +31,14 @@
       "nToS": "(26.80+22.60)/2",
       "totalArea": "376.42",
       "sizeClassification": "> 216 sq.m",
-      "lat": null,
-      "lng": null,
-      "hasCoordinates": false,
+      "lat": 12.888027,
+      "lng": 77.490028,
+      "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8722433608",
+      "contactNumber": "",
       "ratePerSqMtr": "166250",
-      "googleMapsLink": "NA"
+      "googleMapsLink": "https://www.google.com/maps?q=12.888027,77.490028"
     },
     {
       "slNo": 3,
@@ -56,7 +56,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "87500",
       "googleMapsLink": "https://www.google.com/maps?q=13.08009,77.613806"
     },
@@ -76,7 +76,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "87500",
       "googleMapsLink": "https://www.google.com/maps?q=13.080711,77.613792"
     },
@@ -96,7 +96,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "87500",
       "googleMapsLink": "https://www.google.com/maps?q=13.077509,77.613323"
     },
@@ -116,7 +116,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "87500",
       "googleMapsLink": "https://www.google.com/maps?q=13.077208,77.613482"
     },
@@ -136,7 +136,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "87500",
       "googleMapsLink": "https://www.google.com/maps?q=13.077605,77.613185"
     },
@@ -156,7 +156,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "87500",
       "googleMapsLink": "https://www.google.com/maps?q=13.082513,77.619992"
     },
@@ -176,7 +176,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "87500",
       "googleMapsLink": "https://www.google.com/maps?q=13.075035,77.623352"
     },
@@ -196,7 +196,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "73500",
       "googleMapsLink": "https://www.google.com/maps?q=13.074825,77.60779"
     },
@@ -216,7 +216,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7349388238",
+      "contactNumber": "",
       "ratePerSqMtr": "73500",
       "googleMapsLink": "https://www.google.com/maps?q=13.078912,77.611408"
     },
@@ -236,7 +236,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9980402882",
+      "contactNumber": "",
       "ratePerSqMtr": "96250",
       "googleMapsLink": "https://www.google.com/maps?q=13.044472,77.634238"
     },
@@ -256,7 +256,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9980402882",
+      "contactNumber": "",
       "ratePerSqMtr": "96250",
       "googleMapsLink": "https://www.google.com/maps?q=13.045344,77.636636"
     },
@@ -276,7 +276,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9980402882",
+      "contactNumber": "",
       "ratePerSqMtr": "96250",
       "googleMapsLink": "https://www.google.com/maps?q=13.045858,77.636624"
     },
@@ -296,7 +296,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9980402882",
+      "contactNumber": "",
       "ratePerSqMtr": "96250",
       "googleMapsLink": "https://www.google.com/maps?q=13.045967,77.6372"
     },
@@ -316,7 +316,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9980402882",
+      "contactNumber": "",
       "ratePerSqMtr": "96250",
       "googleMapsLink": "https://www.google.com/maps?q=13.045297,77.63704"
     },
@@ -336,7 +336,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9980402882",
+      "contactNumber": "",
       "ratePerSqMtr": "96250",
       "googleMapsLink": "https://www.google.com/maps?q=13.041534,77.63514"
     },
@@ -356,7 +356,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8722433608",
+      "contactNumber": "",
       "ratePerSqMtr": "157500",
       "googleMapsLink": "https://www.google.com/maps?q=13.020171,77.592048"
     },
@@ -376,7 +376,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147510380",
+      "contactNumber": "",
       "ratePerSqMtr": "100000",
       "googleMapsLink": "https://www.google.com/maps?q=12.929705,77.496285"
     },
@@ -396,7 +396,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147510380",
+      "contactNumber": "",
       "ratePerSqMtr": "100000",
       "googleMapsLink": "https://www.google.com/maps?q=12.9296,77.496411"
     },
@@ -416,7 +416,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147510380",
+      "contactNumber": "",
       "ratePerSqMtr": "100000",
       "googleMapsLink": "https://www.google.com/maps?q=12.929505,77.496673"
     },
@@ -436,7 +436,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "7975861995",
+      "contactNumber": "",
       "ratePerSqMtr": "84000",
       "googleMapsLink": "https://www.google.com/maps?q=12.956793,77.473419"
     },
@@ -456,7 +456,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "6362956998",
+      "contactNumber": "",
       "ratePerSqMtr": "84000",
       "googleMapsLink": "https://www.google.com/maps?q=12.945243,77.470487"
     },
@@ -476,7 +476,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "6362956998",
+      "contactNumber": "",
       "ratePerSqMtr": "84000",
       "googleMapsLink": "https://www.google.com/maps?q=12.945136,77.471225"
     },
@@ -496,7 +496,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "6362956998",
+      "contactNumber": "",
       "ratePerSqMtr": "84000",
       "googleMapsLink": "https://www.google.com/maps?q=12.934259,77.474932"
     },
@@ -516,7 +516,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147510380",
+      "contactNumber": "",
       "ratePerSqMtr": "96250",
       "googleMapsLink": "https://www.google.com/maps?q=12.921477,77.485053"
     },
@@ -531,14 +531,14 @@
       "nToS": "(11.50+13.00)/2",
       "totalArea": "147",
       "sizeClassification": "108-216 sq.m",
-      "lat": null,
-      "lng": null,
-      "hasCoordinates": false,
+      "lat": 12.888027,
+      "lng": 77.490028,
+      "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "60000",
-      "googleMapsLink": "NA"
+      "googleMapsLink": "https://www.google.com/maps?q=12.888027,77.490028"
     },
     {
       "slNo": 28,
@@ -556,7 +556,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "60000",
       "googleMapsLink": "https://www.google.com/maps?q=12.888569,77.488348"
     },
@@ -576,7 +576,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.876535,77.50614"
     },
@@ -596,7 +596,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.877124,77.505046"
     },
@@ -611,14 +611,14 @@
       "nToS": "13",
       "totalArea": "292.5",
       "sizeClassification": "> 216 sq.m",
-      "lat": null,
-      "lng": null,
-      "hasCoordinates": false,
+      "lat": 12.888944,
+      "lng": 77.495889,
+      "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "60000",
-      "googleMapsLink": "NA"
+      "googleMapsLink": "https://www.google.com/maps?q=12.888944,77.495889"
     },
     {
       "slNo": 32,
@@ -636,7 +636,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69000",
       "googleMapsLink": "https://www.google.com/maps?q=12.897409,77.523417"
     },
@@ -656,7 +656,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69000",
       "googleMapsLink": "https://www.google.com/maps?q=12.897337,77.523612"
     },
@@ -676,7 +676,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69000",
       "googleMapsLink": "https://www.google.com/maps?q=12.897179,77.524143"
     },
@@ -696,7 +696,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69000",
       "googleMapsLink": "https://www.google.com/maps?q=12.897266,77.52384"
     },
@@ -716,7 +716,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.870396,77.510947"
     },
@@ -736,7 +736,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.870292,77.510868"
     },
@@ -756,7 +756,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8310525317",
+      "contactNumber": "",
       "ratePerSqMtr": "100000",
       "googleMapsLink": "https://www.google.com/maps?q=12.865984,77.585428"
     },
@@ -776,7 +776,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8310525317",
+      "contactNumber": "",
       "ratePerSqMtr": "100000",
       "googleMapsLink": "https://www.google.com/maps?q=12.866762,77.585665"
     },
@@ -796,7 +796,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8310525317",
+      "contactNumber": "",
       "ratePerSqMtr": "100000",
       "googleMapsLink": "https://www.google.com/maps?q=12.866999,77.58572"
     },
@@ -816,7 +816,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8310525317",
+      "contactNumber": "",
       "ratePerSqMtr": "100000",
       "googleMapsLink": "https://www.google.com/maps?q=12.86712,77.584935"
     },
@@ -836,7 +836,7 @@
       "hasCoordinates": true,
       "biddingSession": 1,
       "surveyNo": "",
-      "contactNumber": "8310525317",
+      "contactNumber": "",
       "ratePerSqMtr": "67500",
       "googleMapsLink": "https://www.google.com/maps?q=12.856682,77.561935"
     },
@@ -856,7 +856,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.879397,77.506443"
     },
@@ -876,7 +876,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.879584,77.506091"
     },
@@ -896,7 +896,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.879381,77.50596"
     },
@@ -916,7 +916,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.879544,77.506522"
     },
@@ -936,7 +936,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.877906,77.505087"
     },
@@ -956,7 +956,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.872814,77.507895"
     },
@@ -976,7 +976,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.87296,77.507828"
     },
@@ -996,7 +996,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.873251,77.507659"
     },
@@ -1016,7 +1016,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.873121,77.508786"
     },
@@ -1036,7 +1036,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876451,77.509692"
     },
@@ -1056,7 +1056,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.87661,77.509901"
     },
@@ -1076,7 +1076,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "74500",
       "googleMapsLink": "https://www.google.com/maps?q=12.886779,77.512412"
     },
@@ -1096,7 +1096,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "74500",
       "googleMapsLink": "https://www.google.com/maps?q=12.886767,77.512265"
     },
@@ -1116,7 +1116,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "74500",
       "googleMapsLink": "https://www.google.com/maps?q=12.886877,77.512259"
     },
@@ -1136,7 +1136,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "74500",
       "googleMapsLink": "https://www.google.com/maps?q=12.886889,77.512408"
     },
@@ -1156,7 +1156,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.876651,77.498598"
     },
@@ -1176,7 +1176,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.876645,77.506163"
     },
@@ -1196,7 +1196,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "72650",
       "googleMapsLink": "https://www.google.com/maps?q=12.877834,77.50356"
     },
@@ -1216,7 +1216,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "63000",
       "googleMapsLink": "https://www.google.com/maps?q=12.881953,77.496373"
     },
@@ -1236,7 +1236,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "63000",
       "googleMapsLink": "https://www.google.com/maps?q=12.884383,77.497747"
     },
@@ -1256,7 +1256,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "63000",
       "googleMapsLink": "https://www.google.com/maps?q=12.885517,77.499144"
     },
@@ -1276,7 +1276,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "63000",
       "googleMapsLink": "https://www.google.com/maps?q=12.885438,77.499067"
     },
@@ -1296,7 +1296,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876659,77.507201"
     },
@@ -1316,7 +1316,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876732,77.507236"
     },
@@ -1336,7 +1336,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876758,77.50833"
     },
@@ -1356,7 +1356,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876746,77.508414"
     },
@@ -1376,7 +1376,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.873465,77.507528"
     },
@@ -1396,7 +1396,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "74500",
       "googleMapsLink": "https://www.google.com/maps?q=12.886849,77.513902"
     },
@@ -1416,7 +1416,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "69000",
       "googleMapsLink": "https://www.google.com/maps?q=12.893946,77.527255"
     },
@@ -1436,7 +1436,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "127000",
       "googleMapsLink": "https://www.google.com/maps?q=12.898914,77.562846"
     },
@@ -1451,14 +1451,14 @@
       "nToS": "12.1",
       "totalArea": "110.11",
       "sizeClassification": "108-216 sq.m",
-      "lat": null,
-      "lng": null,
-      "hasCoordinates": false,
+      "lat": 12.976128,
+      "lng": 77.6994816,
+      "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "127000",
-      "googleMapsLink": "NA"
+      "googleMapsLink": "https://www.google.com/maps?q=12.976128,77.6994816"
     },
     {
       "slNo": 74,
@@ -1476,7 +1476,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8147799282",
+      "contactNumber": "",
       "ratePerSqMtr": "127000",
       "googleMapsLink": "https://www.google.com/maps?q=12.898726,77.562715"
     },
@@ -1496,7 +1496,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876459,77.508216"
     },
@@ -1516,7 +1516,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876216,77.508193"
     },
@@ -1536,7 +1536,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876135,77.508185"
     },
@@ -1556,7 +1556,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876054,77.508177"
     },
@@ -1576,7 +1576,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.875973,77.508169"
     },
@@ -1596,7 +1596,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.875892,77.508161"
     },
@@ -1616,7 +1616,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.875614,77.508457"
     },
@@ -1636,7 +1636,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "9844916955",
+      "contactNumber": "",
       "ratePerSqMtr": "69300",
       "googleMapsLink": "https://www.google.com/maps?q=12.876437,77.507097"
     },
@@ -1656,7 +1656,7 @@
       "hasCoordinates": true,
       "biddingSession": 2,
       "surveyNo": "",
-      "contactNumber": "8310525317",
+      "contactNumber": "",
       "ratePerSqMtr": "106000",
       "googleMapsLink": "https://www.google.com/maps?q=12.865224,77.571085"
     }
@@ -1667,8 +1667,8 @@
     "BANASHNKARI 6TH STAGE",
     "Banashankari 6th Stage",
     "Banashankari 6th stage",
-    "FE Anjanapura",
     "F.E.Matadahalli",
+    "FE Anjanapura",
     "Gnanabharathi Valagerahalli",
     "JP NAGAR 8th Phase",
     "JP NAGAR 9TH Phase 7th Block",
@@ -1687,7 +1687,7 @@
   ],
   "stats": {
     "total": 83,
-    "withCoordinates": 78,
+    "withCoordinates": 83,
     "session1": 42,
     "session2": 41
   }

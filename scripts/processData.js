@@ -179,6 +179,12 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
       // Find Size column (could be "Size" or "Size " after trimming)
       const sizeClassificationValue = site['Size'] || site['Size '] || '';
       
+      // Generate Google Maps link from coordinates if missing or "NA"
+      let googleMapsLink = site['Google Maps Link'] || '';
+      if (hasValidCoordinates && (!googleMapsLink || googleMapsLink.trim() === '' || googleMapsLink === 'NA')) {
+        googleMapsLink = `https://www.google.com/maps?q=${lat},${lng}`;
+      }
+      
       const processedSite = {
         slNo: parseInt(site.Sl_No) || i + 1,
         siteSize: site['Site Size'] || '',
@@ -197,7 +203,7 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         surveyNo: site['Survey.No.'] || '',
         contactNumber: site['Contact Number - Site Information Coordinator\n9am-5pm on working days'] || '',
         ratePerSqMtr: site['Rate Per Sq.Mtr in Rs.'] || '',
-        googleMapsLink: site['Google Maps Link'] || ''
+        googleMapsLink: googleMapsLink
       };
       
       if (processedSite.layout) {
