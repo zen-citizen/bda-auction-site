@@ -5,7 +5,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import PhoneIcon from '../components/icons/PhoneIcon'
 import DocumentsIcon from '../components/icons/DocumentsIcon'
 import WhereToBidIcon from '../components/icons/WhereToBidIcon'
-import CalendarIcon from '../components/icons/CalendarIcon'
 import MoneyIcon from '../components/icons/MoneyIcon'
 import ImportantIcon from '../components/icons/ImportantIcon'
 import HelpSupportIcon from '../components/icons/HelpSupportIcon'
@@ -26,7 +25,6 @@ function InfoPage() {
       'who-can-participate',
       'documents-required',
       'where-to-bid',
-      'important-dates',
       'financials',
       'important-cautions',
       'help-support'
@@ -212,13 +210,6 @@ function InfoPage() {
                 {t('infoPage.menu.whereToBid')}
               </a>
               <a 
-                href="#important-dates"
-                onClick={(e) => handleMenuClick(e, 'important-dates')}
-                className={activeSection === 'important-dates' ? 'active' : ''}
-              >
-                {t('infoPage.menu.importantDates')}
-              </a>
-              <a 
                 href="#financials"
                 onClick={(e) => handleMenuClick(e, 'financials')}
                 className={activeSection === 'financials' ? 'active' : ''}
@@ -300,55 +291,6 @@ function InfoPage() {
               https://kppp.karnataka.gov.in/
             </a>
           </p>
-        </section>
-
-        <section id="important-dates" className="info-section">
-          <h2 className="info-section-heading-with-icon">
-            <span style={{ color: '#4B2840' }}>
-              <CalendarIcon size={28} />
-            </span>
-            {t('infoPage.sections.importantDates.title')}
-          </h2>
-          <div className="dates-timeline">
-            <div className="timeline-item">
-              <div className="timeline-date">27 January 2026</div>
-              <div className="timeline-content">
-                <h3>{t('infoPage.sections.importantDates.commencement')}</h3>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-date">13 February 2026</div>
-              <div className="timeline-content">
-                <h3>{t('infoPage.sections.importantDates.lastDateInterest')}</h3>
-                <p>{t('infoPage.sections.importantDates.lastDateTime')}</p>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-date">16 - 17 February 2026</div>
-              <div className="timeline-content">
-                <h3>{t('infoPage.sections.importantDates.round1')}</h3>
-                <p>
-                  <strong>{t('infoPage.sections.importantDates.starts')}</strong> 16 Feb 2026 at 11:00&nbsp;AM&nbsp;IST<br />
-                  <strong>{t('infoPage.sections.importantDates.closes')}</strong> 17 Feb 2026 at 17:00&nbsp;PM&nbsp;IST<br />
-                  <strong>{t('infoPage.sections.importantDates.deltaTime')}</strong> {t('infoPage.sections.importantDates.minutes')}
-                </p>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-date">17 - 18 February 2026</div>
-              <div className="timeline-content">
-                <h3>{t('infoPage.sections.importantDates.round2')}</h3>
-                <p>
-                  <strong>{t('infoPage.sections.importantDates.starts')}</strong> 17 Feb 2026 at 11:00&nbsp;AM&nbsp;IST<br />
-                  <strong>{t('infoPage.sections.importantDates.closes')}</strong> 18 Feb 2026 at 17:00&nbsp;PM&nbsp;IST<br />
-                  <strong>{t('infoPage.sections.importantDates.deltaTime')}</strong> {t('infoPage.sections.importantDates.minutes')}
-                </p>
-              </div>
-            </div>
-          </div>
         </section>
 
         <section id="financials" className="info-section">

@@ -264,18 +264,29 @@ function Home() {
         // Same calculation for both desktop and mobile (time-based percentage)
         progress = ((nowTime - timelineStart) / timelineSpan) * 100
         
+        // First marker position offsets:
+        // Desktop: ~12.5% (first marker centered in first event container, which is 1/4 of timeline width)
+        // Mobile: dynamically calculated based on actual marker position relative to timeline height
+        const firstMarkerOffset = isDesktop ? 12.5 : firstMarkerOffsetMobile
+        
         // When first event is active, ensure progress starts from first marker position
         // This prevents a highlighted segment from appearing before the first marker
         if (states[0] === 'active') {
-          // First marker position offsets:
-          // Desktop: ~12.5% (first marker centered in first event container, which is 1/4 of timeline width)
-          // Mobile: dynamically calculated based on actual marker position relative to timeline height
-          const firstMarkerOffset = isDesktop ? 12.5 : firstMarkerOffsetMobile
-          
           // If calculated progress is less than marker position, set it to marker position
           // Otherwise, keep the calculated progress
           if (progress < firstMarkerOffset) {
             progress = firstMarkerOffset
+          }
+        } else if (states[0] === 'completed') {
+          // When first event is completed, ensure progress has crossed beyond the first marker
+          // This ensures visual continuity: progress crosses the marker when date passes
+          // Use a buffer beyond the marker to clearly show it has crossed
+          // Mobile needs a larger buffer (5%) since the timeline is shorter and 1% isn't visually noticeable
+          // Desktop uses a smaller buffer (1%) since the timeline is wider
+          const buffer = isDesktop ? 1 : 5
+          const minProgressAfterMarker = firstMarkerOffset + buffer
+          if (progress < minProgressAfterMarker) {
+            progress = minProgressAfterMarker
           }
         }
       }
