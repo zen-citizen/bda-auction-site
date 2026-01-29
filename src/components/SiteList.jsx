@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { getSessionDate, toTitleCase, normalizeLayoutName } from '../lib/utils'
+import { Info } from 'lucide-react'
 import AreaIcon from './icons/AreaIcon'
 import SitesIcon from './icons/SitesIcon'
 import './SiteList.css'
@@ -15,6 +16,10 @@ function SiteList({ sites, selectedSite, onSiteSelect, mapViewMode, setMapViewMo
             <SitesIcon size={32} />
           </span>
           {t('siteList.title')} ({sites.length})
+          <span className="info-tooltip-wrapper">
+            <Info size={14} className="info-icon" />
+            <span className="info-tooltip">{t('mapPage.mapView.tooltip')}</span>
+          </span>
         </h3>
         {mapViewMode !== undefined && setMapViewMode && (
           <div className="map-view-toggle-mobile" role="group" aria-label="Map view mode">

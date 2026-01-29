@@ -27,6 +27,54 @@
   font-size: 1.1rem;
 }
 
+.site-list .info-tooltip-wrapper {
+  position: relative;
+  display: none;
+  align-items: center;
+  cursor: help;
+}
+
+.site-list .info-icon {
+  color: #666;
+  transition: color 0.2s;
+}
+
+.site-list .info-tooltip-wrapper:hover .info-icon {
+  color: #4B2840;
+}
+
+.site-list .info-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #333;
+  color: white;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1001;
+}
+
+.site-list .info-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #333;
+}
+
+.site-list .info-tooltip-wrapper:hover .info-tooltip {
+  opacity: 1;
+}
+
 /* Mobile toggle pills - hidden on desktop */
 .map-view-toggle-mobile {
   display: none;
@@ -170,6 +218,10 @@
   
   .site-list-header h3 {
     font-size: 0.95rem;
+  }
+  
+  .site-list .info-tooltip-wrapper {
+    display: inline-flex;
   }
   
   /* Show toggle pills in Sites header on mobile */

@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { createPortal } from 'react-dom'
-import { ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import MapView from '../components/MapView'
 import SiteFilters from '../components/SiteFilters'
 import SiteList from '../components/SiteList'
@@ -245,12 +245,18 @@ function MapPage() {
           aria-expanded={filtersExpanded}
           aria-label={t('mapPage.filters.toggle')}
         >
-          <span className="filters-toggle-label">
-            {t('mapPage.filters.label')}
-            {activeFiltersCount > 0 && (
-              <span className="filters-count-badge">{activeFiltersCount}</span>
-            )}
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+            <span className="filters-toggle-label">
+              {t('mapPage.filters.label')}
+              {activeFiltersCount > 0 && (
+                <span className="filters-count-badge">{activeFiltersCount}</span>
+              )}
+            </span>
+            <span className="filters-separator-mobile"></span>
+            <span className="filters-site-count-mobile">
+              {t('mapPage.mapView.showingSites')} {visibleSitesCount} {t('mapPage.mapView.ofSites')} {totalSites} {t('mapPage.mapView.sites')}
+            </span>
+          </div>
           {filtersExpanded ? (
             <ChevronUp className="filters-toggle-icon" size={20} />
           ) : (
@@ -314,10 +320,7 @@ function MapPage() {
             </div>
             <div className="map-page-header-count">
               <span>{t('mapPage.mapView.showingSites')} {visibleSitesCount} {t('mapPage.mapView.ofSites')} {totalSites} {t('mapPage.mapView.sites')}</span>
-              <span className="info-tooltip-wrapper">
-                <Info size={14} className="info-icon" />
-                <span className="info-tooltip">{t('mapPage.mapView.tooltip')}</span>
-              </span>
+              <span style={{ color: '#666', fontSize: '0.7rem' }}>{t('mapPage.mapView.tooltip')}</span>
             </div>
           </div>
           <MapView

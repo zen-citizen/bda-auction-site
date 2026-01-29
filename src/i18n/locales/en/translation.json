@@ -240,7 +240,7 @@
       "showingSites": "Showing",
       "ofSites": "of",
       "sites": "sites",
-      "tooltip": "Some sites aren't shown because location details aren't available."
+      "tooltip": "Data as shared by BDA"
     }
   },
   "siteFilters": {
