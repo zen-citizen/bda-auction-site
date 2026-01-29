@@ -351,17 +351,40 @@ function TermsAndConditionsPage() {
                 <p style={{ marginTop: '1rem' }}>
                   {t('termsAndConditionsPage.sections.allotmentPayment.paymentObligations.challan')}
                 </p>
-                <p>
-                  {t('termsAndConditionsPage.sections.allotmentPayment.paymentObligations.forfeiture')}
-                </p>
+                <div style={{ marginTop: '1rem' }}>
+                  <h4 style={{ marginTop: '0', marginBottom: '0.75rem', fontSize: '1rem', fontWeight: '600', color: '#333' }}>
+                    {t('termsAndConditionsPage.sections.allotmentPayment.paymentObligations.forfeiture.title')}
+                  </h4>
+                  <ul>
+                    {t('termsAndConditionsPage.sections.allotmentPayment.paymentObligations.forfeiture.items', { returnObjects: true }).map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               <div id="dimension-differences" className="info-subsection">
                 <h3>{t('termsAndConditionsPage.sections.allotmentPayment.dimensionDifferences.title')}</h3>
                 <ul>
-                  {t('termsAndConditionsPage.sections.allotmentPayment.dimensionDifferences.items', { returnObjects: true }).map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
+                  {t('termsAndConditionsPage.sections.allotmentPayment.dimensionDifferences.items', { returnObjects: true }).map((item, index) => {
+                    if (typeof item === 'object' && item.rules) {
+                      return (
+                        <li key={index}>
+                          {item.text}{' '}
+                          <a 
+                            href="https://www.bdakarnataka.in/api/media/about-us/pdf_press_release/Conducted_under_BDA_Disposal_of_Corner__Intermediate___Other_Auctionable_Sites_Rules__1984_1769170438464_fbcab00b.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ color: '#1A73E8', textDecoration: 'underline', textUnderlineOffset: '0.25em' }}
+                          >
+                            {item.rules}
+                          </a>
+                          {item.year}
+                        </li>
+                      )
+                    }
+                    return <li key={index}>{item}</li>
+                  })}
                 </ul>
               </div>
             </section>
@@ -369,9 +392,39 @@ function TermsAndConditionsPage() {
             <section id="statutory-disclosures" className="info-section">
               <h2>{t('termsAndConditionsPage.sections.statutoryDisclosures.title')}</h2>
               <ul>
-                {t('termsAndConditionsPage.sections.statutoryDisclosures.items', { returnObjects: true }).map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
+                {t('termsAndConditionsPage.sections.statutoryDisclosures.items', { returnObjects: true }).map((item, index) => {
+                  const items = t('termsAndConditionsPage.sections.statutoryDisclosures.items', { returnObjects: true })
+                  const isLastItem = index === items.length - 1
+                  
+                  if (isLastItem && typeof item === 'object' && item.rules) {
+                    return (
+                      <li key={index}>
+                        {item.text}{' '}
+                        <a 
+                          href="https://www.bdakarnataka.in/api/media/about-us/pdf_press_release/Conducted_under_BDA_Disposal_of_Corner__Intermediate___Other_Auctionable_Sites_Rules__1984_1769170438464_fbcab00b.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ color: '#1A73E8', textDecoration: 'underline', textUnderlineOffset: '0.25em' }}
+                        >
+                          {item.rules}
+                        </a>
+                        {item.year}
+                      </li>
+                    )
+                  }
+                  
+                  if (typeof item === 'object' && item.itAct) {
+                    return (
+                      <li key={index}>
+                        {item.text}{' '}
+                        <em>{item.itAct}</em>
+                        {item.rest}
+                      </li>
+                    )
+                  }
+                  
+                  return <li key={index}>{item}</li>
+                })}
               </ul>
             </section>
           </div>
