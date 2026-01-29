@@ -223,7 +223,7 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         lng: hasValidCoordinates ? lng : null,
         hasCoordinates: hasValidCoordinates,
         biddingSession: parseInt(site.Sl_No) <= 42 ? 1 : 2,
-        surveyNo: site['Survey.No.'] || '',
+        surveyNo: site['Survey No.'] || '',
         contactNumber: contactNumber,
         ratePerSqMtr: site['Rate Per Sq.Mtr in Rs.'] || '',
         googleMapsLink: googleMapsLink
