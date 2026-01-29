@@ -385,6 +385,29 @@
   line-height: 1.6;
 }
 
+.bda-endorsement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin: 2rem 0 1.5rem 0;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.endorsement-text {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.bda-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
 @media (max-width: 768px) {
   .home {
     padding: 0.25rem 1rem var(--footer-height, 160px) 1rem;
@@ -579,6 +602,20 @@
   .action-card p {
     font-size: 0.9rem;
     margin-bottom: 0;
+  }
+  
+  .bda-endorsement {
+    gap: 0.25rem;
+    margin: 1.5rem 0 1rem 0;
+    padding: 1rem;
+  }
+  
+  .endorsement-text {
+    font-size: 0.9rem;
+  }
+  
+  .bda-logo {
+    height: 50px;
   }
   
   .home-footer {

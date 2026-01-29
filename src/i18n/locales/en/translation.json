@@ -45,6 +45,9 @@
         "description": "Access the official eAuction portal to register and place bids"
       }
     },
+    "endorsement": {
+      "text": "Endorsed by the Bangalore Development Authority"
+    },
     "footer": {
       "disclaimer": "This page is an independent, citizen-led volunteer effort by Zen Citizen, created in collaboration with <1>BDA</1>. It does not replace official BDA notifications. Zen Citizen makes no representation or warranty regarding the accuracy or completeness of the information presented.",
       "disclaimerLabel": "Disclaimer",
@@ -311,7 +314,7 @@
     "sections": {
       "termsAndConditions": {
         "title": "Terms & Conditions",
-        "description": "Bidders participating in E-Auction are deemed to have accepted all the terms and conditions specified in The Bangalore Development Authority (Disposal of Corner Sites and Commercial Sites) Rules, 1984"
+        "description": "Bidders participating in E-Auction are deemed to have accepted all the terms and conditions specified in The Bangalore Development Authority (Disposal of Corner Sites and Commercial Sites) Rules, 1984."
       },
       "biddingStage": {
         "title": "Bidding Stage",
@@ -370,7 +373,7 @@
         },
         "paymentObligations": {
           "title": "Payment obligations & Forfeiture",
-          "description": "Advice letters will be sent by e-Mail to successful bidders (highest bidders) to remit 25% of the total cost after deducting EMD amount of Rs. 4 lakhs to BDA's bank account:",
+          "description": "Advice letters will be sent by e-Mail to successful bidders (highest bidders) to remit 25% of the total cost after deducting EMD amount of Rs. 4 lakhs to BDA's bank account.",
           "accountName": "Account Name:",
           "accountNameValue": "Bangalore Development Authority, Bengaluru",
           "bank": "Bank:",
@@ -397,7 +400,7 @@
         "items": [
           "All legal proceedings in respect of the auction sites are subject to the jurisdiction of Courts in Bengaluru only.",
           "As per IT Act, 1961 Sec.194 IA, where the sale consideration exceeds Rs.50 lakhs, the auction purchaser should deduct 1% of the total amount payable and remit the same to the IT Department.",
-          "Bidder / auction purchaser shall abide by The Bangalore Development Authority (Disposal of Corner Sites and Commercial Sites) Rules, 1984"
+          "Bidder / auction purchaser shall abide by The Bangalore Development Authority (Disposal of Corner Sites and Commercial Sites) Rules, 1984."
         ]
       }
     }

@@ -4,16 +4,21 @@
   display: flex;
   flex-direction: column;
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .info-container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1.5rem var(--footer-height, 180px) 1.5rem;
   display: flex;
   flex-direction: column;
   flex: 1;
   min-height: 0;
+  box-sizing: border-box;
 }
 
 .info-page-layout {
@@ -21,6 +26,8 @@
   grid-template-columns: 240px 1fr;
   gap: 2rem;
   align-items: start;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .info-header-sticky {
@@ -35,6 +42,8 @@
   align-self: start;
   height: fit-content;
   padding-left: 1rem;
+  width: 240px;
+  box-sizing: border-box;
 }
 
 .info-menu-toggle-mobile {
@@ -97,6 +106,8 @@
   overflow-y: auto;
   padding: 0 0 2rem 0;
   max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .info-header-sticky h1 {
@@ -153,6 +164,18 @@
   margin-top: 0;
   padding-top: 0;
   border-top: none;
+}
+
+#eligibility {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none !important;
+}
+
+#emd-handling {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none !important;
 }
 
 .info-subsection h3 {
@@ -271,6 +294,32 @@
 .built-by a:hover {
   text-decoration: underline;
   text-underline-offset: 0.25em;
+}
+
+.bda-endorsement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin: 1rem 0 5rem 0;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.endorsement-text {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.bda-logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 768px) {
@@ -417,5 +466,19 @@
   .footer-line-2 > a,
   .footer-line-2 > span {
     white-space: nowrap;
+  }
+  
+  .bda-endorsement {
+    gap: 0.25rem;
+    margin: 1rem 0 4rem 0;
+    padding: 1rem;
+  }
+  
+  .endorsement-text {
+    font-size: 0.9rem;
+  }
+  
+  .bda-logo {
+    height: 50px;
   }
 }
