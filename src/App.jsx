@@ -8,6 +8,20 @@ import TermsAndConditionsPage from './pages/TermsAndConditionsPage'
 import LanguageToggle from './components/LanguageToggle'
 import { Button } from "@/components/ui/button"
 
+const GA_MEASUREMENT_ID = 'G-PEWNHYF918'
+
+function GoogleAnalyticsPageView() {
+  const location = useLocation()
+  useEffect(() => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('config', GA_MEASUREMENT_ID, {
+        page_path: location.pathname + location.search,
+      })
+    }
+  }, [location.pathname, location.search])
+  return null
+}
+
 function Navigation() {
   const location = useLocation()
   const { t } = useTranslation()
@@ -64,6 +78,7 @@ function Navigation() {
 function AppContent() {
   return (
     <div className="min-h-screen flex flex-col">
+      <GoogleAnalyticsPageView />
       <Navigation />
       <main className="flex-1">
         <Routes>
