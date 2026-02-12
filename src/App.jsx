@@ -30,8 +30,9 @@ function Navigation() {
     <nav className="border-b border-[#4B2840]">
       <div className="container mx-auto px-3 sm:px-4 py-2.5 sm:py-4 nav-container">
         {/* Brand */}
-        <Link to="/" className="nav-brand text-base sm:text-xl font-semibold text-[#333] hover:opacity-90 whitespace-nowrap flex-shrink-0">
-          {t('common.nav.brand')}
+        <Link to="/" className="nav-brand text-base sm:text-xl font-semibold text-[#333] hover:opacity-90 whitespace-nowrap flex-shrink-0 flex items-center gap-x-2">
+          <img src="/bda_logo.png" width="24" height="24" alt="BDA Logo" />
+          <span>{t('common.nav.brand')}</span>
         </Link>
         {/* Nav items - centered on mobile, right-aligned on desktop */}
         <div className="nav-items flex gap-0.5 sm:gap-2 items-center flex-nowrap min-w-0 flex-shrink">
