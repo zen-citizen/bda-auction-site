@@ -431,10 +431,10 @@ function TermsAndConditionsPage() {
         </div>
       </div>
       
-      <div className="bda-endorsement">
+      {/* <div className="bda-endorsement">
         <img src="/bda_logo.png" alt="BDA Logo" className="bda-logo" />
         <span className="endorsement-text">{t('home.endorsement.text')}</span>
-      </div>
+      </div> */}
       
       <div ref={footerRef} className="home-footer">
         <div className="built-by">
