@@ -28,8 +28,7 @@
     "timeline": {
       "commencement": "eAuction ಪ್ರಾರಂಭ",
       "lastDayInterest": "ಆಸಕ್ತಿ ವ್ಯಕ್ತಪಡಿಸಲು ಕೊನೆಯ ದಿನ",
-      "round1": "ರೌಂಡ್ 1 (ಸೈಟ್‌ಗಳು 1 - 42)",
-      "round2": "ರೌಂಡ್ 2 (ಸೈಟ್‌ಗಳು 43 - 83)"
+      "roundLabel": "ರೌಂಡ್ {{round}} (ಸೈಟ್‌ಗಳು {{sites}})"
     },
     "actionCards": {
       "viewSites": {

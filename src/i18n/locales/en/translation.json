@@ -28,8 +28,7 @@
     "timeline": {
       "commencement": "Commencement of e-Auction",
       "lastDayInterest": "Last Day to Express Interest",
-      "round1": "Round 1 (Sites 1 - 42)",
-      "round2": "Round 2 (Sites 43 - 83)"
+      "roundLabel": "Round {{round}} (Sites {{sites}})"
     },
     "actionCards": {
       "viewSites": {

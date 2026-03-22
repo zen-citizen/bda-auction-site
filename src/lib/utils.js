@@ -1,19 +1,19 @@
 import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { getRoundBySession } from "../config/auctionSchedule"
 
 export function cn(...inputs) {
   return twMerge(clsx(inputs))
 }
 
 /**
- * Get the date range for a bidding session
- * @param {number} session - Session number (1 or 2)
+ * Get the date range for a bidding session (from centralized auction schedule).
+ * @param {number} session - Session number (1-based)
  * @returns {string} Date range string
  */
 export function getSessionDate(session) {
-  if (session === 1) return "16-17 Feb 2026"
-  if (session === 2) return "17-18 Feb 2026"
-  return ""
+  const round = getRoundBySession(session)
+  return round?.shortRange ?? ""
 }
 
 

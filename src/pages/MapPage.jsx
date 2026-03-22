@@ -8,6 +8,7 @@ import SiteList from '../components/SiteList'
 import SiteDetailsModal from '../components/SiteDetailsModal'
 import SelectMarkerIcon from '../components/icons/SelectMarkerIcon'
 import sitesData from '../data/sites.json'
+import { auctionSchedule } from '../config/auctionSchedule'
 import { normalizeLayoutName } from '../lib/utils'
 import './MapPage.css'
 
@@ -43,11 +44,14 @@ function MapPage() {
     return Array.from(normalized).sort()
   }, [sites])
 
-  // Bidding session options
-  const biddingSessions = [
-    { value: "1", label: "Round 1: 16-17 Feb 2026" },
-    { value: "2", label: "Round 2: 17-18 Feb 2026" }
-  ]
+  const biddingSessions = useMemo(
+    () =>
+      auctionSchedule.rounds.map((round, i) => ({
+        value: String(i + 1),
+        label: `${t('home.timeline.roundLabel', { round: i + 1, sites: round.sitesRange })}: ${round.shortRange}`,
+      })),
+    [t]
+  )
 
   const filteredAndSortedSites = useMemo(() => {
     let filtered = [...sites]

@@ -129,18 +129,6 @@
   transform: translateY(-50%);
 }
 
-.timeline-progress {
-  position: absolute;
-  top: calc(1rem + 1rem);
-  left: 0;
-  width: var(--progress-width, 0%);
-  height: 2px;
-  background-color: #4B2840;
-  z-index: 1;
-  transform: translateY(-50%);
-  transition: width 0.3s ease;
-}
-
 .timeline-events {
   display: flex;
   justify-content: space-between;
@@ -181,18 +169,6 @@
   background-color: #4B2840;
   border: 3px solid white;
   box-shadow: 0 0 0 2px #4B2840;
-}
-
-.timeline-marker-hollow {
-  background-color: white;
-  border: 2px solid #9ca3af;
-  box-shadow: 0 0 0 2px #d1d5db;
-}
-
-.timeline-marker-completed {
-  background-color: #9ca3af;
-  border: 3px solid white;
-  box-shadow: 0 0 0 2px #d1d5db;
 }
 
 .timeline-card {
@@ -491,18 +467,6 @@
     background-color: #d1d5db;
     transform: none;
     z-index: 0;
-  }
-  
-  .timeline-progress {
-    position: absolute;
-    top: 0;
-    left: 7px;
-    width: 2px;
-    height: var(--progress-height, 0%);
-    background-color: #4B2840;
-    transform: none;
-    z-index: 1;
-    transition: height 0.3s ease;
   }
   
   .timeline-events {
