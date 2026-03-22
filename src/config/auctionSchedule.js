@@ -7,21 +7,27 @@
  * `biddingSession` values in `sites.json`.
  */
 export const auctionSchedule = {
-  commencement: '27 January 2026',
-  lastDayExpressInterest: '13 February 2026, 17:00 PM',
+  commencement: '12 March 2026',
+  lastDayExpressInterest: '23 March 2026, 17:00 PM',
   rounds: [
     {
-      startDisplay: '16 February 2026, 11:00 AM',
-      endDisplay: '17 February 2026, 17:00 PM',
-      shortRange: '16-17 Feb 2026',
+      startDisplay: '24 March 2026, 11:00 AM',
+      endDisplay: '25 March 2026, 17:00 PM',
+      shortRange: '24-25 Mar 2026',
       sitesRange: '1 - 42',
     },
     {
-      startDisplay: '17 February 2026, 11:00 AM',
-      endDisplay: '18 February 2026, 17:00 PM',
-      shortRange: '17-18 Feb 2026',
+      startDisplay: '25 March 2026, 11:00 AM',
+      endDisplay: '26 March 2026, 17:00 PM',
+      shortRange: '25-26 Mar 2026',
       sitesRange: '43 - 83',
     },
+    {
+      startDisplay: '26 March 2026, 11:00 AM',
+      endDisplay: '27 March 2026, 17:00 PM',
+      shortRange: '26-27 Mar 2026',
+      sitesRange: '84 - 125',
+    }
   ],
 }
 
