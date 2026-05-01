@@ -264,20 +264,31 @@
 .built-by {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: nowrap;
   gap: 0.5rem;
   color: #666;
   font-size: 0.85rem;
-  margin: 0;
+  margin: 0 auto;
+  width: min(100%, 1040px);
 }
 
 .footer-line-1,
 .footer-line-2 {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.5rem;
+}
+
+.footer-line-1 {
+  flex: 0 1 auto;
+}
+
+.footer-line-2 {
+  flex: 0 1 auto;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 .footer-separator {
@@ -289,11 +300,41 @@
   color: #4B2840;
   text-decoration: underline;
   text-underline-offset: 0.25em;
+  transition: opacity 0.2s ease;
 }
 
 .built-by a:hover {
+  opacity: 0.7;
   text-decoration: underline;
   text-underline-offset: 0.25em;
+}
+
+.footer-highlight {
+  color: #4B2840;
+  font-weight: 700;
+}
+
+.built-by a.footer-highlight {
+  color: #4B2840;
+}
+
+.footer-spotlight {
+  display: inline-block;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  padding: 0.45rem 0.8rem;
+  border-radius: 4px;
+  background: rgba(75, 40, 64, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(75, 40, 64, 0.12);
+}
+
+.footer-spotlight a {
+  font-weight: inherit;
+}
+
+.footer-spotlight-separator {
+  color: rgba(75, 40, 64, 0.55);
+  margin: 0 0.3rem;
 }
 
 .bda-endorsement {
@@ -447,16 +488,29 @@
   .built-by {
     font-size: 0.8rem;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.35rem;
+    width: 100%;
   }
   
-  .footer-line-1,
+  .footer-line-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  .footer-line-1 .footer-separator {
+    display: none;
+  }
+
   .footer-line-2 {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
   
   .footer-line-separator {
@@ -466,6 +520,21 @@
   .footer-line-2 > a,
   .footer-line-2 > span {
     white-space: nowrap;
+  }
+
+  .footer-spotlight {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    padding: 0.45rem 0.65rem;
+    box-sizing: border-box;
+    white-space: normal;
+  }
+
+  .footer-spotlight a {
+    white-space: normal;
   }
   
   .bda-endorsement {

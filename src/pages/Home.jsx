@@ -116,6 +116,18 @@ function Home() {
       <div ref={footerRef} className="home-footer">
         <div className="built-by">
           <div className="footer-line-1">
+            <span className="footer-highlight footer-spotlight">
+              Built by volunteers at{' '}
+              <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">
+                Zen Citizen
+              </a>
+              <span className="footer-spotlight-separator">|</span>{' '}
+              <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">
+                Share feedback
+              </a>
+            </span>
+          </div>
+          <div className="footer-line-2">
             <button
               onClick={() => setShowDisclaimerModal(true)}
               className="footer-disclaimer-link"
@@ -123,19 +135,6 @@ function Home() {
               {t('home.footer.disclaimerLabel')}
             </button>
             <span className="footer-separator">|</span>
-            <span>
-              {t('home.footer.builtBy')}{' '}
-              <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">
-                Zen Citizen
-              </a>
-            </span>
-            <span className="footer-separator">|</span>
-            <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">
-              {t('home.footer.shareFeedback')}
-            </a>
-          </div>
-          <span className="footer-separator footer-line-separator">|</span>
-          <div className="footer-line-2">
             <a href="https://www.bdakarnataka.gov.in/" target="_blank" rel="noopener noreferrer">
               {t('home.footer.bdaWebsite')}
             </a>

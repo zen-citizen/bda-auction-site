@@ -62,8 +62,8 @@ function Navigation() {
             className={`text-base px-2 sm:px-4 py-2.5 !transition-none hover:!bg-transparent flex-shrink-0 ${location.pathname === '/info' ? '!text-[#4B2840] font-semibold underline underline-offset-4' : '!text-[#666] hover:!text-[#4B2840]'}`}
           >
             <Link to="/info">
-              <span className="sm:hidden">Info</span>
-              <span className="hidden sm:inline">eAuction Info</span>
+              <span className="sm:hidden">FAQ</span>
+              <span className="hidden sm:inline">eAuction FAQ</span>
             </Link>
           </Button>
         </div>

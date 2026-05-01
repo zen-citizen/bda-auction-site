@@ -439,11 +439,12 @@ function TermsAndConditionsPage() {
       <div ref={footerRef} className="home-footer">
         <div className="built-by">
           <div className="footer-line-1">
-            <span>{t('infoPage.footer.builtBy')} <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a></span>
-            <span className="footer-separator">|</span>
-            <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">{t('infoPage.footer.shareFeedback')}</a>
+            <span className="footer-highlight footer-spotlight">
+              Built by volunteers at <a href="https://zencitizen.in/" target="_blank" rel="noopener noreferrer">Zen Citizen</a>{' '}
+              <span className="footer-spotlight-separator">|</span>{' '}
+              <a href="https://zencitizen.in/contact-us/" target="_blank" rel="noopener noreferrer">Share feedback</a>
+            </span>
           </div>
-          <span className="footer-separator footer-line-separator">|</span>
           <div className="footer-line-2">
             <a href="https://www.bdakarnataka.gov.in/" target="_blank" rel="noopener noreferrer">{t('infoPage.footer.bdaWebsite')}</a>
           </div>
