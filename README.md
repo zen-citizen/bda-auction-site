@@ -156,9 +156,9 @@ Important: Any time `sites.csv` is changed, run `npm run generate-sites` so `src
    - Home timeline dates should match `auctionSchedule`.
    - Bidding round dropdown options should match `auctionSchedule.rounds`.
    - Selecting a round should show the correct sites for that session.
-8. If publication/date text changed, update both translation files:
-   - `src/i18n/locales/en/translation.json`
-   - `src/i18n/locales/kn/translation.json`
+8. If publication/date text changed, update both translation files (including Home page publication date):
+   - `src/i18n/locales/en/translation.json` (especially `home.publicationNumber`)
+   - `src/i18n/locales/kn/translation.json` (especially `home.publicationNumber`)
 
 ### Single Source of Truth
 
