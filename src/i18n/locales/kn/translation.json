@@ -28,7 +28,11 @@
     "timeline": {
       "commencement": "eAuction ಪ್ರಾರಂಭ",
       "lastDayInterest": "ಆಸಕ್ತಿ ವ್ಯಕ್ತಪಡಿಸಲು ಕೊನೆಯ ದಿನ",
-      "roundLabel": "ರೌಂಡ್ {{round}} (ಸೈಟ್‌ಗಳು {{sites}})"
+      "roundLabel": "ರೌಂಡ್ {{round}} (ಸೈಟ್‌ಗಳು {{sites}})",
+      "tableHeaders": {
+        "event": "ಕಾರ್ಯಕ್ರಮ",
+        "date": "ದಿನಾಂಕ"
+      }
     },
     "actionCards": {
       "viewSites": {

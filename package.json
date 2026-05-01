@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "generate-sites": "node scripts/processData.js",
+    "build": "npm run generate-sites && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

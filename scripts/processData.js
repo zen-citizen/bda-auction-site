@@ -1,9 +1,45 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { auctionSchedule } from '../src/config/auctionSchedule.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+function parseRoundRange(rangeText, index) {
+  const value = String(rangeText || '').trim();
+  const match = value.match(/^(\d+)\s*-\s*(\d+)$/);
+  if (!match) {
+    console.error(`Invalid sitesRange format for round ${index + 1}: "${value}". Expected "start - end" (example: "1 - 42").`);
+    process.exit(1);
+  }
+
+  const start = parseInt(match[1], 10);
+  const end = parseInt(match[2], 10);
+  if (!Number.isFinite(start) || !Number.isFinite(end) || start < 1 || end < start) {
+    console.error(`Invalid sitesRange values for round ${index + 1}: "${value}".`);
+    process.exit(1);
+  }
+
+  return {
+    session: index + 1,
+    start,
+    end,
+  };
+}
+
+const biddingSessionRanges = auctionSchedule.rounds.map((round, index) =>
+  parseRoundRange(round.sitesRange, index)
+);
+
+function getBiddingSessionForSlNo(slNo) {
+  for (const range of biddingSessionRanges) {
+    if (slNo >= range.start && slNo <= range.end) {
+      return range.session;
+    }
+  }
+  return null;
+}
 
 // Helper function to validate file exists
 function validateFileExists(filePath, description = 'File') {
@@ -130,6 +166,7 @@ const sites = [];
 const layouts = new Set();
 const siteSizes = new Set();
 const types = new Set();
+const sitesOutsideConfiguredRanges = [];
 
 // Process data rows in batches for better performance and progress tracking
 const BATCH_SIZE = 50;
@@ -208,8 +245,15 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         }
       }
       
+      const slNo = parseInt(site.Sl_No) || i + 1;
+      const biddingSession = getBiddingSessionForSlNo(slNo);
+      if (!biddingSession) {
+        sitesOutsideConfiguredRanges.push(slNo);
+        continue;
+      }
+
       const processedSite = {
-        slNo: parseInt(site.Sl_No) || i + 1,
+        slNo,
         siteSize: site['Site Size'] || '',
         type: site.Type || '',
         layout: site.Layout || '', // Keep for filtering purposes
@@ -222,7 +266,7 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
         lat: hasValidCoordinates ? lat : null,
         lng: hasValidCoordinates ? lng : null,
         hasCoordinates: hasValidCoordinates,
-        biddingSession: parseInt(site.Sl_No) <= 42 ? 1 : 2,
+        biddingSession,
         surveyNo: site['Survey No.'] || '',
         contactNumber: contactNumber,
         ratePerSqMtr: site['Rate Per Sq.Mtr in Rs.'] || '',
@@ -246,7 +290,21 @@ for (let batchStart = 0; batchStart < totalRows; batchStart += BATCH_SIZE) {
   }
 }
 
+if (sitesOutsideConfiguredRanges.length > 0) {
+  const uniqueSlNos = Array.from(new Set(sitesOutsideConfiguredRanges)).sort((a, b) => a - b);
+  console.error(
+    `Found sites with Sl_No outside configured round ranges in auctionSchedule: ${uniqueSlNos.join(', ')}. ` +
+    'Update `auctionSchedule.rounds[].sitesRange` to include all site serial numbers before regenerating data.'
+  );
+  process.exit(1);
+}
+
 // Create output
+const sessionCounts = {};
+for (const { session } of biddingSessionRanges) {
+  sessionCounts[`session${session}`] = sites.filter((site) => site.biddingSession === session).length;
+}
+
 const output = {
   sites,
   layouts: Array.from(layouts).sort(),
@@ -255,8 +313,7 @@ const output = {
   stats: {
     total: sites.length,
     withCoordinates: sites.filter(s => s.hasCoordinates).length,
-    session1: sites.filter(s => s.biddingSession === 1).length,
-    session2: sites.filter(s => s.biddingSession === 2).length
+    ...sessionCounts
   }
 };
 

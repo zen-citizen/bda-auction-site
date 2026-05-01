@@ -104,7 +104,7 @@ A simple, clean web interface for citizens to view and explore [BDA](https://www
 
 2. **Process site data (if needed):**
    ```bash
-   node scripts/processData.js
+   npm run generate-sites
    ```
    This converts `sites.csv` to `src/data/sites.json`
 
@@ -131,11 +131,39 @@ A simple, clean web interface for citizens to view and explore [BDA](https://www
 
 ## Data Updates
 
-If you need to update the site data:
+Use this checklist for every new auction cycle.
 
-1. Update `sites.csv` with new site information
-2. Run `node scripts/processData.js` to regenerate `src/data/sites.json`
-3. The changes will be reflected in the application
+Important: Any time `sites.csv` is changed, run `npm run generate-sites` so `src/data/sites.json` is regenerated from the latest CSV.
+
+1. Replace `sites.csv` at the project root with the latest file for the new round.
+2. Update `src/config/auctionSchedule.js`:
+   - `commencement`
+   - `lastDayExpressInterest`
+   - `rounds[]` entries (`startDisplay`, `endDisplay`, `shortRange`, `sitesRange`)
+3. Ensure every `rounds[].sitesRange` uses the format `start - end` (example: `1 - 42`).
+4. Ensure ranges in `rounds[].sitesRange` cover all site serial numbers (`Sl_No`) from `sites.csv`.
+5. Run:
+   ```bash
+   npm run generate-sites
+   ```
+6. Verify `src/data/sites.json` updates correctly:
+   - `sites[].biddingSession` values align to round ranges from `auctionSchedule`.
+   - `stats` includes per-session counts (for example `session1`, `session2`, `session3`).
+7. Start app and sanity-check round filtering:
+   ```bash
+   npm run dev
+   ```
+   - Home timeline dates should match `auctionSchedule`.
+   - Bidding round dropdown options should match `auctionSchedule.rounds`.
+   - Selecting a round should show the correct sites for that session.
+8. If publication/date text changed, update both translation files:
+   - `src/i18n/locales/en/translation.json`
+   - `src/i18n/locales/kn/translation.json`
+
+### Single Source of Truth
+
+`auctionSchedule.rounds[].sitesRange` is now the source of truth for assigning `biddingSession` during CSV parsing.  
+This prevents mismatch between configured rounds and site session data.
 
 ## Technologies Used
 

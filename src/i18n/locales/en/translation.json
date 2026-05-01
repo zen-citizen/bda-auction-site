@@ -28,7 +28,11 @@
     "timeline": {
       "commencement": "Commencement of e-Auction",
       "lastDayInterest": "Last Day to Express Interest",
-      "roundLabel": "Round {{round}} (Sites {{sites}})"
+      "roundLabel": "Round {{round}} (Sites {{sites}})",
+      "tableHeaders": {
+        "event": "Event",
+        "date": "Date"
+      }
     },
     "actionCards": {
       "viewSites": {

@@ -5,19 +5,15 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import AuctionInfoIcon from '../components/icons/AuctionInfoIcon'
 import MapIcon from '../components/icons/MapIcon'
 import ExternalLinkIcon from '../components/icons/ExternalLinkIcon'
-import SitesIcon from '../components/icons/SitesIcon'
 import PhoneIcon from '../components/icons/PhoneIcon'
 import { auctionSchedule } from '../config/auctionSchedule'
 import './Home.css'
-
-const MARKER_CLASS = 'timeline-marker timeline-marker-active'
 
 function Home() {
   const { t } = useTranslation()
   const [showDisclaimerModal, setShowDisclaimerModal] = useState(false)
   const footerRef = useRef(null)
-  const timelineContainerRef = useRef(null)
-  const timelineLineRef = useRef(null)
+  const formatRoundDate = (value) => value.replace(' 2026', '')
 
   // Calculate and set footer height for padding
   useEffect(() => {
@@ -38,40 +34,11 @@ function Home() {
     }
   }, [])
 
-  // Calculate timeline line height on mobile to end at last event's text
-  useEffect(() => {
-    const updateTimelineLineHeight = () => {
-      if (window.innerWidth <= 768 && timelineContainerRef.current && timelineLineRef.current) {
-        const lastEvent = timelineContainerRef.current.querySelector('.timeline-event:last-child')
-        if (lastEvent) {
-          const lastCard = lastEvent.querySelector('.timeline-card')
-          if (lastCard) {
-            const containerTop = timelineContainerRef.current.getBoundingClientRect().top
-            const lastCardBottom = lastCard.getBoundingClientRect().bottom
-            const lineHeight = lastCardBottom - containerTop - 8
-            timelineLineRef.current.style.height = `${lineHeight}px`
-          }
-        }
-      } else if (timelineLineRef.current) {
-        timelineLineRef.current.style.height = ''
-      }
-    }
-
-    updateTimelineLineHeight()
-    window.addEventListener('resize', updateTimelineLineHeight)
-    const timeoutId = setTimeout(updateTimelineLineHeight, 100)
-
-    return () => {
-      window.removeEventListener('resize', updateTimelineLineHeight)
-      clearTimeout(timeoutId)
-    }
-  }, [])
-
   return (
     <div className="home">
       <div className="hero">
         <div className="hero-icon">
-          <SitesIcon size={70} />
+          <img src="/bda_logo.png" alt="BDA Logo" className="hero-logo" />
         </div>
         <h1>{t('home.title')}</h1>
         <p className="hero-publication">{t('home.publicationNumber')}</p>
@@ -90,45 +57,31 @@ function Home() {
       </div>
 
       <div className="key-dates">
-        <div ref={timelineContainerRef} className="timeline-container">
-          <div ref={timelineLineRef} className="timeline-line"></div>
-          <div className="timeline-events">
-            <div className="timeline-event">
-              <div className={MARKER_CLASS}></div>
-              <div className="timeline-card">
-                <h3 className="timeline-title">{t('home.timeline.commencement')}</h3>
-                <div className="timeline-date">{auctionSchedule.commencement}</div>
-              </div>
-            </div>
-
-            <div className="timeline-event">
-              <div className={MARKER_CLASS}></div>
-              <div className="timeline-card">
-                <h3 className="timeline-title">{t('home.timeline.lastDayInterest')}</h3>
-                <div className="timeline-date">{auctionSchedule.lastDayExpressInterest}</div>
-              </div>
-            </div>
-
+        <table className="key-dates-table">
+          <tbody>
+            <tr>
+              <th scope="row">{t('home.timeline.commencement')}</th>
+              <td>{auctionSchedule.commencement}</td>
+            </tr>
+            <tr>
+              <th scope="row">{t('home.timeline.lastDayInterest')}</th>
+              <td>{auctionSchedule.lastDayExpressInterest}</td>
+            </tr>
             {auctionSchedule.rounds.map((round, i) => (
-              <div key={i} className="timeline-event">
-                <div className={MARKER_CLASS}></div>
-                <div className="timeline-card">
-                  <h3 className="timeline-title">
-                    {t('home.timeline.roundLabel', {
-                      round: i + 1,
-                      sites: round.sitesRange,
-                    })}
-                  </h3>
-                  <div className="timeline-date-multi">
-                    <div className="timeline-date-start">{round.startDisplay}</div>
-                    <div className="timeline-date-separator">to</div>
-                    <div className="timeline-date-end">{round.endDisplay}</div>
-                  </div>
-                </div>
-              </div>
+              <tr key={i}>
+                <th scope="row">
+                  {t('home.timeline.roundLabel', {
+                    round: i + 1,
+                    sites: round.sitesRange,
+                  })}
+                </th>
+                <td>
+                  {formatRoundDate(round.startDisplay)} – {formatRoundDate(round.endDisplay)}
+                </td>
+              </tr>
             ))}
-          </div>
-        </div>
+          </tbody>
+        </table>
       </div>
 
       <div className="action-cards">
